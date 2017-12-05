@@ -12,15 +12,13 @@ include_directories("..")
 
 
 set(DisruptorTestTools_sources
-    
+
     CountdownEvent.cpp
     ManualResetEvent.cpp
     ResetEvent.cpp
     ScopeExitFunctor.cpp
     Stopwatch.cpp
-	LatencyRecorder.cpp
+    LatencyRecorder.cpp
 )
 
-
 add_library(Disruptor.TestTools STATIC ${DisruptorTestTools_sources})
-

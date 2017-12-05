@@ -57,7 +57,7 @@ set(DisruptorTests_sources
     WaitStrategyTestUtil.cpp
     WorkerPoolTests.cpp
     YieldingWaitStrategyTests.cpp
-	main.cpp
+    main.cpp
 )
 
 include_directories("..")
@@ -66,4 +66,3 @@ add_executable(Disruptor.Tests ${DisruptorTests_sources})
 target_link_libraries(Disruptor.Tests DisruptorStatic Disruptor.TestTools ${GMock_LIBRARY} ${Boost_LIBRARIES})
 
 add_test(cmake_Disruptor.Tests ${CMAKE_CURRENT_BINARY_DIR}/Disruptor.Tests --result_code=no --report_level=no)
-

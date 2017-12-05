@@ -26,8 +26,8 @@ set(Disruptor_sources
     SpinWaitWaitStrategy.cpp
     stdafx.cpp
     ThreadPerTaskScheduler.cpp
-	ThreadHelper_Linux.cpp
-	ThreadHelper_Windows.cpp
+    ThreadHelper_Linux.cpp
+    ThreadHelper_Windows.cpp
     TimeoutBlockingWaitStrategy.cpp
     TypeInfo.cpp
     Util.cpp
@@ -101,7 +101,7 @@ set(Disruptor_headers
     SpinWait.h
     SpinWaitWaitStrategy.h
     ThreadPerTaskScheduler.h
-	ThreadHelper.h
+    ThreadHelper.h
     TimeoutBlockingWaitStrategy.h
     TimeoutException.h
     TypeInfo.h
@@ -112,7 +112,6 @@ set(Disruptor_headers
     YieldingWaitStrategy.h
 )
 
-
 add_library(DisruptorShared SHARED ${Disruptor_sources})
 set_target_properties(DisruptorShared PROPERTIES OUTPUT_NAME Disruptor)
 set_target_properties(DisruptorShared PROPERTIES VERSION ${DISRUPTOR_VERSION})
@@ -122,8 +121,8 @@ add_library(DisruptorStatic STATIC ${Disruptor_sources})
 set_target_properties(DisruptorStatic PROPERTIES OUTPUT_NAME Disruptor)
 
 install(FILES ${Disruptor_headers} DESTINATION include/Disruptor)
+
 install(TARGETS DisruptorShared DisruptorStatic
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
 )
-
