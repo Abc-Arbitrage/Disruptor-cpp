@@ -1,0 +1,61 @@
+language: cpp
+sudo: required
+dist: trusty
+addons:
+  apt:
+    sources:
+    # add PPAs with more up-to-date toolchains
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-precise-3.6
+    packages:
+    # install toolchains
+      - g++-5
+      - g++-6
+      - clang-3.6
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
+      env: COMPILER=g++-5
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env: COMPILER=g++-6
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.6
+          packages:
+            - clang-3.6
+      env: COMPILER=clang++-3.6
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.7
+          packages:
+            - clang-3.7
+      env: COMPILER=clang++-3.7
+      
+before_install:
+    - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+        sudo apt-get install libboost-dev
+        sudo apt-get install google-mock
+      fi
+      
+script: mkdir build && cd build && cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Release .. && make && make test
+branches:
+  only:
+    - master
