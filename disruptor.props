@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <root>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))</root>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(root)\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+	<Link>
+      <AdditionalLibraryDirectories Condition="$(Configuration.StartsWith('Debug'))"  >$(root)lib\Debug_$(Platform)_$(PlatformToolset)\Disruptor;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="$(Configuration.StartsWith('Release'))">$(root)lib\Release_$(Platform)_$(PlatformToolset)\Disruptor;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Disruptor.lib;%(AdditionalDependencies)</AdditionalDependencies>
+     </Link>
+  </ItemDefinitionGroup>
+</Project>

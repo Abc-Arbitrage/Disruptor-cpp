@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Precompiled Headers">
+      <UniqueIdentifier>{2be8e1d6-0486-493e-8387-b812b75b07a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Support">
+      <UniqueIdentifier>{cfd2abca-087d-4dc4-abd2-d0699cd44db3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Dsl">
+      <UniqueIdentifier>{4c9451d3-f856-4a32-8604-5bc2c72c8b91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Dsl\Stubs">
+      <UniqueIdentifier>{21d43697-4356-47be-9a5b-c60a6c766d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Mocks">
+      <UniqueIdentifier>{ad2c0162-aff0-4c60-a6d8-c74bb13f25ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\Fixtures">
+      <UniqueIdentifier>{ce496d97-e1fa-43a0-a7fb-10acfd8f7577}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StubEvent.h">
+      <Filter>Tests\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="TestWaiter.h">
+      <Filter>Tests\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="TestEvent.h">
+      <Filter>Tests\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="StubExecutor.h">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="DelayedEventHandler.h">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="TestWorkHandler.h">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="SleepingEventHandler.h">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandlerStub.h">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="StubPublisher.h">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="ExceptionThrowingEventHandler.h">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="StubExceptionHandler.h">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClInclude>
+    <ClInclude Include="AtomicReference.h">
+      <Filter>Tests\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="LongEvent.h">
+      <Filter>Tests\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="SequencerMock.h">
+      <Filter>Tests\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="BatchHandlerMock.h">
+      <Filter>Tests\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="ExceptionHandlerMock.h">
+      <Filter>Tests\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="AggregateEventHandlerTestsFixture.h">
+      <Filter>Tests\Fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="LifecycleAwareEventHandlerMock.h">
+      <Filter>Tests\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="BatchEventProcessorTestsFixture.h">
+      <Filter>Tests\Fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsumerRepositoryTestsFixture.h">
+      <Filter>Tests\Fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="SequencerFixture.h">
+      <Filter>Tests\Fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="RingBufferTestsFixture.h">
+      <Filter>Tests\Fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="EventProcessorMock.h">
+      <Filter>Tests\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceBarrierMock.h">
+      <Filter>Tests\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceBarrierTestsFixture.h">
+      <Filter>Tests\Fixtures</Filter>
+    </ClInclude>
+    <ClInclude Include="WaitStrategyMock.h">
+      <Filter>Tests\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="DummySequenceBarrier.h">
+      <Filter>Tests\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceUpdater.h">
+      <Filter>Tests\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="WaitStrategyTestUtil.h">
+      <Filter>Tests\Support</Filter>
+    </ClInclude>
+    <ClInclude Include="DataProviderMock.h">
+      <Filter>Tests\Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="DisruptorFixture.h">
+      <Filter>Tests\Fixtures</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="RingBufferTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="AggregateEventHandlerTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiProducerSequencerTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="SequencerTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="BatchEventProcessorTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="FixedSequenceGroupTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="BusySpinWaitStrategyTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="YieldingWaitStrategyTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="DisruptorTests.cpp">
+      <Filter>Tests\Dsl</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsumerRepositoryTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkerPoolTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="EventPollerTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="BatchingTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="SleepingWaitStrategyTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="EventPublisherTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="FatalExceptionHandlerTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="IgnoreExceptionHandlerTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="SequenceBarrierTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="DisruptorStressTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="RingBufferWithMocksTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="DummySequenceBarrier.cpp">
+      <Filter>Tests\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="SequenceUpdater.cpp">
+      <Filter>Tests\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="WaitStrategyTestUtil.cpp">
+      <Filter>Tests\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="LifecycleAwareTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="SequenceReportingCallbackTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="SpinWaitWaitStrategyTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeoutBlockingWaitStrategyTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="DelayedEventHandler.cpp">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="ExceptionThrowingEventHandler.cpp">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="SleepingEventHandler.cpp">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="StubExecutor.cpp">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="StubPublisher.cpp">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="TestWorkHandler.cpp">
+      <Filter>Tests\Dsl\Stubs</Filter>
+    </ClCompile>
+    <ClCompile Include="DisruptorFixture.cpp">
+      <Filter>Tests\Fixtures</Filter>
+    </ClCompile>
+    <ClCompile Include="AggregateEventHandlerTestsFixture.cpp">
+      <Filter>Tests\Fixtures</Filter>
+    </ClCompile>
+    <ClCompile Include="BatchEventProcessorTestsFixture.cpp">
+      <Filter>Tests\Fixtures</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsumerRepositoryTestsFixture.cpp">
+      <Filter>Tests\Fixtures</Filter>
+    </ClCompile>
+    <ClCompile Include="RingBufferTestsFixture.cpp">
+      <Filter>Tests\Fixtures</Filter>
+    </ClCompile>
+    <ClCompile Include="SequenceBarrierTestsFixture.cpp">
+      <Filter>Tests\Fixtures</Filter>
+    </ClCompile>
+    <ClCompile Include="StubEvent.cpp">
+      <Filter>Tests\Support</Filter>
+    </ClCompile>
+    <ClCompile Include="TestWaiter.cpp">
+      <Filter>Tests\Support</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="postbuild.bat" />
+    <None Include="CMakeLists.txt" />
+  </ItemGroup>
+</Project>

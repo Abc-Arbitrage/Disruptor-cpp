@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <!-- BOOST_HOME (or hard-coded path) should have a trailing '/' -->
+    <BoostRoot>$(BOOST_HOME)</BoostRoot>
+    <BoostIncludePath>$(BoostRoot)</BoostIncludePath>
+    <BoostLibraryPath Condition="'$(BOOST_LIB_PATH)'=='' And '$(Platform)'=='Win32'">$(BoostRoot)lib\</BoostLibraryPath>
+    <BoostLibraryPath Condition="'$(BOOST_LIB_PATH)'=='' And '$(Platform)'=='x64'">$(BoostRoot)lib\vc141-x64\</BoostLibraryPath>
+    <BoostLibraryPath Condition="'$(BOOST_LIB_PATH)'!=''">$(BOOST_LIB_PATH)</BoostLibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(BoostIncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(BoostLibraryPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>%(Command)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+</Project>

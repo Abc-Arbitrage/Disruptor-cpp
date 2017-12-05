@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\boost.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\boost.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\lib\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</OutDir>
+    <IntDir>..\obj\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\lib\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</OutDir>
+    <IntDir>..\obj\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="AggregateEventHandler.h" />
+    <ClInclude Include="AlertException.h" />
+    <ClInclude Include="ArgumentException.h" />
+    <ClInclude Include="ArgumentNullException.h" />
+    <ClInclude Include="ArgumentOutOfRangeException.h" />
+    <ClInclude Include="BasicExecutor.h" />
+    <ClInclude Include="BatchEventProcessor.h" />
+    <ClInclude Include="BlockingQueue.h" />
+    <ClInclude Include="BlockingWaitStrategy.h" />
+    <ClInclude Include="BuildConfig.h" />
+    <ClInclude Include="BusySpinWaitStrategy.h" />
+    <ClInclude Include="ClockConfig.h" />
+    <ClInclude Include="ConsumerRepository.h" />
+    <ClInclude Include="Disruptor.h" />
+    <ClInclude Include="EventHandlerGroup.h" />
+    <ClInclude Include="EventPoller.h" />
+    <ClInclude Include="EventProcessorInfo.h" />
+    <ClInclude Include="ExceptionBase.h" />
+    <ClInclude Include="ExceptionHandlerSetting.h" />
+    <ClInclude Include="ExceptionHandlerWrapper.h" />
+    <ClInclude Include="FatalException.h" />
+    <ClInclude Include="FatalExceptionHandler.h" />
+    <ClInclude Include="FixedSequenceGroup.h" />
+    <ClInclude Include="IConsumerInfo.h" />
+    <ClInclude Include="ICursored.h" />
+    <ClInclude Include="IDataProvider.h" />
+    <ClInclude Include="IEventHandler.h" />
+    <ClInclude Include="IEventProcessor.h" />
+    <ClInclude Include="IEventProcessorFactory.h" />
+    <ClInclude Include="IEventReleaseAware.h" />
+    <ClInclude Include="IEventReleaser.h" />
+    <ClInclude Include="IEventSequencer.h" />
+    <ClInclude Include="IEventTranslator.h" />
+    <ClInclude Include="IEventTranslatorVararg.h" />
+    <ClInclude Include="IExceptionHandler.h" />
+    <ClInclude Include="IExecutor.h" />
+    <ClInclude Include="IgnoreExceptionHandler.h" />
+    <ClInclude Include="IHighestPublishedSequenceProvider.h" />
+    <ClInclude Include="ILifecycleAware.h" />
+    <ClInclude Include="InsufficientCapacityException.h" />
+    <ClInclude Include="InvalidOperationException.h" />
+    <ClInclude Include="ISequence.h" />
+    <ClInclude Include="ISequenceBarrier.h" />
+    <ClInclude Include="ISequenced.h" />
+    <ClInclude Include="ISequencer.h" />
+    <ClInclude Include="ISequenceReportingEventHandler.h" />
+    <ClInclude Include="ITaskScheduler.h" />
+    <ClInclude Include="ITimeoutHandler.h" />
+    <ClInclude Include="IWaitStrategy.h" />
+    <ClInclude Include="IWorkHandler.h" />
+    <ClInclude Include="MultiProducerSequencer.h" />
+    <ClInclude Include="NoOpEventProcessor.h" />
+    <ClInclude Include="NotSupportedException.h" />
+    <ClInclude Include="Pragmas.h" />
+    <ClInclude Include="ProcessingSequenceBarrier.h" />
+    <ClInclude Include="ProducerType.h" />
+    <ClInclude Include="RingBuffer.h" />
+    <ClInclude Include="RoundRobinThreadAffinedTaskScheduler.h" />
+    <ClInclude Include="Sequence.h" />
+    <ClInclude Include="SequenceGroups.h" />
+    <ClInclude Include="Sequencer.h" />
+    <ClInclude Include="SingleProducerSequencer.h" />
+    <ClInclude Include="SleepingWaitStrategy.h" />
+    <ClInclude Include="SpinWait.h" />
+    <ClInclude Include="SpinWaitWaitStrategy.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="ThreadHelper.h" />
+    <ClInclude Include="ThreadPerTaskScheduler.h" />
+    <ClInclude Include="TimeoutBlockingWaitStrategy.h" />
+    <ClInclude Include="TimeoutException.h" />
+    <ClInclude Include="TypeInfo.h" />
+    <ClInclude Include="Util.h" />
+    <ClInclude Include="WorkerPool.h" />
+    <ClInclude Include="WorkerPoolInfo.h" />
+    <ClInclude Include="WorkProcessor.h" />
+    <ClInclude Include="YieldingWaitStrategy.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BasicExecutor.cpp" />
+    <ClCompile Include="BlockingWaitStrategy.cpp" />
+    <ClCompile Include="BusySpinWaitStrategy.cpp" />
+    <ClCompile Include="FixedSequenceGroup.cpp" />
+    <ClCompile Include="ProcessingSequenceBarrier.cpp" />
+    <ClCompile Include="ProducerType.cpp" />
+    <ClCompile Include="RoundRobinThreadAffinedTaskScheduler.cpp" />
+    <ClCompile Include="Sequence.cpp" />
+    <ClCompile Include="SequenceGroups.cpp" />
+    <ClCompile Include="SleepingWaitStrategy.cpp" />
+    <ClCompile Include="SpinWait.cpp" />
+    <ClCompile Include="SpinWaitWaitStrategy.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ThreadHelper_Linux.cpp" />
+    <ClCompile Include="ThreadHelper_Windows.cpp" />
+    <ClCompile Include="ThreadPerTaskScheduler.cpp" />
+    <ClCompile Include="TimeoutBlockingWaitStrategy.cpp" />
+    <ClCompile Include="TypeInfo.cpp" />
+    <ClCompile Include="Util.cpp" />
+    <ClCompile Include="YieldingWaitStrategy.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMakeLists.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

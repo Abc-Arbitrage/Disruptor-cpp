@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Precompiled Headers">
+      <UniqueIdentifier>{0221edb6-70ca-4a20-9c5b-03bb73331cfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Support">
+      <UniqueIdentifier>{8a04e59a-40f5-4566-aaa2-e15f9c2efda4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raw">
+      <UniqueIdentifier>{5e0d3237-6a0c-4657-816f-bfe119d6ca29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sequenced">
+      <UniqueIdentifier>{159a3785-dc26-480c-9605-a0f356bc0945}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Translator">
+      <UniqueIdentifier>{7fd7a2d7-9ecc-4d01-986f-1f9309073eaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WorkHandler">
+      <UniqueIdentifier>{a5e40b8b-91ee-4357-b503-07f44c60cbed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestRepository.cpp" />
+    <ClCompile Include="TwoToTwoWorkProcessorThroughputTest.cpp">
+      <Filter>WorkHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="LatencyTestSession.cpp" />
+    <ClCompile Include="ThroughputTestSession.cpp" />
+    <ClCompile Include="OneToOneSequencedBatchThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToOneRawThroughputTest.cpp">
+      <Filter>Raw</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToOneRawBatchThroughputTest.cpp">
+      <Filter>Raw</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfTestUtil.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToOneSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToOneTranslatorThroughputTest.cpp">
+      <Filter>Translator</Filter>
+    </ClCompile>
+    <ClCompile Include="ThroughputTestSessionResult.cpp" />
+    <ClCompile Include="OneToThreeWorkerPoolThroughputTest.cpp">
+      <Filter>WorkHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToThreeReleasingWorkerPoolThroughputTest.cpp">
+      <Filter>WorkHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToOneSequencedPollerThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToThreeDiamondSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToThreePipelineSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToThreeSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreeToOneSequencedBatchThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreeToOneSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreeToThreeSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="PingPongSequencedLatencyTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="EventCountingQueueProcessor.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="EventCountingWorkHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="FizzBuzzEvent.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="FizzBuzzEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="MutableLong.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="ValueAdditionEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="ValueEvent.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionEvent.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="ValueMutationEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="Operation.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="LongArrayEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="OneToOneSequencedLongArrayThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="LatencyTestSessionResult.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IThroughputTest.h" />
+    <ClInclude Include="OneToOneRawBatchThroughputTest.h">
+      <Filter>Raw</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToOneRawThroughputTest.h">
+      <Filter>Raw</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToOneSequencedBatchThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="ILatencyTest.h" />
+    <ClInclude Include="LatencyTestSession.h" />
+    <ClInclude Include="TestRepository.h" />
+    <ClInclude Include="ThroughputTestSession.h" />
+    <ClInclude Include="TwoToTwoWorkProcessorThroughputTest.h">
+      <Filter>WorkHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="PerfTestUtil.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueEvent.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueAdditionEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="PaddedLong.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToOneSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="FizzBuzzStep.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="FizzBuzzEvent.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="FizzBuzzEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToOneTranslatorThroughputTest.h">
+      <Filter>Translator</Filter>
+    </ClInclude>
+    <ClInclude Include="MutableLong.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="ThroughputTestSessionResult.h" />
+    <ClInclude Include="OneToThreeWorkerPoolThroughputTest.h">
+      <Filter>WorkHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="EventCountingQueueProcessor.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="EventCountingWorkHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToThreeReleasingWorkerPoolThroughputTest.h">
+      <Filter>WorkHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToOneSequencedPollerThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToThreeDiamondSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToThreePipelineSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToThreeSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreeToOneSequencedBatchThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreeToOneSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreeToThreeSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="PingPongSequencedLatencyTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="ExecutorService.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionEvent.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionStep.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="Operation.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueMutationEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="LongArrayEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiBufferBatchEventProcessor.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="OneToOneSequencedLongArrayThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="TestInfo.h" />
+    <ClInclude Include="LatencyTestSessionResult.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
+  </ItemGroup>
+</Project>

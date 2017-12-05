@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+      <!-- Gtest home path with a trailing '/' -->
+    <GtestRoot></GtestRoot>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <!--
+      GTEST_ENV_HAS_STD_TUPLE_: the only way to make gtest use std::tuple instead of std::tr1::tuple which is not available anymore when using /std:c++latest with VS2017
+      -->
+      <PreprocessorDefinitions>GTEST_ENV_HAS_STD_TUPLE_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(GtestRoot)googlemock\include\;$(GtestRoot)googletest\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories Condition="$(Configuration.StartsWith('Debug'))">$(GtestRoot)lib\x64-v141\Debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="$(Configuration.StartsWith('Release'))">$(GtestRoot)lib\x64-v141\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gmock.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

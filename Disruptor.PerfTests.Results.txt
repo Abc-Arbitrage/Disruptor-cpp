@@ -1,0 +1,149 @@
+Latency Test to run => PingPongSequencedLatencyTest, Runs => 3
+Starting latency tests
+Run: Duration (s): 24.3, Latency: min: 2.85 us, mean: 6.74 us, max: 438 us, Q99.99: 79.5 us, Q99.9: 27.9 us, Q99: 9.69 us, Q98: 7.7 us, Q95: 6.84 us, Q93: 6.84 us, Q90: 6.84 us, Q50: 6.56 us
+Run: Duration (s): 23.9, Latency: min: 3.42 us, mean: 6.65 us, max: 2.21 ms, Q99.99: 75.6 us, Q99.9: 21.1 us, Q99: 8.27 us, Q98: 7.41 us, Q95: 6.84 us, Q93: 6.84 us, Q90: 6.84 us, Q50: 6.56 us
+Run: Duration (s): 24.1, Latency: min: 570 ns, mean: 6.73 us, max: 541 us, Q99.99: 72.7 us, Q99.9: 25.9 us, Q99: 9.41 us, Q98: 7.41 us, Q95: 6.84 us, Q93: 6.84 us, Q90: 6.84 us, Q50: 6.56 us
+Throughput Test to run => OneToOneRawBatchThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 426 757 799 - Duration (s): 4.69
+Run: Ops: 454 229 558 - Duration (s): 4.4
+Run: Ops: 292 227 536 - Duration (s): 6.84
+Run: Ops: 350 759 165 - Duration (s): 5.7
+Run: Ops: 473 021 569 - Duration (s): 4.23
+Run: Ops: 473 122 613 - Duration (s): 4.23
+Run: Ops: 471 120 102 - Duration (s): 4.25
+Throughput Test to run => OneToOneRawThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 44 937 518 - Duration (s): 4.45
+Run: Ops: 44 301 517 - Duration (s): 4.51
+Run: Ops: 44 922 257 - Duration (s): 4.45
+Run: Ops: 44 927 938 - Duration (s): 4.45
+Run: Ops: 44 935 105 - Duration (s): 4.45
+Run: Ops: 44 890 284 - Duration (s): 4.46
+Run: Ops: 44 811 590 - Duration (s): 4.46
+Throughput Test to run => OneToOneSequencedBatchThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 37 028 390 - Duration (s): 27
+Run: Ops: 37 155 526 - Duration (s): 26.9
+Run: Ops: 37 217 579 - Duration (s): 26.9
+Run: Ops: 37 176 588 - Duration (s): 26.9
+Run: Ops: 37 274 187 - Duration (s): 26.8
+Run: Ops: 37 216 046 - Duration (s): 26.9
+Run: Ops: 37 173 062 - Duration (s): 26.9
+Throughput Test to run => OneToOneSequencedLongArrayThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 473 630 703 - Duration (s): 4.32
+Run: Ops: 466 345 371 - Duration (s): 4.39
+Run: Ops: 473 989 589 - Duration (s): 4.32
+Run: Ops: 473 911 057 - Duration (s): 4.32
+Run: Ops: 473 403 200 - Duration (s): 4.33
+Run: Ops: 473 712 210 - Duration (s): 4.32
+Run: Ops: 474 411 433 - Duration (s): 4.32
+Throughput Test to run => OneToOneSequencedPollerThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 15 717 727 - Duration (s): 6.36
+Run: Ops: 15 573 759 - Duration (s): 6.42
+Run: Ops: 16 150 290 - Duration (s): 6.19
+Run: Ops: 16 162 849 - Duration (s): 6.19
+Run: Ops: 16 309 858 - Duration (s): 6.13
+Run: Ops: 16 474 782 - Duration (s): 6.07
+Run: Ops: 16 208 309 - Duration (s): 6.17
+Throughput Test to run => OneToOneSequencedThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 15 204 126 - Duration (s): 6.58
+Run: Ops: 15 409 897 - Duration (s): 6.49
+Run: Ops: 15 289 596 - Duration (s): 6.54
+Run: Ops: 15 200 296 - Duration (s): 6.58
+Run: Ops: 15 186 697 - Duration (s): 6.58
+Run: Ops: 15 197 538 - Duration (s): 6.58
+Run: Ops: 15 218 117 - Duration (s): 6.57
+Throughput Test to run => OneToOneTranslatorThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 13 026 354 - Duration (s): 7.68
+Run: Ops: 13 890 494 - Duration (s): 7.2
+Run: Ops: 13 523 725 - Duration (s): 7.39
+Run: Ops: 13 782 653 - Duration (s): 7.26
+Run: Ops: 13 564 643 - Duration (s): 7.37
+Run: Ops: 13 861 754 - Duration (s): 7.21
+Run: Ops: 13 076 534 - Duration (s): 7.65
+Throughput Test to run => OneToThreeDiamondSequencedThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 26 492 796 - Duration (s): 3.77
+Run: Ops: 27 129 208 - Duration (s): 3.69
+Run: Ops: 26 384 695 - Duration (s): 3.79
+Run: Ops: 25 786 893 - Duration (s): 3.88
+Run: Ops: 25 026 171 - Duration (s): 4
+Run: Ops: 26 587 733 - Duration (s): 3.76
+Run: Ops: 26 054 218 - Duration (s): 3.84
+Throughput Test to run => OneToThreePipelineSequencedThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 16 133 083 - Duration (s): 6.2
+Run: Ops: 16 245 293 - Duration (s): 6.16
+Run: Ops: 13 155 011 - Duration (s): 7.6
+Run: Ops: 16 370 539 - Duration (s): 6.11
+Run: Ops: 16 140 460 - Duration (s): 6.2
+Run: Ops: 15 980 534 - Duration (s): 6.26
+Run: Ops: 16 220 923 - Duration (s): 6.16
+Throughput Test to run => OneToThreeReleasingWorkerPoolThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 7 390 895 - Duration (s): 1.35
+Run: Ops: 7 511 517 - Duration (s): 1.33
+Run: Ops: 7 744 187 - Duration (s): 1.29
+Run: Ops: 7 456 026 - Duration (s): 1.34
+Run: Ops: 7 455 514 - Duration (s): 1.34
+Run: Ops: 7 405 651 - Duration (s): 1.35
+Run: Ops: 7 483 567 - Duration (s): 1.34
+Throughput Test to run => OneToThreeSequencedThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 58 361 773 - Duration (s): 5.14
+Run: Ops: 59 481 499 - Duration (s): 5.04
+Run: Ops: 61 742 318 - Duration (s): 4.86
+Run: Ops: 58 333 221 - Duration (s): 5.14
+Run: Ops: 58 785 434 - Duration (s): 5.1
+Run: Ops: 60 284 434 - Duration (s): 4.98
+Run: Ops: 76 568 779 - Duration (s): 3.92
+Throughput Test to run => OneToThreeWorkerPoolThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 6 783 512 - Duration (s): 14.7
+Run: Ops: 6 775 174 - Duration (s): 14.8
+Run: Ops: 6 807 026 - Duration (s): 14.7
+Run: Ops: 6 655 154 - Duration (s): 15
+Run: Ops: 6 801 565 - Duration (s): 14.7
+Run: Ops: 6 864 575 - Duration (s): 14.6
+Run: Ops: 6 816 324 - Duration (s): 14.7
+Throughput Test to run => ThreeToOneSequencedBatchThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 36 118 059 - Duration (s): 2.77
+Run: Ops: 36 206 133 - Duration (s): 2.76
+Run: Ops: 36 036 204 - Duration (s): 2.77
+Run: Ops: 36 126 019 - Duration (s): 2.77
+Run: Ops: 33 903 373 - Duration (s): 2.95
+Run: Ops: 35 800 706 - Duration (s): 2.79
+Run: Ops: 35 998 092 - Duration (s): 2.78
+Throughput Test to run => ThreeToOneSequencedThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 3 877 429 - Duration (s): 5.16
+Run: Ops: 3 871 247 - Duration (s): 5.17
+Run: Ops: 3 889 003 - Duration (s): 5.14
+Run: Ops: 3 950 586 - Duration (s): 5.06
+Run: Ops: 3 875 670 - Duration (s): 5.16
+Run: Ops: 3 883 537 - Duration (s): 5.15
+Run: Ops: 3 943 268 - Duration (s): 5.07
+Throughput Test to run => ThreeToThreeSequencedThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 89 202 043 - Duration (s): 6.05
+Run: Ops: 89 222 102 - Duration (s): 6.05
+Run: Ops: 91 820 088 - Duration (s): 5.88
+Run: Ops: 92 930 261 - Duration (s): 5.81
+Run: Ops: 93 027 855 - Duration (s): 5.8
+Run: Ops: 94 548 193 - Duration (s): 5.71
+Run: Ops: 94 892 248 - Duration (s): 5.69
+Throughput Test to run => TwoToTwoWorkProcessorThroughputTest, Runs => 7
+Starting throughput tests
+Run: Ops: 5 314 399 - Duration (ms): 188
+Run: Ops: 5 202 236 - Duration (ms): 192
+Run: Ops: 5 317 762 - Duration (ms): 188
+Run: Ops: 5 181 427 - Duration (ms): 193
+Run: Ops: 5 218 716 - Duration (ms): 192
+Run: Ops: 5 268 787 - Duration (ms): 190
+Run: Ops: 5 218 226 - Duration (ms): 192

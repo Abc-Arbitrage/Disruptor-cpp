@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Precompiled Headers">
+      <UniqueIdentifier>{6644d11a-c49a-4ddf-b6c8-d9b4538c6a59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exceptions">
+      <UniqueIdentifier>{4b4f6684-f5e4-40f6-a133-b43237a35a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{cfdb7ab7-15dc-40ea-a003-28da004d30ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{2adee549-12dd-4aaa-94a5-f3a2e8b97687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dsl">
+      <UniqueIdentifier>{14911d56-7ab2-4c7e-a258-bcdf55a2979c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EventPoller.h" />
+    <ClInclude Include="ICursored.h" />
+    <ClInclude Include="IDataProvider.h" />
+    <ClInclude Include="ISequence.h" />
+    <ClInclude Include="ISequenceBarrier.h" />
+    <ClInclude Include="ISequenced.h" />
+    <ClInclude Include="ISequencer.h" />
+    <ClInclude Include="IWaitStrategy.h" />
+    <ClInclude Include="MultiProducerSequencer.h" />
+    <ClInclude Include="Sequence.h" />
+    <ClInclude Include="Sequencer.h" />
+    <ClInclude Include="SingleProducerSequencer.h" />
+    <ClInclude Include="RingBuffer.h" />
+    <ClInclude Include="IEventSequencer.h" />
+    <ClInclude Include="ExceptionBase.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildConfig.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Pragmas.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgumentException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockingWaitStrategy.h" />
+    <ClInclude Include="ProducerType.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgumentOutOfRangeException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="NoOpEventProcessor.h" />
+    <ClInclude Include="IEventProcessor.h" />
+    <ClInclude Include="InvalidOperationException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcessingSequenceBarrier.h" />
+    <ClInclude Include="IHighestPublishedSequenceProvider.h" />
+    <ClInclude Include="FixedSequenceGroup.h" />
+    <ClInclude Include="NotSupportedException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="SpinWait.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="SequenceGroups.h" />
+    <ClInclude Include="AlertException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="InsufficientCapacityException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventTranslator.h" />
+    <ClInclude Include="IEventTranslatorVararg.h" />
+    <ClInclude Include="IEventHandler.h" />
+    <ClInclude Include="ILifecycleAware.h" />
+    <ClInclude Include="AggregateEventHandler.h" />
+    <ClInclude Include="BatchEventProcessor.h" />
+    <ClInclude Include="ISequenceReportingEventHandler.h" />
+    <ClInclude Include="YieldingWaitStrategy.h" />
+    <ClInclude Include="BusySpinWaitStrategy.h" />
+    <ClInclude Include="IExceptionHandler.h" />
+    <ClInclude Include="ArgumentNullException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="ITimeoutHandler.h" />
+    <ClInclude Include="TimeoutException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="Disruptor.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicExecutor.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="IExecutor.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="ITaskScheduler.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="RoundRobinThreadAffinedTaskScheduler.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockingQueue.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="ExceptionHandlerWrapper.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="FatalExceptionHandler.h" />
+    <ClInclude Include="IWorkHandler.h" />
+    <ClInclude Include="EventHandlerGroup.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsumerRepository.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="IConsumerInfo.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="EventProcessorInfo.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkerPool.h" />
+    <ClInclude Include="WorkProcessor.h" />
+    <ClInclude Include="WorkerPoolInfo.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="ClockConfig.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="IEventProcessorFactory.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeInfo.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="ExceptionHandlerSetting.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="SleepingWaitStrategy.h" />
+    <ClInclude Include="FatalException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="IgnoreExceptionHandler.h" />
+    <ClInclude Include="SpinWaitWaitStrategy.h" />
+    <ClInclude Include="TimeoutBlockingWaitStrategy.h" />
+    <ClInclude Include="IEventReleaseAware.h" />
+    <ClInclude Include="IEventReleaser.h" />
+    <ClInclude Include="ThreadPerTaskScheduler.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadHelper.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="SpinWait.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="SequenceGroups.cpp" />
+    <ClCompile Include="ProducerType.cpp">
+      <Filter>Dsl</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence.cpp" />
+    <ClCompile Include="BlockingWaitStrategy.cpp" />
+    <ClCompile Include="FixedSequenceGroup.cpp" />
+    <ClCompile Include="ProcessingSequenceBarrier.cpp" />
+    <ClCompile Include="YieldingWaitStrategy.cpp" />
+    <ClCompile Include="BusySpinWaitStrategy.cpp" />
+    <ClCompile Include="RoundRobinThreadAffinedTaskScheduler.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicExecutor.cpp">
+      <Filter>Dsl</Filter>
+    </ClCompile>
+    <ClCompile Include="SleepingWaitStrategy.cpp" />
+    <ClCompile Include="SpinWaitWaitStrategy.cpp" />
+    <ClCompile Include="TimeoutBlockingWaitStrategy.cpp" />
+    <ClCompile Include="TypeInfo.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadPerTaskScheduler.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadHelper_Linux.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadHelper_Windows.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMakeLists.txt" />
+  </ItemGroup>
+</Project>
