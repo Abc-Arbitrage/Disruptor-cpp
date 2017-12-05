@@ -18,25 +18,20 @@ namespace Disruptor
     {
     }
 
-    std::int64_t TimeoutBlockingWaitStrategy::waitFor(std::int64_t sequence,
+     std::int64_t TimeoutBlockingWaitStrategy::waitFor(std::int64_t sequence,
                                                       const std::shared_ptr< Sequence >& cursor,
                                                       const std::shared_ptr< ISequence >& dependentSequence,
                                                       const std::shared_ptr< ISequenceBarrier >& barrier)
     {
-        return waitFor(sequence, *cursor, *dependentSequence, *barrier);
-    }
-
-    std::int64_t TimeoutBlockingWaitStrategy::waitFor(std::int64_t sequence, Sequence& cursor, ISequence& dependentSequence, ISequenceBarrier& barrier)
-    {
         auto timeSpan = boost::chrono::microseconds(std::chrono::duration_cast< std::chrono::microseconds >(m_timeout).count());
 
-        if (cursor.value() < sequence)
+        if (cursor->value() < sequence)
         {
             boost::unique_lock< decltype(m_gate) > uniqueLock(m_gate);
 
-            while (cursor.value() < sequence)
+            while (cursor->value() < sequence)
             {
-                barrier.checkAlert();
+                barrier->checkAlert();
 
                 if (m_conditionVariable.wait_for(uniqueLock, timeSpan) == boost::cv_status::timeout)
                     DISRUPTOR_THROW_TIMEOUT_EXCEPTION();
@@ -44,9 +39,9 @@ namespace Disruptor
         }
 
         std::int64_t availableSequence;
-        while ((availableSequence = dependentSequence.value()) < sequence)
+        while ((availableSequence = dependentSequence->value()) < sequence)
         {
-            barrier.checkAlert();
+            barrier->checkAlert();
         }
 
         return availableSequence;

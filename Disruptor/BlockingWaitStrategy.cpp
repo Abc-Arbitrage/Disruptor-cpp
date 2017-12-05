@@ -15,27 +15,22 @@ namespace Disruptor
                                                const std::shared_ptr< ISequence >& dependentSequence,
                                                const std::shared_ptr< ISequenceBarrier >& barrier)
     {
-        return waitFor(sequence, *cursor, *dependentSequence, *barrier);
-    }
-
-    std::int64_t BlockingWaitStrategy::waitFor(std::int64_t sequence, Sequence& cursor, ISequence& dependentSequence, ISequenceBarrier& barrier)
-    {
-        if (cursor.value() < sequence)
+        if (cursor->value() < sequence)
         {
             boost::unique_lock< decltype(m_gate) > uniqueLock(m_gate);
 
-            while (cursor.value() < sequence)
+            while (cursor->value() < sequence)
             {
-                barrier.checkAlert();
+                barrier->checkAlert();
 
                 m_conditionVariable.wait(uniqueLock);
             }
         }
 
         std::int64_t availableSequence;
-        while ((availableSequence = dependentSequence.value()) < sequence)
+        while ((availableSequence = dependentSequence->value()) < sequence)
         {
-            barrier.checkAlert();
+            barrier->checkAlert();
         }
 
         return availableSequence;

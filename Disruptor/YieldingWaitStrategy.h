@@ -29,11 +29,6 @@ namespace Disruptor
                              const std::shared_ptr< ISequence >& dependentSequence,
                              const std::shared_ptr< ISequenceBarrier >& barrier) override;
 
-        std::int64_t waitFor(std::int64_t sequence,
-                             Sequence& cursor,
-                             ISequence& dependentSequence,
-                             ISequenceBarrier& barrier) override;
-
         /// <summary>
         /// Signal those <see cref="IEventProcessor"/> waiting that the cursor has advanced.
         /// </summary>

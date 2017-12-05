@@ -22,11 +22,6 @@ namespace Disruptor
                              const std::shared_ptr< ISequence >& dependentSequence,
                              const std::shared_ptr< ISequenceBarrier >& barrier) override;
 
-        std::int64_t waitFor(std::int64_t sequence,
-                             Sequence& cursor,
-                             ISequence& dependentSequence,
-                             ISequenceBarrier& barrier) override;
-
         /// <summary>
         /// <see cref="IWaitStrategy.SignalAllWhenBlocking"/>
         /// </summary>
