@@ -35,7 +35,13 @@ namespace Disruptor
         {
             while(m_started)
             {
-                task();
+                try
+                {
+                    task();
+                }
+                catch (...)
+                {
+                }
             }
         });
 
