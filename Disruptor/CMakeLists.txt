@@ -91,7 +91,6 @@ set(Disruptor_headers
     ProcessingSequenceBarrier.h
     ProducerType.h
     RingBuffer.h
-    RingBufferFields.h
     RoundRobinThreadAffinedTaskScheduler.h
     Sequence.h
     SequenceGroups.h
