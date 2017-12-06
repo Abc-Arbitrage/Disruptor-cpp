@@ -8,9 +8,9 @@ Disruptor-cpp is a fully functional C++ port of the [LMAX disruptor](https://lma
 
 ### Prerequisites
 
-The library depends on [boost](http://www.boost.org/).  Any reasonably new version of boost will work.
-The unitary tests binary also needs [Googlemock] (https://github.com/google/googletest).
+The library depends on [boost](http://www.boost.org/). Any reasonably new version of boost will work.
+The unit tests binary also needs [Googlemock](https://github.com/google/googletest).
 
-#Windows 
+### Windows 
 
-#Linux
+### Linux
