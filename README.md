@@ -29,6 +29,11 @@ cmake .. -DCMAKE_BUILD_TYPE=release -DDISRUPTOR_BUILD_TESTS=true
 
 ### Windows 
 
+The simplest way to compile the library on Windows is to use the provided Visual Studio solution files:
+* Disruptor-lib.sln - the solution only includes the library.
+* Disruptor-all.sln - the solution includes the library, benchmarks and unit tests.
+
+[Boost](http://www.boost.org/)  must be available on your machine. The  [**boost.props**](https://github.com/Abc-Arbitrage/Disruptor-cpp/blob/master/boost.props) file already included into the solution but you may need to modify the headers and libraries directory according to your boost location and folder structure.
 
 
 
