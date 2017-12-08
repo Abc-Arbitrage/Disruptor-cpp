@@ -4,9 +4,7 @@ cmake_minimum_required(VERSION 2.6)
 set(DISRUPTOR_VERSION_MAJOR "1")
 set(DISRUPTOR_VERSION_MINOR "0")
 set(DISRUPTOR_VERSION_PATCH "0")
-set(DISRUPTOR_VERSION
-    "${DISRUPTOR_VERSION_MAJOR}.${DISRUPTOR_VERSION_MINOR}.${DISRUPTOR_VERSION_PATCH}"
-)
+set(DISRUPTOR_VERSION "${DISRUPTOR_VERSION_MAJOR}.${DISRUPTOR_VERSION_MINOR}.${DISRUPTOR_VERSION_PATCH}")
 
 enable_testing()
 
@@ -21,16 +19,16 @@ if(CMAKE_COMPILER_IS_GNUCXX)
         endif()
 
         include(CheckCXXCompilerFlag)
-        check_cxx_compiler_flag(-std=c++11 FLAG_CXX11)
+        check_cxx_compiler_flag(-std=c++14 FLAG_CXX11)
         if(FLAG_CXX11)
-            message(STATUS "C++11 features enabled")
-            set(CXX11_ENABLED ON CACHE INTERNAL "C++11 features enabled")
+            message(STATUS "C++14 features enabled")
+            set(CXX11_ENABLED ON CACHE INTERNAL "C++14 features enabled")
         else()
-            message(FATAL_ERROR "g++ does not support the -std=c++11 flag")
+            message(FATAL_ERROR "g++ does not support the -std=c++14 flag")
         endif()
     endif()
 
-    set(COMPILER_FLAGS "-std=c++11")
+    set(COMPILER_FLAGS "-std=c++14")
     set(WARNING_FLAGS "-W -Wall")
     
     if(CMAKE_BUILD_TYPE STREQUAL "debug")
@@ -47,16 +45,16 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     if(NOT CXX11_ENABLED)
         include(CheckCXXCompilerFlag)
-        check_cxx_compiler_flag(-std=c++11 FLAG_CXX11)
+        check_cxx_compiler_flag(-std=c++14 FLAG_CXX11)
         if(FLAG_CXX11)
-            message(STATUS "C++11 features enabled")
-            set(CXX11_ENABLED ON CACHE INTERNAL "C++11 features enabled")
+            message(STATUS "C++14 features enabled")
+            set(CXX11_ENABLED ON CACHE INTERNAL "C++14 features enabled")
         else()
-            message(FATAL_ERROR "Clang does not support the -std=c++11 flag")
+            message(FATAL_ERROR "Clang does not support the -std=c++14 flag")
         endif()
     endif()
 
-    set(COMPILER_FLAGS "-std=c++11")
+    set(COMPILER_FLAGS "-std=c++14")
     set(WARNING_FLAGS "-W -Wall")
     
     if(CMAKE_BUILD_TYPE STREQUAL "debug")
@@ -74,14 +72,16 @@ endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILER_FLAGS} ${WARNING_FLAGS}")
 
-add_subdirectory(googletest-release-1.8.0)
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
 add_subdirectory(Disruptor)
 
-add_subdirectory(Disruptor.PerfTests)
-add_subdirectory(Disruptor.TestTools)
-add_subdirectory(Disruptor.Tests)
+if(DISRUPTOR_BUILD_TESTS)
+    add_subdirectory(googletest-release-1.8.0)
+    include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+
+    add_subdirectory(Disruptor.PerfTests)
+    add_subdirectory(Disruptor.TestTools)
+    add_subdirectory(Disruptor.Tests)
+endif()
 
 
 # uninstall target
@@ -107,9 +107,7 @@ set(CPACK_PACKAGE_VERSION_MAJOR "${DISRUPTOR_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${DISRUPTOR_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${DISRUPTOR_VERSION_PATCH}")
 
-set(CPACK_SOURCE_PACKAGE_FILE_NAME
-    "${CMAKE_PROJECT_NAME}-${DISRUPTOR_VERSION}"
-)
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}-${DISRUPTOR_VERSION}")
 
 set(CPACK_SOURCE_GENERATOR "TBZ2")
 set(CPACK_SOURCE_IGNORE_FILES

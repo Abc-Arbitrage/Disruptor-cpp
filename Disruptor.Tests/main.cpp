@@ -1,5 +1,6 @@
 #define BOOST_TEST_MODULE Disruptor.Tests
 
+
 #include <boost/test/unit_test.hpp>
 #include <boost/test/results_reporter.hpp>
 
@@ -28,3 +29,4 @@ struct GlobalFixture
 };
 
 BOOST_GLOBAL_FIXTURE(GlobalFixture);
+
