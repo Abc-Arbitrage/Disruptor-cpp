@@ -10,7 +10,7 @@ Disruptor-cpp is a fully functional C++ port of the [LMAX disruptor](https://lma
 
 ### Linux
 
-[Boost](http://www.boost.org/) must be available on your machine.  You can install it using you favorite package manager or build it on your own.
+[Boost](http://www.boost.org/) must be available on your machine.  You can install it using your favorite package manager or build it on your own.
 If boost has been installed into standard system locations the following commands will start the build:   
 
 ```sh
@@ -34,6 +34,4 @@ The simplest way to compile the library on Windows is to use the provided Visual
 * Disruptor-all.sln - the solution includes the library, benchmarks and unit tests.
 
 [Boost](http://www.boost.org/)  must be available on your machine. The  [**boost.props**](https://github.com/Abc-Arbitrage/Disruptor-cpp/blob/master/boost.props) file already included into the solution but you may need to modify the headers and libraries directory according to your boost location and folder structure.
-
-
 
