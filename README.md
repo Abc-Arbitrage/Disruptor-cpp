@@ -11,7 +11,7 @@ Disruptor-cpp is a fully functional C++ port of the [LMAX disruptor](https://lma
 ### Linux
 
 [Boost](http://www.boost.org/) must be available on your machine.  You can install it using your favorite package manager or build it on your own.
-If boost has been installed into standard system locations the following commands will start the build:   
+If [Boost](http://www.boost.org/) has been installed into standard system locations the following commands will start the build:   
 
 ```sh
 mkdir build && cd build
