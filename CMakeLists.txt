@@ -74,13 +74,13 @@ endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILER_FLAGS} ${WARNING_FLAGS}")
 
-find_package(GTest)
+add_subdirectory(googletest-release-1.8.0)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 add_subdirectory(Disruptor)
 
 add_subdirectory(Disruptor.PerfTests)
 add_subdirectory(Disruptor.TestTools)
-add_subdirectory(googletest-release-1.8.0)
 add_subdirectory(Disruptor.Tests)
 
 
