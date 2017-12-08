@@ -1,6 +1,6 @@
-# Disruptor-cpp 
-[![Apache-2.0 license]](https://www.apache.org/licenses/LICENSE-2.0)
-[![Build status]](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp)
+# Disruptor-cpp
+
+[![Build status](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp.svg?branch=master)](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp)
 
 ## Overview
 
@@ -8,11 +8,27 @@ Disruptor-cpp is a fully functional C++ port of the [LMAX disruptor](https://lma
 
 ## Building
 
-### Prerequisites
+### Linux
 
-The library depends on [boost](http://www.boost.org/). Any reasonably new version of boost will work.
-The unit tests binary also needs [Googlemock](https://github.com/google/googletest).
+[Boost](http://www.boost.org/) must be available on your machine.  You can install it using you favorite package manager or build it on your own.
+If boost has been installed into standard system locations the following commands will start the build:   
+
+```sh
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=release
+make
+```
+
+If [Boost](http://www.boost.org/) has been installed into a custom location you will probably need to specify **BOOST_ROOT** variable. Please refer to the [Find boost](https://cmake.org/cmake/help/v3.0/module/FindBoost.html) documentation for details.
+
+Optionally you may want to compile and run the unit tests and benchmarks. The tests compilation is activated by means of **DISRUPTOR_BUILD_TESTS** flag: 
+
+```sh
+cmake .. -DCMAKE_BUILD_TYPE=release -DDISRUPTOR_BUILD_TESTS=true
+```
 
 ### Windows 
 
-### Linux
+
+
+
