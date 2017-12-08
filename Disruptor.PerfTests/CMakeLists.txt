@@ -54,6 +54,8 @@ set(DisruptorPerfTests_sources
 
 add_definitions(-DBOOST_TEST_DYN_LINK)
 
+message("===================== ${Boost_LIBRARIES}")
+
 add_executable(Disruptor.PerfTests ${DisruptorPerfTests_sources})
 target_link_libraries(Disruptor.PerfTests DisruptorStatic Disruptor.TestTools ${Boost_LIBRARIES})
 
