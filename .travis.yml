@@ -1,17 +1,11 @@
 language: cpp
 sudo: required
-dist: trusty
+dist: trusty 
 addons:
   apt:
     sources:
     # add PPAs with more up-to-date toolchains
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-precise-3.6
     packages:
-    # install toolchains
-      - g++-5
-      - g++-6
-#      - clang-3.6
 matrix:
   include:
     - compiler: gcc
@@ -37,6 +31,7 @@ matrix:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.7
           packages:
+            - g++-5 # need at least gcc 5 because clang uses gcc stl
             - clang-3.7
       env: COMPILER=clang++-3.7
     - compiler: clang
@@ -46,6 +41,7 @@ matrix:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.8
           packages:
+            - g++-5 # need at least gcc 5 because clang uses gcc stl
             - clang-3.8
       env: COMPILER=clang++-3.8
       

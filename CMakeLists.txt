@@ -10,24 +10,6 @@ enable_testing()
 
 # enable gcc specific stuff
 if(CMAKE_COMPILER_IS_GNUCXX)
-    if(NOT CXX11_ENABLED)
-        message(STATUS "Checking for g++ version >= 4.8")
-        execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
-        
-        if(GCC_VERSION VERSION_LESS 4.8)
-            message(FATAL_ERROR "g++ version is ${GCC_VERSION}")
-        endif()
-
-        include(CheckCXXCompilerFlag)
-        check_cxx_compiler_flag(-std=c++14 FLAG_CXX11)
-        if(FLAG_CXX11)
-            message(STATUS "C++14 features enabled")
-            set(CXX11_ENABLED ON CACHE INTERNAL "C++14 features enabled")
-        else()
-            message(FATAL_ERROR "g++ does not support the -std=c++14 flag")
-        endif()
-    endif()
-
     set(COMPILER_FLAGS "-std=c++14")
     set(WARNING_FLAGS "-W -Wall")
     
@@ -43,17 +25,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     endif(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
 
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    if(NOT CXX11_ENABLED)
-        include(CheckCXXCompilerFlag)
-        check_cxx_compiler_flag(-std=c++14 FLAG_CXX11)
-        if(FLAG_CXX11)
-            message(STATUS "C++14 features enabled")
-            set(CXX11_ENABLED ON CACHE INTERNAL "C++14 features enabled")
-        else()
-            message(FATAL_ERROR "Clang does not support the -std=c++14 flag")
-        endif()
-    endif()
-
     set(COMPILER_FLAGS "-std=c++14")
     set(WARNING_FLAGS "-W -Wall")
     
