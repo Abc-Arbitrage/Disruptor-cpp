@@ -539,7 +539,7 @@ namespace Disruptor
             if (batchStartsAt + batchSize > argumentCount)
             {
                 DISRUPTOR_THROW_ARGUMENT_EXCEPTION("A batchSize of: " << batchSize <<
-                    " with batchStartsAt of: " + batchStartsAt <<
+                    " with batchStartsAt of: " << batchStartsAt <<
                     " will overrun the available number of arguments: " << (argumentCount - batchStartsAt));
             }
         }

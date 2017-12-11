@@ -35,7 +35,7 @@ namespace PerfTests
         for (auto i = 0; i < m_numPublishers; ++i)
         {
             auto index = i;
-            futures[i] = std::move(std::async(std::launch::async, [this, index] { m_valuePublishers[index]->run(); }));
+            futures[i] = std::async(std::launch::async, [this, index] { m_valuePublishers[index]->run(); });
         }
 
         for (auto&& processor : m_workProcessors)

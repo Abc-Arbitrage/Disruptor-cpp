@@ -38,9 +38,9 @@ namespace PerfTests
         for (auto i = 0; i < m_numPublishers; ++i)
         {
             auto index = i;
-            futures[i] = m_scheduler->scheduleAndStart(std::move(std::packaged_task< void() >([this, index] { m_valuePublishers[index](m_cyclicBarrier, m_ringBuffer, m_iterations); })));
+            futures[i] = m_scheduler->scheduleAndStart(std::packaged_task< void() >([this, index] { m_valuePublishers[index](m_cyclicBarrier, m_ringBuffer, m_iterations); }));
         }
-        auto processorTask = m_scheduler->scheduleAndStart(std::move(std::packaged_task< void() >([this] { m_batchEventProcessor->run(); })));
+        auto processorTask = m_scheduler->scheduleAndStart(std::packaged_task< void() >([this] { m_batchEventProcessor->run(); }));
 
         stopwatch.start();
         m_cyclicBarrier->signal();

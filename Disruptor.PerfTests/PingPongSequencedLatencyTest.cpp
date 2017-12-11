@@ -79,7 +79,6 @@ namespace PerfTests
     {
         auto t1 = Stopwatch::getTimestamp();
 
-        auto nano = std::chrono::nanoseconds(t1 - m_t0);
         m_latencyRecorder->record(LatencyTestSession::convertStopwatchTicksToNano((double)(t1 - m_t0)));
 
         if (data.value < m_maxEvents)

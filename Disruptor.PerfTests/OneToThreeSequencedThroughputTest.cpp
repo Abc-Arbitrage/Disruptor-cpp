@@ -58,7 +58,7 @@ namespace PerfTests
         for (auto i = 0; i < m_numEventProcessors; ++i)
         {
             m_handlers[i]->reset(latch, m_batchEventProcessors[i]->sequence()->value() + m_iterations);
-            processorTasks.push_back(std::move(m_executor->execute([this, i] { m_batchEventProcessors[i]->run(); })));
+            processorTasks.push_back(m_executor->execute([this, i] { m_batchEventProcessors[i]->run(); }));
         }
 
         auto& rb = *m_ringBuffer;

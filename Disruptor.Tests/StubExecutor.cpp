@@ -16,10 +16,10 @@ namespace Tests
         if (!m_ignoreExecutions)
         {
             std::packaged_task< void() > task(command);
-            result = std::move(task.get_future());
+            result = task.get_future();
 
             std::lock_guard< decltype(m_mutex) > lock(m_mutex);
-            m_threads.push_back(std::move(boost::thread(std::move(task))));
+            m_threads.push_back(boost::thread(std::move(task)));
         }
 
         return result;

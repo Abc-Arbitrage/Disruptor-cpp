@@ -25,12 +25,12 @@ namespace PerfTests
         const auto expectedCount = m_myRunnable->sequence->value() + m_iterations;
         m_myRunnable->reset(latch, expectedCount);
 
-        auto consumerTask = m_taskScheduler->scheduleAndStart(std::move(std::packaged_task< void() >([this] { m_myRunnable->run(); })));
+        auto consumerTask = m_taskScheduler->scheduleAndStart(std::packaged_task< void() >([this] { m_myRunnable->run(); }));
         stopwatch.start();
 
         auto sequencer = m_sequencer;
 
-        auto producerTask = m_taskScheduler->scheduleAndStart(std::move(std::packaged_task< void() >([this, sequencer, latch]
+        auto producerTask = m_taskScheduler->scheduleAndStart(std::packaged_task< void() >([this, sequencer, latch]
         {
             auto& s = *sequencer;
             for (std::int64_t i = 0; i < m_iterations; ++i)
@@ -40,7 +40,7 @@ namespace PerfTests
             }
 
             latch->waitOne();
-        })));
+        }));
 
         producerTask.wait();
         stopwatch.stop();

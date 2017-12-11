@@ -15,8 +15,7 @@ namespace Tests
     {
         struct Translator : public IEventTranslator< LongEvent >
         {
-            explicit Translator(EventPublisherFixture& fixture)
-                : m_fixture(fixture)
+            explicit Translator(EventPublisherFixture&)
             {
             }
 
@@ -25,8 +24,6 @@ namespace Tests
                 eventData.value = sequence + 29;
             }
 
-        private:
-            EventPublisherFixture& m_fixture;
         };
 
         EventPublisherFixture()
