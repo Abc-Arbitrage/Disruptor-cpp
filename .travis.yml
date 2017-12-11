@@ -29,7 +29,9 @@ matrix:
       
 before_install:
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-        sudo apt-get install libboost-dev;
+        sudo add-apt-repository ppa:nschloe/boost-nightly;
+        sudo apt-get update;
+        sudo apt-get install boost1.64;
       fi
       
 script: mkdir build && cd build && cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Release -DDISRUPTOR_BUILD_TESTS=true .. && make && make test
