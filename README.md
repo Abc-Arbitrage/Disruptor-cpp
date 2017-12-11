@@ -8,6 +8,12 @@ Disruptor-cpp is a fully functional C++ port of the [LMAX disruptor](https://lma
 
 ## Building
 
+### Compilers
+
+* Clang 3.8 or newer
+* GCC 5.0 or newer
+* Microsoft Visual C++ 2015 or newer
+
 ### Linux
 
 [Boost](http://www.boost.org/) must be available on your machine.  You can install it using your favorite package manager or build it on your own.
