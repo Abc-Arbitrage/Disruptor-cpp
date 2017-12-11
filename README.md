@@ -1,7 +1,7 @@
 # Disruptor-cpp
 
 [![Build status](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp.svg)](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp)
-[![Build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)](https://ci.appveyor.com/project/Abc-Arbitrage/disruptor-cpp)
+[![Build status](https://ci.appveyor.com/api/projects/status/7mg15p3d7n8jqjmg?svg=true)](https://ci.appveyor.com/project/Abc-Arbitrage/disruptor-cpp)
 
 
 ## Overview
