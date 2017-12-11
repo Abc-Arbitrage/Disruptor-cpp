@@ -32,7 +32,7 @@ before_install:
         sudo apt-get install libboost-dev;
       fi
       
-script: mkdir build && cd build && cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Release -D=DISRUPTOR_BUILD_TESTS=true .. && make && make test
+script: mkdir build && cd build && cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Release -DDISRUPTOR_BUILD_TESTS=true .. && make && make test
 branches:
   only:
     - master
