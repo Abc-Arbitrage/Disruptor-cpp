@@ -22,7 +22,7 @@ namespace Tests
 
     std::vector< StubEvent > TestWaiter::call() const
     {
-        m_barrier->count_down_and_wait();
+        m_barrier->wait();
         m_sequenceBarrier->waitFor(m_toWaitForSequence);
 
         std::vector< StubEvent > events;
