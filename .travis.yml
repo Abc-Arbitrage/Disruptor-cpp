@@ -16,24 +16,6 @@ matrix:
           packages:
             - g++-5
       env: COMPILER=g++-5
-    - compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-6
-      env: COMPILER=g++-6
-    - compiler: clang
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.7
-          packages:
-            - g++-5 # need at least gcc 5 because clang uses gcc stl
-            - clang-3.7
-      env: COMPILER=clang++-3.7
     - compiler: clang
       addons:
         apt:
