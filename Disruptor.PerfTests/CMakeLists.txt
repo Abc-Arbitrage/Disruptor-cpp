@@ -2,7 +2,7 @@ project(Disruptor.PerfTests)
 cmake_minimum_required(VERSION 2.6)
 
 
-find_package(Boost COMPONENTS system thread)
+find_package(Boost COMPONENTS system thread date_time)
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     link_directories(${Boost_LIBRARY_DIRS})
