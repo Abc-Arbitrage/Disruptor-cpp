@@ -29,7 +29,7 @@ matrix:
       
 before_install:
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-        sudo add-apt-repository ppa:nschloe/boost-nightly;
+        sudo add-apt-repository ppa:nschloe/boost-nightly -y;
         sudo apt-get update;
         sudo apt-get install boost1.64;
       fi
