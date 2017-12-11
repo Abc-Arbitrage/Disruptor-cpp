@@ -22,6 +22,7 @@
 #endif
 
 // STL includes
+#include <atomic>
 #include <algorithm>
 #include <chrono>
 #include <cstdint>
