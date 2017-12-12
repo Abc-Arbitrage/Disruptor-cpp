@@ -44,7 +44,7 @@ The simplest way to compile the library on Windows is to use the provided Visual
 
 [Boost](http://www.boost.org/)  must be available on your machine. The  [**boost.props**](https://github.com/Abc-Arbitrage/Disruptor-cpp/blob/master/boost.props) file already included into the solution but you may need to modify the headers and libraries directory according to your boost location and folder structure.
 
-### Getting started
+## Getting started
 
 To give you a taste of C++ disruptor let us consider a very basic example where the event is passed from producer to consumer. The event will carry a single long value:  
 
