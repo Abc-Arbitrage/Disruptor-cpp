@@ -1,12 +1,20 @@
 # Disruptor-cpp
 
-[![Build status](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp.svg?branch=master)](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp)
+[![Build Status](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp.svg?branch=master)](https://travis-ci.org/Abc-Arbitrage/Disruptor-cpp)
+[![Build status](https://ci.appveyor.com/api/projects/status/7mg15p3d7n8jqjmg?svg=true)](https://ci.appveyor.com/project/Abc-Arbitrage/disruptor-cpp)
+
 
 ## Overview
 
 Disruptor-cpp is a fully functional C++ port of the [LMAX disruptor](https://lmax-exchange.github.io/disruptor/). 
 
 ## Building
+
+### Compilers
+
+* Clang 3.8 or newer
+* GCC 5.0 or newer
+* Microsoft Visual C++ 2015 or newer
 
 ### Linux
 

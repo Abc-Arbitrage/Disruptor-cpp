@@ -72,7 +72,7 @@ namespace PerfTests
             rb.publish(sequence);
         }
 
-        latch->count_down_and_wait();
+        latch->wait();
         stopwatch.stop();
 
         for (auto i = 0; i < m_numEventProcessors; ++i)

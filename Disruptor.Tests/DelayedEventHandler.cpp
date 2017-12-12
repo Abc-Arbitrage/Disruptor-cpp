@@ -30,7 +30,7 @@ namespace Tests
     {
         try
         {
-            m_barrier->count_down_and_wait();
+            m_barrier->wait();
         }
         catch (std::exception& ex)
         {
@@ -44,7 +44,7 @@ namespace Tests
 
     void DelayedEventHandler::awaitStart()
     {
-        m_barrier->count_down_and_wait();
+        m_barrier->wait();
     }
 
     DelayedEventHandler::DelayedEventHandler(const std::shared_ptr< boost::barrier >& barrier)

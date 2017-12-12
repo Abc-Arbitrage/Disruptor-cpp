@@ -30,7 +30,7 @@ namespace PerfTests
 
         if (sequence == m_iterations)
         {
-            m_latch->count_down_and_wait();
+            m_latch->wait();
         }
     }
 

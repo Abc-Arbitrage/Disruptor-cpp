@@ -24,7 +24,7 @@ namespace Tests
         auto testWaiter = std::make_shared< TestWaiter >(barrier, dependencyBarrier, m_ringBuffer, initial, toWaitFor);
         auto task = std::async(std::launch::async, [=] { return testWaiter->call(); });
 
-        barrier->count_down_and_wait();
+        barrier->wait();
 
         return task;
     }
