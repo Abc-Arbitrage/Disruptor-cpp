@@ -171,6 +171,8 @@ BOOST_AUTO_TEST_CASE(ShouldHandleLotsOfThreads)
         BOOST_CHECK_NE(handler->messagesSeen, 0);
         BOOST_CHECK_EQUAL(handler->failureCount, 0);
     }
+
+    scheduler->stop();
 }
 
 BOOST_AUTO_TEST_SUITE_END()
