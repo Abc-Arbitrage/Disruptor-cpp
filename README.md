@@ -7,6 +7,7 @@
 ## Overview
 
 Disruptor-cpp is a fully functional C++ port of the [LMAX disruptor](https://lmax-exchange.github.io/disruptor/). 
+Implements all the features available in java Disruptor v3.3.7.
 
 ## Building
 
@@ -43,3 +44,79 @@ The simplest way to compile the library on Windows is to use the provided Visual
 
 [Boost](http://www.boost.org/)  must be available on your machine. The  [**boost.props**](https://github.com/Abc-Arbitrage/Disruptor-cpp/blob/master/boost.props) file already included into the solution but you may need to modify the headers and libraries directory according to your boost location and folder structure.
 
+### Getting started
+
+To give you a taste of C++ disruptor let us consider a very basic example where the event is passed from producer to consumer. The event carries a single long value:  
+
+```Cpp
+struct LongEvent
+{
+    long value;
+};
+```
+
+The consumer will print the event value to standard output and also notify the publishing thread when everything is processed:
+
+```Cpp
+struct PrintingEventHandler : Disruptor::IEventHandler< LongEvent >
+{
+    explicit PrintingEventHandler(int toProcess) : m_actuallyProcessed(0), m_toProcess(toProcess)
+    {}
+
+    void onEvent(LongEvent& event, int64_t, bool) override
+    {
+        std::cout << "Event: " << event.value << std::endl;
+
+        if (++m_actuallyProcessed == m_toProcess)
+            allDone.notify_all();
+    }
+
+    void waitEndOfProcessing()
+    {
+        std::unique_lock<std::mutex> lk(m);
+        allDone.wait(lk);
+    }
+
+private:
+    std::mutex m;
+    std::condition_variable allDone;
+    int m_toProcess;
+    int m_actuallyProcessed;
+};
+```
+
+Now we can wire all the things together:
+
+```Cpp
+    auto const ExpectedNumberOfEvents = 10000;
+    auto const RingBufferSize = 1024;
+
+    // Instantiate and start the disruptor
+    auto eventFactory = []() { return LongEvent(); };
+    auto taskScheduler = std::make_shared< Disruptor::ThreadPerTaskScheduler >();
+    
+    auto disruptor = std::make_shared< Disruptor::disruptor<LongEvent> >(eventFactory, RingBufferSize, taskScheduler);
+    auto printingEventHandler = std::make_shared< PrintingEventHandler >(ExpectedNumberOfEvents);
+
+    disruptor->handleEventsWith(printingEventHandler);
+
+    taskScheduler->start();
+    disruptor->start();
+
+    // Publish events
+    auto ringBuffer = disruptor->ringBuffer();
+    for (auto i = 0; i<ExpectedNumberOfEvents; ++i)
+    {
+        auto nextSequence = ringBuffer->next();
+        (*ringBuffer)[nextSequence].value = i;
+        ringBuffer->publish(nextSequence);
+    }
+
+    // Wait for the end of execution and shutdown
+    printingEventHandler->waitEndOfProcessing();
+
+    disruptor->shutdown();
+    taskScheduler->stop();
+```
+
+For more details, please refer the original [Java Disruptor documentation](https://lmax-exchange.github.io/disruptor).
