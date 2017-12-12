@@ -46,7 +46,7 @@ The simplest way to compile the library on Windows is to use the provided Visual
 
 ### Getting started
 
-To give you a taste of C++ disruptor let us consider a very basic example where the event is passed from producer to consumer. The event carries a single long value:  
+To give you a taste of C++ disruptor let us consider a very basic example where the event is passed from producer to consumer. The event will carry a single long value:  
 
 ```Cpp
 struct LongEvent
