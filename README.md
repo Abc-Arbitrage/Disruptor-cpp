@@ -68,18 +68,18 @@ struct PrintingEventHandler : Disruptor::IEventHandler< LongEvent >
         std::cout << "Event: " << event.value << std::endl;
 
         if (++m_actuallyProcessed == m_toProcess)
-            allDone.notify_all();
+            m_allDone.notify_all();
     }
 
     void waitEndOfProcessing()
     {
-        std::unique_lock<std::mutex> lk(m);
-        allDone.wait(lk);
+        std::unique_lock<decltype(m_mutex)> lk(m_mutex);
+        m_allDone.wait(lk);
     }
 
 private:
-    std::mutex m;
-    std::condition_variable allDone;
+    std::mutex m_mutex;
+    std::condition_variable m_allDone;
     int m_toProcess;
     int m_actuallyProcessed;
 };
