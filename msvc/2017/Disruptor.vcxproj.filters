@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Precompiled Headers">
+      <UniqueIdentifier>{6644d11a-c49a-4ddf-b6c8-d9b4538c6a59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exceptions">
+      <UniqueIdentifier>{4b4f6684-f5e4-40f6-a133-b43237a35a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{cfdb7ab7-15dc-40ea-a003-28da004d30ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{2adee549-12dd-4aaa-94a5-f3a2e8b97687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dsl">
+      <UniqueIdentifier>{14911d56-7ab2-4c7e-a258-bcdf55a2979c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="../../Disruptor/stdafx.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/targetver.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/EventPoller.h" />
+    <ClInclude Include="../../Disruptor/ICursored.h" />
+    <ClInclude Include="../../Disruptor/IDataProvider.h" />
+    <ClInclude Include="../../Disruptor/ISequence.h" />
+    <ClInclude Include="../../Disruptor/ISequenceBarrier.h" />
+    <ClInclude Include="../../Disruptor/ISequenced.h" />
+    <ClInclude Include="../../Disruptor/ISequencer.h" />
+    <ClInclude Include="../../Disruptor/IWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/MultiProducerSequencer.h" />
+    <ClInclude Include="../../Disruptor/Sequence.h" />
+    <ClInclude Include="../../Disruptor/Sequencer.h" />
+    <ClInclude Include="../../Disruptor/SingleProducerSequencer.h" />
+    <ClInclude Include="../../Disruptor/RingBuffer.h" />
+    <ClInclude Include="../../Disruptor/IEventSequencer.h" />
+    <ClInclude Include="../../Disruptor/ExceptionBase.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/BuildConfig.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/Pragmas.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ArgumentException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/BlockingWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/ProducerType.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ArgumentOutOfRangeException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/NoOpEventProcessor.h" />
+    <ClInclude Include="../../Disruptor/IEventProcessor.h" />
+    <ClInclude Include="../../Disruptor/InvalidOperationException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ProcessingSequenceBarrier.h" />
+    <ClInclude Include="../../Disruptor/IHighestPublishedSequenceProvider.h" />
+    <ClInclude Include="../../Disruptor/FixedSequenceGroup.h" />
+    <ClInclude Include="../../Disruptor/NotSupportedException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/Util.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/SpinWait.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/SequenceGroups.h" />
+    <ClInclude Include="../../Disruptor/AlertException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/InsufficientCapacityException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/IEventTranslator.h" />
+    <ClInclude Include="../../Disruptor/IEventTranslatorVararg.h" />
+    <ClInclude Include="../../Disruptor/IEventHandler.h" />
+    <ClInclude Include="../../Disruptor/ILifecycleAware.h" />
+    <ClInclude Include="../../Disruptor/AggregateEventHandler.h" />
+    <ClInclude Include="../../Disruptor/BatchEventProcessor.h" />
+    <ClInclude Include="../../Disruptor/ISequenceReportingEventHandler.h" />
+    <ClInclude Include="../../Disruptor/YieldingWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/BusySpinWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/IExceptionHandler.h" />
+    <ClInclude Include="../../Disruptor/ArgumentNullException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ITimeoutHandler.h" />
+    <ClInclude Include="../../Disruptor/TimeoutException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/Disruptor.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/BasicExecutor.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/IExecutor.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/RoundRobinThreadAffinedTaskScheduler.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/BlockingQueue.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ExceptionHandlerWrapper.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/FatalExceptionHandler.h" />
+    <ClInclude Include="../../Disruptor/IWorkHandler.h" />
+    <ClInclude Include="../../Disruptor/EventHandlerGroup.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ConsumerRepository.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/IConsumerInfo.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/EventProcessorInfo.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/WorkerPool.h" />
+    <ClInclude Include="../../Disruptor/WorkProcessor.h" />
+    <ClInclude Include="../../Disruptor/WorkerPoolInfo.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ClockConfig.h">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/IEventProcessorFactory.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/TypeInfo.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ExceptionHandlerSetting.h">
+      <Filter>Dsl</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/SleepingWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/FatalException.h">
+      <Filter>Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/IgnoreExceptionHandler.h" />
+    <ClInclude Include="../../Disruptor/SpinWaitWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/TimeoutBlockingWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/IEventReleaseAware.h" />
+    <ClInclude Include="../../Disruptor/IEventReleaser.h" />
+    <ClInclude Include="../../Disruptor/ThreadPerTaskScheduler.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ThreadHelper.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor/ITaskScheduler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="../../Disruptor/stdafx.cpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/SpinWait.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/SequenceGroups.cpp" />
+    <ClCompile Include="../../Disruptor/ProducerType.cpp">
+      <Filter>Dsl</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/Util.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/Sequence.cpp" />
+    <ClCompile Include="../../Disruptor/BlockingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/FixedSequenceGroup.cpp" />
+    <ClCompile Include="../../Disruptor/ProcessingSequenceBarrier.cpp" />
+    <ClCompile Include="../../Disruptor/YieldingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/BusySpinWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/RoundRobinThreadAffinedTaskScheduler.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/BasicExecutor.cpp">
+      <Filter>Dsl</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/SleepingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/SpinWaitWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/TimeoutBlockingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/TypeInfo.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/ThreadPerTaskScheduler.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/ThreadHelper_Linux.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/ThreadHelper_Windows.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../Disruptor/CMakeLists.txt" />
+  </ItemGroup>
+</Project>

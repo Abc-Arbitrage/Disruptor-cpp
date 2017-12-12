@@ -56,7 +56,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -81,7 +81,7 @@
       <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -103,37 +103,37 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CountdownEvent.cpp" />
-    <ClCompile Include="LatencyRecorder.cpp" />
-    <ClCompile Include="ManualResetEvent.cpp" />
-    <ClCompile Include="ResetEvent.cpp" />
-    <ClCompile Include="ScopeExitFunctor.cpp" />
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="../../Disruptor.TestTools/CountdownEvent.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/LatencyRecorder.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/ManualResetEvent.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/ResetEvent.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/ScopeExitFunctor.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Stopwatch.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/Stopwatch.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DurationHumanizer.h" />
-    <ClInclude Include="DurationUnit.h" />
-    <ClInclude Include="LatencyRecorder.h" />
-    <ClInclude Include="HumanNumberFacet.h" />
-    <ClInclude Include="ScopeExitFunctor.h" />
-    <ClInclude Include="CountdownEvent.h" />
-    <ClInclude Include="ManualResetEvent.h" />
-    <ClInclude Include="ResetEvent.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Stopwatch.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="../../Disruptor.TestTools/DurationHumanizer.h" />
+    <ClInclude Include="../../Disruptor.TestTools/DurationUnit.h" />
+    <ClInclude Include="../../Disruptor.TestTools/LatencyRecorder.h" />
+    <ClInclude Include="../../Disruptor.TestTools/HumanNumberFacet.h" />
+    <ClInclude Include="../../Disruptor.TestTools/ScopeExitFunctor.h" />
+    <ClInclude Include="../../Disruptor.TestTools/CountdownEvent.h" />
+    <ClInclude Include="../../Disruptor.TestTools/ManualResetEvent.h" />
+    <ClInclude Include="../../Disruptor.TestTools/ResetEvent.h" />
+    <ClInclude Include="../../Disruptor.TestTools/stdafx.h" />
+    <ClInclude Include="../../Disruptor.TestTools/Stopwatch.h" />
+    <ClInclude Include="../../Disruptor.TestTools/targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Disruptor\Disruptor.vcxproj">
+    <ProjectReference Include="Disruptor.vcxproj">
       <Project>{0a1ff4f2-cd19-4b2b-944a-f14b849a2588}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="CMakeLists.txt" />
+    <Text Include="../../Disruptor.TestTools/CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

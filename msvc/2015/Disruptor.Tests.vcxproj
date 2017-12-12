@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{31883900-84FA-4EA0-B33A-0FDE44979F13}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>Disruptor.Tests</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\boost.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\boost.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</OutDir>
+    <IntDir>..\obj\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</OutDir>
+    <IntDir>..\obj\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../googletest-release-1.8.0/googletest/include;../../googletest-release-1.8.0/googlemock/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\lib\$(Configuration)_$(Platform)_$(PlatformToolset)\gmock</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>call ../../Disruptor.Tests/postbuild.bat $(OutDir) $(Configuration) $(Platform) $(PlatformToolsetVersion)
+%(Command)</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../../googletest-release-1.8.0/googletest/include;../../googletest-release-1.8.0/googlemock/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);..\lib\$(Configuration)_$(Platform)_$(PlatformToolset)\gmock</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>call ../../Disruptor.Tests/postbuild.bat $(OutDir) $(Configuration) $(Platform) $(PlatformToolsetVersion)
+%(Command)</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="../../Disruptor.Tests/AggregateEventHandlerTestsFixture.h" />
+    <ClInclude Include="../../Disruptor.Tests/AtomicReference.h" />
+    <ClInclude Include="../../Disruptor.Tests/BatchEventProcessorTestsFixture.h" />
+    <ClInclude Include="../../Disruptor.Tests/BatchHandlerMock.h" />
+    <ClInclude Include="../../Disruptor.Tests/ConsumerRepositoryTestsFixture.h" />
+    <ClInclude Include="../../Disruptor.Tests/DataProviderMock.h" />
+    <ClInclude Include="../../Disruptor.Tests/DelayedEventHandler.h" />
+    <ClInclude Include="../../Disruptor.Tests/DisruptorFixture.h" />
+    <ClInclude Include="../../Disruptor.Tests/DummySequenceBarrier.h" />
+    <ClInclude Include="../../Disruptor.Tests/EventHandlerStub.h" />
+    <ClInclude Include="../../Disruptor.Tests/EventProcessorMock.h" />
+    <ClInclude Include="../../Disruptor.Tests/ExceptionHandlerMock.h" />
+    <ClInclude Include="../../Disruptor.Tests/ExceptionThrowingEventHandler.h" />
+    <ClInclude Include="../../Disruptor.Tests/LifecycleAwareEventHandlerMock.h" />
+    <ClInclude Include="../../Disruptor.Tests/LongEvent.h" />
+    <ClInclude Include="../../Disruptor.Tests/RingBufferTestsFixture.h" />
+    <ClInclude Include="../../Disruptor.Tests/SequenceBarrierTestsFixture.h" />
+    <ClInclude Include="../../Disruptor.Tests/SequenceBarrierMock.h" />
+    <ClInclude Include="../../Disruptor.Tests/SequencerFixture.h" />
+    <ClInclude Include="../../Disruptor.Tests/SequencerMock.h" />
+    <ClInclude Include="../../Disruptor.Tests/SequenceUpdater.h" />
+    <ClInclude Include="../../Disruptor.Tests/SleepingEventHandler.h" />
+    <ClInclude Include="../../Disruptor.Tests/stdafx.h" />
+    <ClInclude Include="../../Disruptor.Tests/StubEvent.h" />
+    <ClInclude Include="../../Disruptor.Tests/StubExceptionHandler.h" />
+    <ClInclude Include="../../Disruptor.Tests/StubExecutor.h" />
+    <ClInclude Include="../../Disruptor.Tests/StubPublisher.h" />
+    <ClInclude Include="../../Disruptor.Tests/targetver.h" />
+    <ClInclude Include="../../Disruptor.Tests/TestEvent.h" />
+    <ClInclude Include="../../Disruptor.Tests/TestWaiter.h" />
+    <ClInclude Include="../../Disruptor.Tests/TestWorkHandler.h" />
+    <ClInclude Include="../../Disruptor.Tests/WaitStrategyMock.h" />
+    <ClInclude Include="../../Disruptor.Tests/WaitStrategyTestUtil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="../../Disruptor.Tests/AggregateEventHandlerTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/AggregateEventHandlerTestsFixture.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/BatchEventProcessorTestsFixture.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/BatchingTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/BusySpinWaitStrategyTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/ConsumerRepositoryTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/ConsumerRepositoryTestsFixture.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/DelayedEventHandler.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/DisruptorFixture.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/DisruptorStressTest.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/DisruptorTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/DummySequenceBarrier.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/EventPollerTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/EventPublisherTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/ExceptionThrowingEventHandler.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/FatalExceptionHandlerTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/FixedSequenceGroupTest.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/BatchEventProcessorTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/IgnoreExceptionHandlerTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/LifecycleAwareTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/MultiProducerSequencerTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/RingBufferTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/RingBufferTestsFixture.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/RingBufferWithMocksTest.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/SequenceBarrierTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/SequenceBarrierTestsFixture.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/SequenceReportingCallbackTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/SequencerTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/main.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.Tests/SequenceUpdater.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/SleepingEventHandler.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/SleepingWaitStrategyTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/SpinWaitWaitStrategyTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.Tests/StubEvent.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/StubExecutor.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/StubPublisher.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/TestWaiter.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/TestWorkHandler.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/TimeoutBlockingWaitStrategyTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/UtilTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/WaitStrategyTestUtil.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/WorkerPoolTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/YieldingWaitStrategyTests.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../Disruptor.Tests/CMakeLists.txt" />
+    <None Include="../../Disruptor.Tests/postbuild.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\googletest-release-1.8.0\googlemock\msvc\2015\gmock.vcxproj">
+      <Project>{34681f0d-ce45-415d-b5f2-5c662dfe3bd5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Disruptor.TestTools.vcxproj">
+      <Project>{636795ca-a154-4c4b-b054-658f333f27e7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Disruptor.vcxproj">
+      <Project>{0a1ff4f2-cd19-4b2b-944a-f14b849a2588}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

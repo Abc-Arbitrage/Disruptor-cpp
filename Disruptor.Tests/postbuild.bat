@@ -8,7 +8,7 @@ set outdir=%1
 
 if not "%TEAMCITY_PROJECT_NAME%" == "" (
     echo Running unit tests...
-    call "%outdir%\disruptor.Tests.exe" --detect_memory_leaks=0 --result_code=no --run_test=
+    call "%outdir%\disruptor.Tests.exe" --detect_memory_leaks=0 --result_code=no
 )
 
 @endlocal

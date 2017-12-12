@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
     <!-- BOOST_HOME (or hard-coded path) should have a trailing '/' -->
-    <BoostRoot>$(BOOST_HOME)</BoostRoot>
+    <BoostRoot>C:/Dev/cpp2/lib/Boost/</BoostRoot>
     <BoostIncludePath>$(BoostRoot)</BoostIncludePath>
     <BoostLibraryPath Condition="'$(BOOST_LIB_PATH)'=='' And '$(Platform)'=='Win32'">$(BoostRoot)lib\</BoostLibraryPath>
     <BoostLibraryPath Condition="'$(BOOST_LIB_PATH)'=='' And '$(Platform)'=='x64'">$(BoostRoot)lib\vc141-x64\</BoostLibraryPath>

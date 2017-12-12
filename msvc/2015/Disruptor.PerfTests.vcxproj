@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E580C3C4-C69D-4F84-B023-68DB76080186}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>Disruptor.PerfTests</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\boost.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\boost.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</OutDir>
+    <IntDir>..\obj\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</OutDir>
+    <IntDir>..\obj\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="../../Disruptor.PerfTests/EventCountingQueueProcessor.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/EventCountingWorkHandler.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/FizzBuzzEvent.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/FizzBuzzEventHandler.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/FunctionEvent.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/FunctionEventHandler.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/LatencyTestSession.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/LatencyTestSessionResult.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/LongArrayEventHandler.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/main.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/MutableLong.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneRawBatchThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneRawThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneSequencedBatchThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneSequencedLongArrayThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneSequencedPollerThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneSequencedThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneTranslatorThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreeDiamondSequencedThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreePipelineSequencedThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreeReleasingWorkerPoolThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreeSequencedThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreeWorkerPoolThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/Operation.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/PerfTestUtil.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/PingPongSequencedLatencyTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/TestRepository.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ThreeToOneSequencedBatchThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ThreeToOneSequencedThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ThreeToThreeSequencedThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ThroughputTestSession.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ThroughputTestSessionResult.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/TwoToTwoWorkProcessorThroughputTest.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ValueAdditionEventHandler.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ValueEvent.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ValueMutationEventHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="../../Disruptor.PerfTests/EventCountingQueueProcessor.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/EventCountingWorkHandler.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ExecutorService.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/FizzBuzzEvent.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/FizzBuzzEventHandler.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/FizzBuzzStep.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/FunctionEvent.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/FunctionEventHandler.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/FunctionStep.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/LatencyTestSessionResult.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/LongArrayEventHandler.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/MultiBufferBatchEventProcessor.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/MutableLong.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneRawBatchThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneRawThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedBatchThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ILatencyTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/IThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/LatencyTestSession.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedLongArrayThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedPollerThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneTranslatorThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreeDiamondSequencedThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreePipelineSequencedThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreeReleasingWorkerPoolThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreeSequencedThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreeWorkerPoolThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/Operation.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/PaddedLong.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/PerfTestUtil.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/PingPongSequencedLatencyTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/TestInfo.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/TestRepository.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/stdafx.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/targetver.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ThreeToOneSequencedBatchThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ThreeToOneSequencedThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ThreeToThreeSequencedThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ThroughputTestSession.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ThroughputTestSessionResult.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/TwoToTwoWorkProcessorThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ValueAdditionEventHandler.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ValueEvent.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ValueMutationEventHandler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="../../Disruptor.PerfTests/CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Disruptor.TestTools.vcxproj">
+      <Project>{636795ca-a154-4c4b-b054-658f333f27e7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Disruptor.vcxproj">
+      <Project>{0a1ff4f2-cd19-4b2b-944a-f14b849a2588}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

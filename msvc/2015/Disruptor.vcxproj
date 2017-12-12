@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\boost.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="..\boost.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\lib\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</OutDir>
+    <IntDir>..\obj\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\lib\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</OutDir>
+    <IntDir>..\obj\$(Configuration)_$(Platform)_$(PlatformToolset)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="../../Disruptor/AggregateEventHandler.h" />
+    <ClInclude Include="../../Disruptor/AlertException.h" />
+    <ClInclude Include="../../Disruptor/ArgumentException.h" />
+    <ClInclude Include="../../Disruptor/ArgumentNullException.h" />
+    <ClInclude Include="../../Disruptor/ArgumentOutOfRangeException.h" />
+    <ClInclude Include="../../Disruptor/BasicExecutor.h" />
+    <ClInclude Include="../../Disruptor/BatchEventProcessor.h" />
+    <ClInclude Include="../../Disruptor/BlockingQueue.h" />
+    <ClInclude Include="../../Disruptor/BlockingWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/BuildConfig.h" />
+    <ClInclude Include="../../Disruptor/BusySpinWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/ClockConfig.h" />
+    <ClInclude Include="../../Disruptor/ConsumerRepository.h" />
+    <ClInclude Include="../../Disruptor/Disruptor.h" />
+    <ClInclude Include="../../Disruptor/EventHandlerGroup.h" />
+    <ClInclude Include="../../Disruptor/EventPoller.h" />
+    <ClInclude Include="../../Disruptor/EventProcessorInfo.h" />
+    <ClInclude Include="../../Disruptor/ExceptionBase.h" />
+    <ClInclude Include="../../Disruptor/ExceptionHandlerSetting.h" />
+    <ClInclude Include="../../Disruptor/ExceptionHandlerWrapper.h" />
+    <ClInclude Include="../../Disruptor/FatalException.h" />
+    <ClInclude Include="../../Disruptor/FatalExceptionHandler.h" />
+    <ClInclude Include="../../Disruptor/FixedSequenceGroup.h" />
+    <ClInclude Include="../../Disruptor/IConsumerInfo.h" />
+    <ClInclude Include="../../Disruptor/ICursored.h" />
+    <ClInclude Include="../../Disruptor/IDataProvider.h" />
+    <ClInclude Include="../../Disruptor/IEventHandler.h" />
+    <ClInclude Include="../../Disruptor/IEventProcessor.h" />
+    <ClInclude Include="../../Disruptor/IEventProcessorFactory.h" />
+    <ClInclude Include="../../Disruptor/IEventReleaseAware.h" />
+    <ClInclude Include="../../Disruptor/IEventReleaser.h" />
+    <ClInclude Include="../../Disruptor/IEventSequencer.h" />
+    <ClInclude Include="../../Disruptor/IEventTranslator.h" />
+    <ClInclude Include="../../Disruptor/IEventTranslatorVararg.h" />
+    <ClInclude Include="../../Disruptor/IExceptionHandler.h" />
+    <ClInclude Include="../../Disruptor/IExecutor.h" />
+    <ClInclude Include="../../Disruptor/IgnoreExceptionHandler.h" />
+    <ClInclude Include="../../Disruptor/IHighestPublishedSequenceProvider.h" />
+    <ClInclude Include="../../Disruptor/ILifecycleAware.h" />
+    <ClInclude Include="../../Disruptor/InsufficientCapacityException.h" />
+    <ClInclude Include="../../Disruptor/InvalidOperationException.h" />
+    <ClInclude Include="../../Disruptor/ISequence.h" />
+    <ClInclude Include="../../Disruptor/ISequenceBarrier.h" />
+    <ClInclude Include="../../Disruptor/ISequenced.h" />
+    <ClInclude Include="../../Disruptor/ISequencer.h" />
+    <ClInclude Include="../../Disruptor/ISequenceReportingEventHandler.h" />
+    <ClInclude Include="../../Disruptor/ITaskScheduler.h" />
+    <ClInclude Include="../../Disruptor/ITimeoutHandler.h" />
+    <ClInclude Include="../../Disruptor/IWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/IWorkHandler.h" />
+    <ClInclude Include="../../Disruptor/MultiProducerSequencer.h" />
+    <ClInclude Include="../../Disruptor/NoOpEventProcessor.h" />
+    <ClInclude Include="../../Disruptor/NotSupportedException.h" />
+    <ClInclude Include="../../Disruptor/Pragmas.h" />
+    <ClInclude Include="../../Disruptor/ProcessingSequenceBarrier.h" />
+    <ClInclude Include="../../Disruptor/ProducerType.h" />
+    <ClInclude Include="../../Disruptor/RingBuffer.h" />
+    <ClInclude Include="../../Disruptor/RoundRobinThreadAffinedTaskScheduler.h" />
+    <ClInclude Include="../../Disruptor/Sequence.h" />
+    <ClInclude Include="../../Disruptor/SequenceGroups.h" />
+    <ClInclude Include="../../Disruptor/Sequencer.h" />
+    <ClInclude Include="../../Disruptor/SingleProducerSequencer.h" />
+    <ClInclude Include="../../Disruptor/SleepingWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/SpinWait.h" />
+    <ClInclude Include="../../Disruptor/SpinWaitWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/stdafx.h" />
+    <ClInclude Include="../../Disruptor/targetver.h" />
+    <ClInclude Include="../../Disruptor/ThreadHelper.h" />
+    <ClInclude Include="../../Disruptor/ThreadPerTaskScheduler.h" />
+    <ClInclude Include="../../Disruptor/TimeoutBlockingWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/TimeoutException.h" />
+    <ClInclude Include="../../Disruptor/TypeInfo.h" />
+    <ClInclude Include="../../Disruptor/Util.h" />
+    <ClInclude Include="../../Disruptor/WorkerPool.h" />
+    <ClInclude Include="../../Disruptor/WorkerPoolInfo.h" />
+    <ClInclude Include="../../Disruptor/WorkProcessor.h" />
+    <ClInclude Include="../../Disruptor/YieldingWaitStrategy.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="../../Disruptor/BasicExecutor.cpp" />
+    <ClCompile Include="../../Disruptor/BlockingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/BusySpinWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/FixedSequenceGroup.cpp" />
+    <ClCompile Include="../../Disruptor/ProcessingSequenceBarrier.cpp" />
+    <ClCompile Include="../../Disruptor/ProducerType.cpp" />
+    <ClCompile Include="../../Disruptor/RoundRobinThreadAffinedTaskScheduler.cpp" />
+    <ClCompile Include="../../Disruptor/Sequence.cpp" />
+    <ClCompile Include="../../Disruptor/SequenceGroups.cpp" />
+    <ClCompile Include="../../Disruptor/SleepingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/SpinWait.cpp" />
+    <ClCompile Include="../../Disruptor/SpinWaitWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor/ThreadHelper_Linux.cpp" />
+    <ClCompile Include="../../Disruptor/ThreadHelper_Windows.cpp" />
+    <ClCompile Include="../../Disruptor/ThreadPerTaskScheduler.cpp" />
+    <ClCompile Include="../../Disruptor/TimeoutBlockingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/TypeInfo.cpp" />
+    <ClCompile Include="../../Disruptor/Util.cpp" />
+    <ClCompile Include="../../Disruptor/YieldingWaitStrategy.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../Disruptor/CMakeLists.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
