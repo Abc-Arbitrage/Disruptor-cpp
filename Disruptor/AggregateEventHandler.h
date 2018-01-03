@@ -15,7 +15,7 @@ namespace Disruptor
     /// </summary>
     /// <typeparam name="T">event implementation storing the data for sharing during exchange or parallel coordination of an event</typeparam>
     template <class T>
-    class AggregateEventHandler : IEventHandler< T >, ILifecycleAware
+    class AggregateEventHandler : public IEventHandler< T >, public ILifecycleAware
     {
     public:
         /// <summary>
