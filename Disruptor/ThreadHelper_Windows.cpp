@@ -12,7 +12,7 @@ namespace ThreadHelper
 
     std::uint32_t getCurrentThreadId()
     {
-        return (std::uint32_t) ::GetCurrentThreadId();
+        return static_cast< std::uint32_t >(::GetCurrentThreadId());
     }
 
     std::uint32_t getCurrentProcessor()
@@ -56,7 +56,7 @@ namespace ThreadHelper
 
     void setThreadName(const std::string& name)
     {
-        setThreadName(-1, name.c_str());
+        setThreadName(-1, name);
     }
 
     void setThreadName(int threadId, const std::string& name)
@@ -70,7 +70,7 @@ namespace ThreadHelper
  
         __try
         {
-            RaiseException(MS_VC_EXCEPTION, 0, sizeof(info)/sizeof(ULONG_PTR), (ULONG_PTR*)&info);
+            RaiseException(MS_VC_EXCEPTION, 0, sizeof(info) / sizeof(ULONG_PTR), reinterpret_cast< ULONG_PTR* >(&info));
         }
         __except(EXCEPTION_EXECUTE_HANDLER)
         {
@@ -81,7 +81,7 @@ namespace ThreadHelper
     void setThreadName(int /*threadId*/, const std::string& /*name*/) { }
 #endif // _DEBUG
 
-}
-}
+} // namespace ThreadHelper
+} // namespace Disruptor
 
 #endif // ABC_OS_FAMILY_WINDOWS

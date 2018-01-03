@@ -20,5 +20,5 @@ namespace ThreadHelper
     void setThreadName(const std::string& name);
     void setThreadName(int threadId, const std::string& name);
 
-}
-}
+} // namespace ThreadHelper
+} // namespace Disruptor

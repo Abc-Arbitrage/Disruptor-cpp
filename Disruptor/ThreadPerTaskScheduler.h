@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ITaskScheduler.h"
+#include "Disruptor/ITaskScheduler.h"
+
 
 namespace Disruptor
 {
@@ -16,7 +17,6 @@ namespace Disruptor
     private:
         std::atomic< bool > m_started{ false };
         std::vector< std::thread > m_threads;
-
     };
 
-}
+} // namespace Disruptor

@@ -67,7 +67,6 @@ namespace Disruptor
 
             std::cerr << stream.str() << std::endl;
         }
-
     };
 
 } // namespace Disruptor

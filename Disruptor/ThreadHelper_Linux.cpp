@@ -73,7 +73,7 @@ namespace ThreadHelper
         prctl(PR_SET_NAME, name.c_str(), 0, 0, 0);
     }
 
-}
-}
+} // namespace ThreadHelper
+} // namespace Disruptor
 
 #endif // DISRUPTOR_OS_FAMILY_UNIX

@@ -82,7 +82,6 @@ namespace Disruptor
 
             DISRUPTOR_THROW_FATAL_EXCEPTION(message, ex);
         }
-
     };
 
 } // namespace Disruptor
