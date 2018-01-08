@@ -55,6 +55,6 @@ set(DisruptorPerfTests_sources
 add_definitions(-DBOOST_TEST_DYN_LINK)
 
 add_executable(Disruptor.PerfTests ${DisruptorPerfTests_sources})
-target_link_libraries(Disruptor.PerfTests DisruptorStatic Disruptor.TestTools ${Boost_LIBRARIES})
+target_link_libraries(Disruptor.PerfTests DisruptorStatic Disruptor.TestTools ${Boost_LIBRARIES} pthread)
 
 add_custom_target(performance_test ${CMAKE_CURRENT_BINARY_DIR}/Disruptor.PerfTests)
