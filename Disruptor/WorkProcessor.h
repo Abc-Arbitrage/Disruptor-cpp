@@ -187,9 +187,9 @@ namespace Disruptor
                 if (m_timeoutHandler != nullptr)
                     m_timeoutHandler->onTimeout(availableSequence);
             }
-            catch (std::exception& /*ex*/)
+            catch (std::exception& ex)
             {
-                //m_exceptionHandler->handleEventException(ex, availableSequence, nullptr);
+                m_exceptionHandler->handleOnTimeoutException(ex, availableSequence);
             }
         }
 
