@@ -55,7 +55,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../../googletest-release-1.8.0/googletest/include;../../googletest-release-1.8.0/googlemock/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Async</ExceptionHandling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -83,7 +83,7 @@
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>../../googletest-release-1.8.0/googletest/include;../../googletest-release-1.8.0/googlemock/include;../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
