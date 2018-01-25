@@ -40,11 +40,7 @@ namespace Disruptor
         /// <returns>true if the buffer has the capacity to allocate the next sequence otherwise false.</returns>
         bool hasAvailableCapacity(std::int32_t requiredCapacity) override
         {
-            //auto gatingSequences = std::atomic_load_explicit(&this->m_gatingSequences, std::memory_order_acquire);
-
-            //return hasAvailableCapacity(Volatile.Read(ref _gatingSequences), requiredCapacity, _cursor.Value);
             return hasAvailableCapacity(this->m_gatingSequences, requiredCapacity, this->m_cursor->value());
-            //return hasAvailableCapacity(*gatingSequences, requiredCapacity, this->m_cursor->value());
         }
 
         /// <summary>
@@ -100,14 +96,12 @@ namespace Disruptor
 
                 if (wrapPoint > cachedGatingSequence || cachedGatingSequence > current)
                 {
-                    //auto gatingSequences = std::atomic_load_explicit(&this->m_gatingSequences, std::memory_order_acquire);
                     std::int64_t gatingSequence = Util::getMinimumSequence(this->m_gatingSequences, current);
-                    //std::int64_t gatingSequence = Util::getMinimumSequence(*gatingSequences, current);
 
                     if (wrapPoint > gatingSequence)
                     {
                         this->m_waitStrategy->signalAllWhenBlocking();
-                        spinWait.spinOnce(); // LockSupport.parkNanos(1L);
+                        spinWait.spinOnce();
                         continue;
                     }
 
@@ -154,10 +148,7 @@ namespace Disruptor
                 current = this->m_cursor->value();
                 next = current + n;
 
-                //auto gatingSequences = std::atomic_load_explicit(&this->m_gatingSequences, std::memory_order_acquire);
-
                 if (!hasAvailableCapacity(this->m_gatingSequences, n, current))
-                //if (!hasAvailableCapacity(*gatingSequences, n, current))
                 {
                     DISRUPTOR_THROW_INSUFFICIENT_CAPACITY_EXCEPTION();
                 }
@@ -172,13 +163,9 @@ namespace Disruptor
         /// </summary>
         std::int64_t getRemainingCapacity() override
         {
-            //auto gatingSequences = std::atomic_load_explicit(&this->m_gatingSequences, std::memory_order_acquire);
-
-            //auto consumed = Util::getMinimumSequence(m_gatingSequences/*Volatile.Read(ref _gatingSequences)*/, m_cursor->value());
             auto consumed = Util::getMinimumSequence(this->m_gatingSequences, this->m_cursorRef.value());
-            //auto consumed = Util::getMinimumSequence(*gatingSequences, this->m_cursor->value());
             auto produced = this->m_cursorRef.value();
-            //auto produced = this->m_cursor->value();
+
             return this->bufferSize() - (produced - consumed);
         }
 
@@ -190,7 +177,6 @@ namespace Disruptor
         {
             setAvailable(sequence);
             this->m_waitStrategyRef.signalAllWhenBlocking();
-            //this->m_waitStrategy->signalAllWhenBlocking();
         }
 
         /// <summary>
@@ -203,7 +189,6 @@ namespace Disruptor
                 setAvailable(l);
             }
             this->m_waitStrategyRef.signalAllWhenBlocking();
-            //this->m_waitStrategy->signalAllWhenBlocking();
         }
 
         /// <summary>
@@ -216,7 +201,6 @@ namespace Disruptor
             auto index = calculateIndex(sequence);
             auto flag = calculateAvailabilityFlag(sequence);
 
-            //    return Volatile.Read(ref buffer[index]) == flag;
             return m_availableBuffer[index] == flag;
         }
 

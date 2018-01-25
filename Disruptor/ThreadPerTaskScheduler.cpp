@@ -2,6 +2,7 @@
 
 #include "ThreadPerTaskScheduler.h"
 
+
 namespace Disruptor
 {
 
@@ -48,4 +49,4 @@ namespace Disruptor
         return result;
     }
 
-}
+} // namespace Disruptor

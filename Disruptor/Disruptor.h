@@ -308,20 +308,6 @@ namespace Disruptor
             m_ringBuffer->publishEvent(eventTranslator);
         }
 
-        ///// <summary>
-        ///// Publish an event to the ring buffer.
-        ///// </summary>
-        ///// <param name="eventTranslator">the translator that will load data into the event</param>
-        ///// <param name="arg">A single argument to load into the event</param>
-        //public void PublishEvent<A>(IEventTranslatorOneArg<T, A> eventTranslator, A arg) => _ringBuffer.PublishEvent(eventTranslator, arg);
-
-        ///// <summary>
-        ///// Publish a batch of events to the ring buffer.
-        ///// </summary>
-        ///// <param name="eventTranslator">the translator that will load data into the event</param>
-        ///// <param name="arg">An array single arguments to load into the events. One Per event.</param>
-        //public void PublishEvent<A>(IEventTranslatorOneArg<T, A> eventTranslator, A[] arg) => _ringBuffer.PublishEvents(eventTranslator, arg);
-
         /// <summary>
         /// Starts the event processors and returns the fully configured ring buffer.
         /// 
@@ -407,28 +393,28 @@ namespace Disruptor
             return m_ringBuffer;
         }
 
-        ///// <summary>
-        ///// Get the value of the cursor indicating the published sequence.
-        ///// </summary>
+        /// <summary>
+        /// Get the value of the cursor indicating the published sequence.
+        /// </summary>
         std::int64_t cursor() const
         {
             return m_ringBuffer->cursor();
         }
 
-        ///// <summary>
-        ///// The capacity of the data structure to hold entries.
-        ///// </summary>
+        /// <summary>
+        /// The capacity of the data structure to hold entries.
+        /// </summary>
         std::int64_t bufferSize() const
         {
             return m_ringBuffer->bufferSize();
         }
 
-        ///// <summary>
-        ///// Get the event for a given sequence in the RingBuffer.
-        ///// <see cref="RingBuffer{T}.this"/>
-        ///// </summary>
-        ///// <param name="sequence">sequence for the event</param>
-        ///// <returns>event for the sequence</returns>
+        /// <summary>
+        /// Get the event for a given sequence in the RingBuffer.
+        /// <see cref="RingBuffer{T}.this"/>
+        /// </summary>
+        /// <param name="sequence">sequence for the event</param>
+        /// <returns>event for the sequence</returns>
         T& operator[](std::int64_t sequence) const
         {
             return m_ringBuffer[sequence];

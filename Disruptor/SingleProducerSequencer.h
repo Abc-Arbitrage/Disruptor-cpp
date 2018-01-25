@@ -49,11 +49,7 @@ namespace Disruptor
 
             if (wrapPoint > cachedGatingSequence || cachedGatingSequence > nextValue)
             {
-                //auto& gatingSequences = this->m_gatingSequences;
-                //auto gatingSequences = std::atomic_load_explicit(&this->m_gatingSequences, std::memory_order_acquire);
-
                 auto minSequence = Util::getMinimumSequence(this->m_gatingSequences, nextValue);
-                //auto minSequence = Util::getMinimumSequence(*gatingSequences, nextValue);
                 m_fields.cachedValue = minSequence;
 
                 if (wrapPoint > minSequence)
@@ -105,17 +101,11 @@ namespace Disruptor
             {
                 std::int64_t minSequence;
 
-                //auto& gatingSequences = this->m_gatingSequences;
-                //auto gatingSequences = std::atomic_load_explicit(&this->m_gatingSequences, std::memory_order_acquire);
-
                 SpinWait spinWait;
                 while (wrapPoint > (minSequence = Util::getMinimumSequence(this->m_gatingSequences, nextValue)))
-                //while (wrapPoint > (minSequence = Util::getMinimumSequence(*gatingSequences, nextValue)))
                 {
                     this->m_waitStrategyRef.signalAllWhenBlocking();
-                    //this->m_waitStrategy->signalAllWhenBlocking();
-
-                    spinWait.spinOnce(); // LockSupport.parkNanos(1L);
+                    spinWait.spinOnce();
                 }
 
                 m_fields.cachedValue = minSequence;
@@ -167,12 +157,9 @@ namespace Disruptor
         {
             auto nextValue = m_fields.nextValue;
 
-            //auto& gatingSequences = this->m_gatingSequences;
-            //auto gatingSequences = std::atomic_load_explicit(&this->m_gatingSequences, std::memory_order_acquire);
-
             auto consumed = Util::getMinimumSequence(this->m_gatingSequences, nextValue);
-            //auto consumed = Util::getMinimumSequence(*gatingSequences, nextValue);
             auto produced = nextValue;
+
             return this->bufferSize() - (produced - consumed);
         }
 
@@ -193,8 +180,6 @@ namespace Disruptor
         {
             this->m_cursorRef.setValue(sequence);
             this->m_waitStrategyRef.signalAllWhenBlocking();
-            //this->m_cursor->setValue(sequence);
-            //this->m_waitStrategy->signalAllWhenBlocking();
         }
 
         /// <summary>
@@ -215,7 +200,6 @@ namespace Disruptor
         bool isAvailable(std::int64_t sequence) override
         {
             return sequence <= this->m_cursorRef.value();
-            //return sequence <= this->m_cursor->value();
         }
 
         /// <summary>
