@@ -65,6 +65,8 @@ set(Disruptor_headers
     IEventHandler.h
     IEventProcessor.h
     IEventProcessorFactory.h
+    IEventReleaseAware.h
+    IEventReleaser.h
     IEventSequencer.h
     IEventTranslator.h
     IEventTranslatorVararg.h
