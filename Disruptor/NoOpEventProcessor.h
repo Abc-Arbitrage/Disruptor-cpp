@@ -13,10 +13,9 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// No operation version of a <see cref="IEventProcessor"/> that simply tracks a <see cref="Disruptor.Sequence"/>.
-    /// This is useful in tests or for pre-filling a <see cref="RingBuffer{T}"/> from a producer.
-    /// </summary>
+    /**
+     * No operation version of a IEventProcessor that simply tracks a Disruptor.Sequence. This is useful in tests or for pre-filling a RingBuffer<T> from a producer.
+     */ 
     template <class T>
     class NoOpEventProcessor : public IEventProcessor
     {
@@ -25,18 +24,19 @@ namespace Disruptor
         class SequencerFollowingSequence;
 
     public:
-        /// <summary>
-        /// Construct a <see cref="IEventProcessor"/> that simply tracks a <see cref="Disruptor.Sequence"/>.
-        /// </summary>
-        /// <param name="sequencer">sequencer to track.</param>
+        /**
+         * Construct a IEventProcessor that simply tracks a Disruptor.Sequence
+         * .
+         * \param sequencer sequencer to track.
+         */ 
         explicit NoOpEventProcessor(const std::shared_ptr< RingBuffer< T > >& sequencer)
             : m_sequence(std::make_shared< SequencerFollowingSequence >(sequencer))
         {
         }
 
-        /// <summary>
-        /// NoOp
-        /// </summary>
+        /**
+         * NoOp
+         */ 
         void run() override
         {
             if (std::atomic_exchange(&m_running, 1) != 0)
@@ -45,25 +45,29 @@ namespace Disruptor
             }
         }
 
-        /// <summary>
-        /// <see cref="IEventProcessor.Sequence"/>
-        /// </summary>
+        /**
+         * 
+         * See IEventProcessor::sequence()
+         * 
+         */ 
         std::shared_ptr< ISequence > sequence() const override
         {
             return m_sequence;
         }
 
-        /// <summary>
-        /// NoOp
-        /// </summary>
+        /**
+         * NoOp
+         */ 
         void halt() override
         {
             m_running = 0;
         }
 
-        /// <summary>
-        /// <see cref="IEventProcessor.IsRunning"/>
-        /// </summary>
+        /**
+         * 
+         * See IEventProcessor::isRunning()
+         *
+         */ 
         bool isRunning() const override
         {
             return m_running == 1;

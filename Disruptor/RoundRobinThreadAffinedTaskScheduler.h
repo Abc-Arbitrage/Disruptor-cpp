@@ -14,9 +14,9 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// An implementation of <see cref="TaskScheduler"/> which creates an underlying thread pool and set processor affinity to each thread.
-    /// </summary>
+    /**
+     * An implementation of TaskScheduler which creates an underlying thread pool and set processor affinity to each thread.
+     */ 
     class RoundRobinThreadAffinedTaskScheduler : public ITaskScheduler
     {
     public:

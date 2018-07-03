@@ -22,12 +22,12 @@
 
 namespace Disruptor
 {
-    /// <summary>
-    /// A <see cref="WorkProcessor{T}"/> wraps a single <see cref="IWorkHandler{T}"/>, effectively consuming the sequence and ensuring appropriate barriers.
-    /// 
-    /// Generally, this will be used as part of a <see cref="WorkerPool{T}"/>.
-    /// </summary>
-    /// <typeparam name="T">event implementation storing the details for the work to processed.</typeparam>
+    /**
+     * A WorkProcessor<T> wraps a single IWorkHandler<T>, effectively consuming the sequence and ensuring appropriate barriers.
+     * Generally, this will be used as part of a WorkerPool<T>
+     *
+     * \tparam T event implementation storing the details for the work to processed.
+     */ 
     template <class T>
     class WorkProcessor : public IEventProcessor
     {
@@ -36,15 +36,15 @@ namespace Disruptor
         struct PrivateKey {};
 
     public:
-        /// <summary>
-        /// Construct a <see cref="WorkProcessor{T}"/>.
-        /// </summary>
-        /// <param name="ringBuffer">ringBuffer to which events are published.</param>
-        /// <param name="sequenceBarrier">sequenceBarrier on which it is waiting.</param>
-        /// <param name="workHandler">workHandler is the delegate to which events are dispatched.</param>
-        /// <param name="exceptionHandler">exceptionHandler to be called back when an error occurs</param>
-        /// <param name="workSequence">workSequence from which to claim the next event to be worked on.  It should always be initialised
-        /// as <see cref="Disruptor.Sequence.InitialCursorValue"/></param>
+        /**
+         * Construct a WorkProcessor<T>.
+         * 
+         * \param ringBuffer ringBuffer to which events are published.
+         * \param sequenceBarrier sequenceBarrier on which it is waiting.
+         * \param workHandler workHandler is the delegate to which events are dispatched.
+         * \param exceptionHandler exceptionHandler to be called back when an error occurs
+         * \param workSequence workSequence from which to claim the next event to be worked on. It should always be initialised Disruptor.Sequence.InitialCursorValue
+         */ 
         static std::shared_ptr< WorkProcessor< T > > create(const std::shared_ptr< RingBuffer< T > >& ringBuffer,
                                                             const std::shared_ptr< ISequenceBarrier >& sequenceBarrier,
                                                             const std::shared_ptr< IWorkHandler< T > >& workHandler,
@@ -61,15 +61,15 @@ namespace Disruptor
             return processor;
         }
 
-        /// <summary>
-        /// Construct a <see cref="WorkProcessor{T}"/>.
-        /// </summary>
-        /// <param name="ringBuffer">ringBuffer to which events are published.</param>
-        /// <param name="sequenceBarrier">sequenceBarrier on which it is waiting.</param>
-        /// <param name="workHandler">workHandler is the delegate to which events are dispatched.</param>
-        /// <param name="exceptionHandler">exceptionHandler to be called back when an error occurs</param>
-        /// <param name="workSequence">workSequence from which to claim the next event to be worked on.  It should always be initialised
-        /// as <see cref="Disruptor.Sequence.InitialCursorValue"/></param>
+        /**
+         * Construct a WorkProcessor<T>.
+         * 
+         * \param ringBuffer ringBuffer to which events are published.
+         * \param sequenceBarrier sequenceBarrier on which it is waiting.
+         * \param workHandler workHandler is the delegate to which events are dispatched.
+         * \param exceptionHandler exceptionHandler to be called back when an error occurs
+         * \param workSequence workSequence from which to claim the next event to be worked on.  It should always be initialised Disruptor.Sequence.InitialCursorValue
+         */ 
         WorkProcessor(const std::shared_ptr< RingBuffer< T > >& ringBuffer,
                       const std::shared_ptr< ISequenceBarrier >& sequenceBarrier,
                       const std::shared_ptr< IWorkHandler< T > >& workHandler,
@@ -86,35 +86,34 @@ namespace Disruptor
             m_timeoutHandler = std::dynamic_pointer_cast< ITimeoutHandler >(m_workHandler);
         }
 
-        ///// <summary>
-        ///// Return a reference to the <see cref="IEventProcessor.Sequence"/> being used by this <see cref="IEventProcessor"/>
-        ///// </summary>
+        /**
+         * Return a reference to the IEventProcessor.Sequence being used by this IEventProcessor
+         */ 
         std::shared_ptr< ISequence > sequence() const override
         {
             return m_sequence;
         }
 
-        /// <summary>
-        /// Signal that this <see cref="IEventProcessor"/> should stop when it has finished consuming at the next clean break.
-        /// It will call <see cref="ISequenceBarrier.Alert"/> to notify the thread to check status.
-        /// </summary>
+        /**
+         * Signal that this IEventProcessor should stop when it has finished consuming at the next clean break. It will call ISequenceBarrier::alert() to notify the thread to check status.
+         */ 
         void halt() override
         {
             m_running = 0;
             m_sequenceBarrier->alert();
         }
 
-        /// <summary>
-        /// <see cref="IEventProcessor.IsRunning"/>
-        /// </summary>
+        /**
+         * \see IEventProcessor::IsRunning()
+         */ 
         bool isRunning() const override
         {
             return m_running == 1;
         }
 
-        /// <summary>
-        /// It is ok to have another thread re-run this method after a halt().
-        /// </summary>
+        /**
+         * It is ok to have another thread re-run this method after a halt().
+         */ 
         void run() override
         {
             if (std::atomic_exchange(&m_running, 1) != 0)
@@ -235,7 +234,6 @@ namespace Disruptor
         std::shared_ptr< IEventReleaser > m_eventReleaser;
         std::shared_ptr< ITimeoutHandler > m_timeoutHandler;
     };
-
 
     template <class T>
     class WorkProcessor< T >::EventReleaser : public IEventReleaser

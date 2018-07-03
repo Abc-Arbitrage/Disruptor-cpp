@@ -8,27 +8,24 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// Spin strategy that uses a <see cref="SpinWait"/> for <see cref="IEventProcessor"/>s waiting on a barrier.
-    /// <p>
-    /// This strategy is a good compromise between performance and CPU resource.
-    /// Latency spikes can occur after quiet periods.
-    /// </p>
-    /// </summary>
+    /**
+     * Spin strategy that uses a SpinWait for IEventProcessors waiting on a barrier. 
+     * This strategy is a good compromise between performance and CPU resource. Latency spikes can occur after quiet periods.
+     */ 
     class SpinWaitWaitStrategy : public IWaitStrategy
     {
     public:
-        /// <summary>
-        /// <see cref="IWaitStrategy.WaitFor"/>
-        /// </summary>
+        /**
+         * \see IWaitStrategy.waitFor()
+         */ 
         std::int64_t waitFor(std::int64_t sequence,
                              const std::shared_ptr< Sequence >& cursor,
                              const std::shared_ptr< ISequence >& dependentSequence,
                              const std::shared_ptr< ISequenceBarrier >& barrier) override;
 
-        /// <summary>
-        /// <see cref="IWaitStrategy.SignalAllWhenBlocking"/>
-        /// </summary>
+        /**
+         * \see IWaitStrategy.signalAllWhenBlocking()
+         */ 
         void signalAllWhenBlocking() override;
 
         void writeDescriptionTo(std::ostream& stream) const override;

@@ -4,26 +4,22 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// Implement this interface in your <see cref="IEventHandler{T}"/> to be notified when a thread for the
-    /// <see cref="BatchEventProcessor{T}"/> starts and shuts down.
-    /// </summary>
+    /**
+     * Implement this interface in your IEventHandler<T> to be notified when a thread for the BatchEventProcessor<T> starts and shuts down.
+     */ 
     class ILifecycleAware
     {
     public:
         virtual ~ILifecycleAware() = default;
 
-        ///<summary>
-        /// Called once on thread start before first event is available.
-        ///</summary>
+        /**
+         * Called once on thread start before first event is available.
+         */ 
         virtual void onStart() = 0;
 
-        /// <summary>
-        /// Called once just before the thread is shutdown.
-        /// 
-        /// Sequence event processing will already have stopped before this method is called. No events will
-        /// be processed after this message.
-        /// </summary>
+        /**
+         * Called once just before the thread is shutdown. Sequence event processing will already have stopped before this method is called. No events wil be processed after this message.
+         */ 
         virtual void onShutdown() = 0;
     };
 

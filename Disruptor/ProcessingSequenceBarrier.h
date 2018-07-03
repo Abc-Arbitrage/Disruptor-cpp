@@ -16,10 +16,10 @@ namespace Disruptor
     class Sequence;
 
 
-    /// <summary>
-    /// <see cref="ISequenceBarrier"/> handed out for gating <see cref="IEventProcessor"/> on a cursor sequence and optional dependent <see cref="IEventProcessor"/>s,
-    ///  using the given WaitStrategy.
-    /// </summary>
+    /**
+     * 
+     * ISequenceBarrier handed out for gating IEventProcessor on a cursor sequence and optional dependent IEventProcessors, using the given WaitStrategy.
+     */ 
     class ProcessingSequenceBarrier : public ISequenceBarrier, public std::enable_shared_from_this< ProcessingSequenceBarrier >
     {
     public:

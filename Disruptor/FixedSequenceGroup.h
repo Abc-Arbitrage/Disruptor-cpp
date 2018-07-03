@@ -9,45 +9,47 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// Hides a group of Sequences behind a single Sequence
-    /// </summary>
+    /**
+     * Hides a group of Sequences behind a single Sequence
+     */ 
     class FixedSequenceGroup : public ISequence
     {
     public:
-        /// <summary> </summary>
-        /// <param name="sequences">sequences the list of sequences to be tracked under this sequence group</param>
+        /**
+         * 
+         * \param sequences sequences the list of sequences to be tracked under this sequence group
+         */ 
         explicit FixedSequenceGroup(const std::vector< std::shared_ptr< ISequence > >& sequences);
 
-        /// <summary>
-        /// Get the minimum sequence value for the group.
-        /// </summary>
+        /**
+         * Get the minimum sequence value for the group.
+         */ 
         std::int64_t value() const override;
 
-        /// <summary>
-        /// Not supported.
-        /// </summary>
+        /**
+         * Not supported.
+         */ 
         void setValue(std::int64_t value) override;
 
-        /// <summary>
-        /// Not supported
-        /// </summary>
-        /// <param name="value"></param>
+        /**
+         * Not supported
+         * \param value 
+         */ 
         void setValueVolatile(std::int64_t value) override;
 
-        /// <summary>
-        /// Not supported.
-        /// </summary>
+        /**
+         * Not supported.
+         */ 
         bool compareAndSet(std::int64_t expectedValue, std::int64_t newValue) override;
 
-        /// <summary>
-        /// Not supported.
-        /// </summary>
+        /**
+         * Not supported.
+         */ 
         std::int64_t incrementAndGet() override;
 
-        /// <summary>
-        /// Not supported.
-        /// </summary>
+        /**
+         * Not supported.
+         */ 
         std::int64_t addAndGet(std::int64_t increment) override;
 
         void writeDescriptionTo(std::ostream& stream) const override;

@@ -21,11 +21,11 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    ///     Ring based store of reusable entries containing the data representing an event being exchanged between event
-    ///     publisher and <see cref="IEventProcessor" />s.
-    /// </summary>
-    /// <typeparam name="T">implementation storing the data for sharing during exchange or parallel coordination of an event.</typeparam>
+    /**
+     * Ring based store of reusable entries containing the data representing an event being exchanged between event publisher and IEventProcessors.
+     * 
+     * \tparam T implementation storing the data for sharing during exchange or parallel coordination of an event.
+     */ 
     template <class T>
     class RingBuffer : public IEventSequencer< T >, public ICursored, public std::enable_shared_from_this< RingBuffer< T > >
     {
@@ -60,11 +60,12 @@ namespace Disruptor
         }
 
     public:
-        /// <summary>
-        ///     Construct a RingBuffer with the full option set.
-        /// </summary>
-        /// <param name="eventFactory">eventFactory to create entries for filling the RingBuffer</param>
-        /// <param name="sequencer">waiting strategy employed by processorsToTrack waiting on entries becoming available.</param>
+        /**
+         * Construct a RingBuffer with the full option set.
+         * 
+         * \param eventFactory eventFactory to create entries for filling the RingBuffer
+         * \param sequencer waiting strategy employed by processorsToTrack waiting on entries becoming available.
+         */ 
         RingBuffer(const std::function< T() >& eventFactory, const std::shared_ptr< ISequencer< T > >& sequencer)
         {
             m_sequencer = sequencer;
@@ -87,12 +88,12 @@ namespace Disruptor
         }
 
         
-        /// <summary>
-        ///     Construct a RingBuffer with default strategies of:
-        ///     <see cref="MultiThreadedLowContentionClaimStrategy" /> and <see cref="BlockingWaitStrategy" />
-        /// </summary>
-        /// <param name="eventFactory"> eventFactory to create entries for filling the RingBuffer</param>
-        /// <param name="bufferSize">number of elements to create within the ring buffer.</param>
+        /**
+         * Construct a RingBuffer with default strategies of: MultiThreadedLowContentionClaimStrategy and BlockingWaitStrategy
+         * 
+         * \param eventFactory eventFactory to create entries for filling the RingBuffer
+         * \param bufferSize number of elements to create within the ring buffer.
+         */ 
         RingBuffer(const std::function< T() >& eventFactory, std::int32_t bufferSize)
             : RingBuffer(eventFactory, std::make_shared< MultiProducerSequencer< T > >(bufferSize, std::make_shared< BlockingWaitStrategy >()))
         {
@@ -106,60 +107,64 @@ namespace Disruptor
             }
         }
 
-        /// <summary>
-        ///     Create a new multiple producer RingBuffer using the default wait strategy  <see cref="BlockingWaitStrategy" />.
-        /// </summary>
-        /// <param name="factory">used to create the events within the ring buffer.</param>
-        /// <param name="bufferSize">number of elements to create within the ring buffer.</param>
-        /// <param name="waitStrategy">used to determine how to wait for new elements to become available.</param>
-        /// <returns></returns>
+        /**
+         * Create a new multiple producer RingBuffer using the default wait strategy BlockingWaitStrategy
+         *
+         * \param factory used to create the events within the ring buffer.
+         * \param bufferSize number of elements to create within the ring buffer.
+         * \param waitStrategy used to determine how to wait for new elements to become available.
+         * 
+         */ 
         static std::shared_ptr< RingBuffer< T > > createMultiProducer(const std::function< T() >& factory, std::int32_t bufferSize, const std::shared_ptr< IWaitStrategy >& waitStrategy)
         {
             return std::make_shared< RingBuffer< T > >(factory, std::make_shared< MultiProducerSequencer< T > >(bufferSize, waitStrategy));
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="factory"></param>
-        /// <param name="bufferSize"></param>
-        /// <returns></returns>
+        /**
+         * 
+         * \param factory 
+         * \param bufferSize 
+         * 
+         */ 
         static std::shared_ptr< RingBuffer< T > > createMultiProducer(const std::function< T() >& factory, std::int32_t bufferSize)
         {
             return createMultiProducer(factory, bufferSize, std::make_shared< BlockingWaitStrategy >());
         }
 
-        /// <summary>
-        ///     Create a new single producer RingBuffer with the specified wait strategy.
-        /// </summary>
-        /// <param name="factory">used to create the events within the ring buffer.</param>
-        /// <param name="bufferSize">number of elements to create within the ring buffer.</param>
-        /// <param name="waitStrategy">used to determine how to wait for new elements to become available.</param>
-        /// <returns></returns>
+        /**
+         * Create a new single producer RingBuffer with the specified wait strategy.
+         * 
+         * \param factory used to create the events within the ring buffer.
+         * \param bufferSize number of elements to create within the ring buffer.
+         * \param waitStrategy used to determine how to wait for new elements to become available.
+         * 
+         */ 
         static std::shared_ptr< RingBuffer< T > > createSingleProducer(const std::function< T() >& factory, std::int32_t bufferSize, const std::shared_ptr< IWaitStrategy >& waitStrategy)
         {
             return std::make_shared< RingBuffer< T > >(factory, std::make_shared< SingleProducerSequencer< T > >(bufferSize, waitStrategy));
         }
 
-        /// <summary>
-        ///     Create a new single producer RingBuffer using the default wait strategy <see cref="BlockingWaitStrategy"/>.
-        /// </summary>
-        /// <param name="factory">used to create the events within the ring buffer.</param>
-        /// <param name="bufferSize">number of elements to create within the ring buffer.</param>
-        /// <returns></returns>
+        /**
+         * Create a new single producer RingBuffer using the default wait strategy BlockingWaitStrategy
+         *
+         * \param factory used to create the events within the ring buffer.
+         * \param bufferSize number of elements to create within the ring buffer.
+         * 
+         */ 
         static std::shared_ptr< RingBuffer< T > > createSingleProducer(const std::function< T() >& factory, std::int32_t bufferSize)
         {
             return createSingleProducer(factory, bufferSize, std::make_shared< BlockingWaitStrategy >());
         }
 
-        /// <summary>
-        ///     Create a new Ring Buffer with the specified producer type (SINGLE or MULTI)
-        /// </summary>
-        /// <param name="producerType">producer type to use <see cref="ProducerType" /></param>
-        /// <param name="factory">used to create the events within the ring buffer.</param>
-        /// <param name="bufferSize">number of elements to create within the ring buffer.</param>
-        /// <param name="waitStrategy">used to determine how to wait for new elements to become available.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /**
+         * Create a new Ring Buffer with the specified producer type (SINGLE or MULTI)
+         * 
+         * \param producerType producer type to use<see cref="ProducerType"/>
+         * \param factory used to create the events within the ring buffer.
+         * \param bufferSize number of elements to create within the ring buffer.
+         * \param waitStrategy used to determine how to wait for new elements to become available.
+         * 
+         */ 
         static std::shared_ptr< RingBuffer< T > > create(ProducerType producerType, const std::function< T() >& factory, std::int32_t bufferSize, const std::shared_ptr< IWaitStrategy >& waitStrategy)
         {
             switch (producerType)
@@ -173,10 +178,11 @@ namespace Disruptor
             }
         }
 
-        /// <summary>
-        ///     Get the event for a given sequence in the RingBuffer.
-        /// </summary>
-        /// <param name="sequence">sequence for the event</param>
+        /**
+         * Get the event for a given sequence in the RingBuffer.
+         * 
+         * \param sequence sequence for the event
+         */ 
         T& operator[](std::int64_t sequence) const override
         {
             return m_entries[m_bufferPad + (static_cast< std::int32_t >(sequence) & m_indexMask)];
@@ -212,19 +218,19 @@ namespace Disruptor
             return m_sequencer->tryNext(n);
         }
 
-        /// <summary>
-        /// Get the current cursor value for the ring buffer.  The actual value received
-        /// will depend on the type of <see cref="ISequencer"/> that is being used.
-        /// </summary>
+        /**
+         * Get the current cursor value for the ring buffer.  The actual value received will depend on the type of ISequencer that is being used.
+         */ 
         std::int64_t cursor() const override
         {
             return m_sequencer->cursor();
         }
 
-        /// <summary>
-        /// Get the remaining capacity for this ringBuffer.
-        /// </summary>
-        /// <returns>The number of slots remaining.</returns>
+        /**
+         * Get the remaining capacity for this ringBuffer.
+         *
+         * \returns The number of slots remaining.
+         */ 
         std::int64_t getRemainingCapacity() override
         {
             return m_sequencer->getRemainingCapacity();
@@ -235,18 +241,18 @@ namespace Disruptor
             m_sequencer->publish(sequence);
         }
 
-        /// <summary>
-        /// Publish the specified sequences.  This action marks these particular
-        /// messages as being available to be read.
-        /// </summary>
-        /// <param name="lo">the lowest sequence number to be published</param>
-        /// <param name="hi">the highest sequence number to be published</param>
+        /**
+         * Publish the specified sequences.  This action marks these particular messages as being available to be read.
+         * 
+         * \param lo the lowest sequence number to be published
+         * \param hi the highest sequence number to be published
+         */ 
         void publish(std::int64_t lo, std::int64_t hi) override
         {
             m_sequencer->publish(lo, hi);
         }
 
-        //[[deprecated]]
+        //deprecated
         void resetTo(std::int64_t sequence)
         {
             m_sequencer->claim(sequence);
@@ -274,32 +280,34 @@ namespace Disruptor
             return m_sequencer->getMinimumSequence();
         }
 
-        /// <summary>
-        /// Remove the specified sequence from this ringBuffer.
-        /// </summary>
-        /// <param name="sequence">sequence to be removed.</param>
-        /// <returns><tt>true</tt> if this sequence was found, <tt>false</tt> otherwise.</returns>
+        /**
+         * Remove the specified sequence from this ringBuffer.
+         * 
+         * \param sequence sequence to be removed.
+         * \returns true if this sequence was found, false otherwise.
+         */ 
         bool removeGatingSequence(const std::shared_ptr< ISequence >& sequence)
         {
             return m_sequencer->removeGatingSequence(sequence);
         }
 
-        /// <summary>
-        /// Create a new SequenceBarrier to be used by an EventProcessor to track which messages
-        /// are available to be read from the ring buffer given a list of sequences to track.
-        /// </summary>
-        /// <param name="sequencesToTrack">the additional sequences to track</param>
-        /// <returns>A sequence barrier that will track the specified sequences.</returns>
+        /**
+         * Create a new SequenceBarrier to be used by an EventProcessor to track which messages are available to be read from the ring buffer given a list of sequences to track.
+         * 
+         * \param sequencesToTrack the additional sequences to track
+         * \returns A sequence barrier that will track the specified sequences.
+         */ 
         std::shared_ptr< ISequenceBarrier > newBarrier(const std::vector< std::shared_ptr< ISequence > >& sequencesToTrack = {})
         {
             return m_sequencer->newBarrier(sequencesToTrack);
         }
 
-        /// <summary>
-        /// Creates an event poller for this ring buffer gated on the supplied sequences.
-        /// </summary>
-        /// <param name="gatingSequences"></param>
-        /// <returns>A poller that will gate on this ring buffer and the supplied sequences.</returns>
+        /**
+         * Creates an event poller for this ring buffer gated on the supplied sequences.
+         * 
+         * \param gatingSequences 
+         * \returns A poller that will gate on this ring buffer and the supplied sequences.
+         */ 
         std::shared_ptr< EventPoller< T > > newPoller(const std::vector< std::shared_ptr< ISequence > >& gatingSequences = {})
         {
             return m_sequencer->newPoller(this->shared_from_this(), gatingSequences);

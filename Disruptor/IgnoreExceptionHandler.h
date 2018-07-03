@@ -10,19 +10,20 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// Convenience implementation of an exception handler that using Console.WriteLine to log the exception
-    /// </summary>
+    /**
+     * Convenience implementation of an exception handler that using Console.WriteLine to log the exception
+     */ 
     template <class T>
     class IgnoreExceptionHandler : public IExceptionHandler< T >
     {
     public:
-        /// <summary>
-        /// Strategy for handling uncaught exceptions when processing an event.
-        /// </summary>
-        /// <param name="ex">exception that propagated from the <see cref="IEventHandler{T}"/>.</param>
-        /// <param name="sequence">sequence of the event which cause the exception.</param>
-        /// <param name="evt">event being processed when the exception occurred.</param>
+        /**
+         * Strategy for handling uncaught exceptions when processing an event.
+         * 
+         * \param ex exception that propagated from the IEventHandler<T>
+         * \param sequence sequence of the event which cause the exception.
+         * \param evt event being processed when the exception occurred.
+         */ 
         void handleEventException(const std::exception& ex, std::int64_t sequence, T& /*evt*/) override
         {
             std::stringstream stream;
@@ -31,10 +32,11 @@ namespace Disruptor
             std::cerr << stream.str() << std::endl;
         }
 
-        /// <summary>
-        /// Callback to notify of an exception during <see cref="ILifecycleAware.OnStart"/>
-        /// </summary>
-        /// <param name="ex">ex throw during the starting process.</param>
+        /**
+         * Callback to notify of an exception during ILifecycleAware.onStart()
+         *
+         * \param ex ex throw during the starting process.
+         */ 
         void handleOnStartException(const std::exception& ex) override
         {
             std::stringstream stream;
@@ -43,10 +45,11 @@ namespace Disruptor
             std::cerr << stream.str() << std::endl;
         }
 
-        /// <summary>
-        /// Callback to notify of an exception during <see cref="ILifecycleAware.OnShutdown"/>
-        /// </summary>
-        /// <param name="ex">ex throw during the shutdown process.</param>
+        /**
+         * Callback to notify of an exception during ILifecycleAware.onShutdown()
+         *
+         * \param ex ex throw during the shutdown process.
+         */
         void handleOnShutdownException(const std::exception& ex) override
         {
             std::stringstream stream;
@@ -55,11 +58,12 @@ namespace Disruptor
             std::cerr << stream.str() << std::endl;
         }
 
-        /// <summary>
-        /// Callback to notify of an exception during <see cref="ITimeoutHandler.OnTimeout"/>
-        /// </summary>
-        /// <param name="ex">ex throw during the starting process.</param>
-        /// <param name="sequence">sequence of the event which cause the exception.</param>
+        /**
+         * Callback to notify of an exception during ITimeoutHandler.onTimeout()
+         *
+         * \param ex ex throw during the starting process.
+         * \param sequence sequence of the event which cause the exception.
+         */ 
         void handleOnTimeoutException(const std::exception& ex, std::int64_t sequence) override
         {
             std::stringstream stream;

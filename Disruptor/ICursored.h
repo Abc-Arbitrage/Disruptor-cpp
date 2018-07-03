@@ -6,20 +6,17 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// Implementors of this interface must provide a single long value
-    /// that represents their current cursor value.Used during dynamic
-    /// add/remove of Sequences from a
-    /// <see cref="SequenceGroups.AddSequences"/>.
-    /// </summary>
+    /**
+     * Implementors of this interface must provide a single long value that represents their current cursor value.Used during dynamic add/remove of Sequences from a SequenceGroups.addSequences
+     */ 
     class ICursored
     {
     public:
         virtual ~ICursored() = default;
 
-        /// <summary>
-        /// Get the current cursor value.
-        /// </summary>
+        /**
+         * Get the current cursor value.
+         */ 
         virtual std::int64_t cursor() const = 0;
     };
 

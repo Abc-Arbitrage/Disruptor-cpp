@@ -21,11 +21,12 @@ namespace Disruptor
     class Sequencer : public ISequencer< T >, public std::enable_shared_from_this< Sequencer< T > >
     {
     public:
-        /// <summary>
-        /// Construct a Sequencer with the selected strategies.
-        /// </summary>
-        /// <param name="bufferSize"></param>
-        /// <param name="waitStrategy">waitStrategy for those waiting on sequences.</param>
+        /**
+         * Construct a Sequencer with the selected strategies.
+         * 
+         * \param bufferSize 
+         * \param waitStrategy waitStrategy for those waiting on sequences.
+         */ 
         Sequencer(std::int32_t bufferSize, const std::shared_ptr< IWaitStrategy >& waitStrategy)
             : m_bufferSize(bufferSize)
             , m_waitStrategy(waitStrategy)
@@ -44,57 +45,59 @@ namespace Disruptor
             }
         }
 
-        /// <summary>
-        /// Create a <see cref="ISequenceBarrier"/> that gates on the the cursor and a list of <see cref="Sequence"/>s
-        /// </summary>
-        /// <param name="sequencesToTrack"></param>
-        /// <returns></returns>
+        /**
+         * Create a ISequenceBarrier that gates on the the cursor and a list of Sequences
+         * 
+         * \param sequencesToTrack 
+         * 
+         */ 
         std::shared_ptr< ISequenceBarrier > newBarrier(const std::vector< std::shared_ptr< ISequence > >& sequencesToTrack) override
         {
             return std::make_shared< ProcessingSequenceBarrier >(this->shared_from_this(), m_waitStrategy, m_cursor, sequencesToTrack);
         }
 
-        /// <summary>
-        /// The capacity of the data structure to hold entries.
-        /// </summary>
+        /**
+         * The capacity of the data structure to hold entries.
+         */ 
         std::int32_t bufferSize() override
         {
             return m_bufferSize;
         }
 
-        /// <summary>
-        /// Get the value of the cursor indicating the published sequence.
-        /// </summary>
+        /**
+         * Get the value of the cursor indicating the published sequence.
+         */ 
         std::int64_t cursor() const override
         {
             return m_cursorRef.value();
         }
 
-        /// <summary>
-        /// Add the specified gating sequences to this instance of the Disruptor.  They will
-        /// safely and atomically added to the list of gating sequences. 
-        /// </summary>
-        /// <param name="gatingSequences">The sequences to add.</param>
+        /**
+         * Add the specified gating sequences to this instance of the Disruptor.  They will safely and atomically added to the list of gating sequences.
+         * 
+         * \param gatingSequences The sequences to add.
+         */ 
         void addGatingSequences(const std::vector< std::shared_ptr< ISequence > >& gatingSequences) override
         {
             SequenceGroups::addSequences(m_gatingSequences, *this, gatingSequences);
         }
 
-        /// <summary>
-        /// Remove the specified sequence from this sequencer.
-        /// </summary>
-        /// <param name="sequence">to be removed.</param>
-        /// <returns>true if this sequence was found, false otherwise.</returns>
+        /**
+         * Remove the specified sequence from this sequencer.
+         * 
+         * \param sequence to be removed.
+         * \returns true if this sequence was found, false otherwise.
+         */ 
         bool removeGatingSequence(const std::shared_ptr< ISequence >& sequence) override
         {
             return SequenceGroups::removeSequence(m_gatingSequences, sequence);
         }
 
-        /// <summary>
-        /// Get the minimum sequence value from all of the gating sequences
-        /// added to this ringBuffer.
-        /// </summary>
-        /// <returns>The minimum gating sequence or the cursor sequence if no sequences have been added.</returns>
+        /**
+         * Get the minimum sequence value from all of the gating sequences added to this ringBuffer.
+         * 
+         * \returns The minimum gating sequence or the cursor sequence if no sequences have been added.
+         */ 
         std::int64_t getMinimumSequence() override
         {
             //auto& gatingSequences = this->m_gatingSequences;
@@ -104,14 +107,14 @@ namespace Disruptor
             //return Util::getMinimumSequence(*gatingSequences, m_cursor->value());
         }
 
-        /// <summary>
-        /// Creates an event poller for this sequence that will use the supplied data provider and
-        /// gating sequences.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="provider">The data source for users of this event poller</param>
-        /// <param name="gatingSequences">Sequence to be gated on.</param>
-        /// <returns>A poller that will gate on this ring buffer and the supplied sequences.</returns>
+        /**
+         * Creates an event poller for this sequence that will use the supplied data provider and gating sequences.
+         * 
+         * \param provider The data source for users of this event poller
+         * \param gatingSequences Sequence to be gated on.
+         * \tparam T 
+         * \returns A poller that will gate on this ring buffer and the supplied sequences.
+         */ 
         std::shared_ptr< EventPoller< T > > newPoller(const std::shared_ptr< IDataProvider< T > > & provider, const std::vector< std::shared_ptr< ISequence > >& gatingSequences) override
         {
             return EventPoller< T >::newInstance(provider, this->shared_from_this(), std::make_shared< Sequence >(), m_cursor, gatingSequences);
@@ -141,7 +144,9 @@ namespace Disruptor
         }
 
     protected:
-        /// <summary>Volatile in the Java version => always use Volatile.Read/Write or Interlocked methods to access this field.</summary>
+        /**
+         * Volatile in the Java version => always use Volatile.Read/Write or Interlocked methods to access this field.
+         */ 
         std::vector< std::shared_ptr< ISequence > > m_gatingSequences;
 
         std::int32_t m_bufferSize;

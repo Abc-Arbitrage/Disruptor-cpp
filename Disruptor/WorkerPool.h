@@ -15,25 +15,25 @@
 
 namespace Disruptor
 {
-    /// <summary>
-    /// WorkerPool contains a pool of <see cref="WorkProcessor{T}"/> that will consume sequences so jobs can be farmed out across a pool of workers.
-    /// Each of the <see cref="WorkProcessor{T}"/> manage and calls a <see cref="IWorkHandler{T}"/> to process the events.
-    /// </summary>
-    /// <typeparam name="T">event to be processed by a pool of workers</typeparam>
+    /**
+     * WorkerPool contains a pool of WorkProcessor<T> that will consume sequences so jobs can be farmed out across a pool of workers. Each of the WorkProcessor<T> 
+     * manage and calls a IWorkHandler<T> to process the events.
+     * 
+     * \tparam T event to be processed by a pool of workers
+     */ 
     template <class T>
     class WorkerPool
     {
     public:
-        /// <summary>
-        /// Create a worker pool to enable an array of <see cref="IWorkHandler{T}"/>s to consume published sequences.
-        /// 
-        /// This option requires a pre-configured <see cref="RingBuffer{T}"/> which must have <see cref="Sequencer.SetGatingSequences"/>
-        /// called before the work pool is started.
-        /// </summary>
-        /// <param name="ringBuffer">ringBuffer of events to be consumed.</param>
-        /// <param name="sequenceBarrier">sequenceBarrier on which the workers will depend.</param>
-        /// <param name="exceptionHandler">exceptionHandler to callback when an error occurs which is not handled by the <see cref="IWorkHandler{T}"/>s.</param>
-        /// <param name="workHandlers">workHandlers to distribute the work load across.</param>
+        /**
+         * Create a worker pool to enable an array of IWorkHandler<T> to consume published sequences. This option requires a pre-configured RingBuffer<T> which must have
+         * Sequencer::setGatingSequences() called before the work pool is started.
+         * 
+         * \param ringBuffer ringBuffer of events to be consumed.
+         * \param sequenceBarrier sequenceBarrier on which the workers will depend.
+         * \param exceptionHandler exceptionHandler to callback when an error occurs which is not handled by the<see cref="IWorkHandler{T}"/>s.
+         * \param workHandlers workHandlers to distribute the work load across.
+         */ 
         WorkerPool(const std::shared_ptr< RingBuffer< T > >& ringBuffer,
                    const std::shared_ptr< ISequenceBarrier >& sequenceBarrier,
                    const std::shared_ptr< IExceptionHandler< T > >& exceptionHandler,
@@ -48,14 +48,13 @@ namespace Disruptor
             }
         }
 
-        /// <summary>
-        /// Construct a work pool with an internal <see cref="RingBuffer{T}"/> for convenience.
-        /// 
-        /// This option does not require <see cref="Sequencer.SetGatingSequences"/> to be called before the work pool is started.
-        /// </summary>
-        /// <param name="eventFactory">eventFactory for filling the <see cref="RingBuffer{T}"/></param>
-        /// <param name="exceptionHandler">exceptionHandler to callback when an error occurs which is not handled by the <see cref="IWorkHandler{T}"/>s.</param>
-        /// <param name="workHandlers">workHandlers to distribute the work load across.</param>
+        /**
+         * Construct a work pool with an internal RingBuffer<T> for convenience. This option does not require Sequencer::setGatingSequences() to be called before the work pool is started.
+         * 
+         * \param eventFactory eventFactory for filling the<see cref="RingBuffer{T}"/>
+         * \param exceptionHandler exceptionHandler to callback when an error occurs which is not handled by the<see cref="IWorkHandler{T}"/>s.
+         * \param workHandlers workHandlers to distribute the work load across.
+         */ 
         WorkerPool(const std::function< T() >& eventFactory,
                    const std::shared_ptr< IExceptionHandler< T > >& exceptionHandler,
                    const std::vector< std::shared_ptr< IWorkHandler< T > > >& workHandlers)
@@ -73,9 +72,9 @@ namespace Disruptor
             m_ringBuffer->addGatingSequences(getWorkerSequences());
         }
 
-        /// <summary>
-        /// Get an array of <see cref="Sequence"/>s representing the progress of the workers.
-        /// </summary>
+        /**
+         * Get an array of Sequences representing the progress of the workers.
+         */ 
         std::vector< std::shared_ptr< ISequence > > getWorkerSequences()
         {
             std::vector< std::shared_ptr< ISequence > > sequences(m_workProcessors.size() + 1);
@@ -88,11 +87,11 @@ namespace Disruptor
             return sequences;
         }
 
-        /// <summary>
-        /// Start the worker pool processing events in sequence.
-        /// </summary>
-        /// <returns>the <see cref="RingBuffer{T}"/> used for the work queue.</returns>
-        /// <exception cref="InvalidOperationException">if the pool has already been started and not halted yet</exception>
+        /**
+         * Start the worker pool processing events in sequence.
+         * 
+         * \returns the RingBuffer<T> used for the work queue.
+         */ 
         std::shared_ptr< RingBuffer< T > > start(const std::shared_ptr< IExecutor >& executor)
         {
             if (std::atomic_exchange(&m_running, 1) != 0)
@@ -112,9 +111,9 @@ namespace Disruptor
             return m_ringBuffer;
         }
 
-        /// <summary>
-        /// Wait for the <see cref="RingBuffer{T}"/> to drain of published events then halt the workers.
-        /// </summary>
+        /**
+         * Wait for the RingBuffer<T> to drain of published events then halt the workers.
+         */ 
         void drainAndHalt()
         {
             auto workerSequences = getWorkerSequences();
@@ -131,9 +130,9 @@ namespace Disruptor
             m_running = 0;
         }
 
-        /// <summary>
-        /// Halt all workers immediately at then end of their current cycle.
-        /// </summary>
+        /**
+         * Halt all workers immediately at then end of their current cycle.
+         */ 
         void halt()
         {
             for (auto&& workProcessor : m_workProcessors)

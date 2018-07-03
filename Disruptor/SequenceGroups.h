@@ -9,10 +9,9 @@ namespace Disruptor
     class ICursored;
     class ISequence;
 
-
-    /// <summary>
-    /// Provides static methods for managing a <see cref="SequenceGroup"/> object
-    /// </summary>
+    /**
+     * Provides static methods for managing a SequenceGroup object
+     */
     class SequenceGroups
     {
     public:

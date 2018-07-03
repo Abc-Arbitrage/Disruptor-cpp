@@ -34,12 +34,12 @@ namespace Disruptor
             , m_fields(Sequence::InitialCursorValue, Sequence::InitialCursorValue)
         {}
 
-        /// <summary>
-        /// Has the buffer got capacity to allocate another sequence.  This is a concurrent
-        /// method so the response should only be taken as an indication of available capacity.
-        /// </summary>
-        /// <param name="requiredCapacity">requiredCapacity in the buffer</param>
-        /// <returns>true if the buffer has the capacity to allocate the next sequence otherwise false.</returns>
+        /**
+         * Has the buffer got capacity to allocate another sequence.  This is a concurrent method so the response should only be taken as an indication of available capacity.
+         * 
+         * \param requiredCapacity requiredCapacity in the buffer
+         * \returns true if the buffer has the capacity to allocate the next sequence otherwise false.
+         */ 
         bool hasAvailableCapacity(int requiredCapacity) override
         {
             std::int64_t nextValue = m_fields.nextValue;
@@ -61,29 +61,29 @@ namespace Disruptor
             return true;
         }
 
-        /// <summary>
-        /// Claim the next event in sequence for publishing.
-        /// </summary>
-        /// <returns></returns>
+        /**
+         * Claim the next event in sequence for publishing.
+         */ 
         std::int64_t next() override
         {
             return next(1);
         }
 
-        /// <summary>
-        /// Claim the next n events in sequence for publishing.  This is for batch event producing.  Using batch producing requires a little care and some math.
-        /// <code>
-        ///     int n = 10;
-        ///     long hi = sequencer.next(n);
-        ///     long lo = hi - (n - 1);
-        ///     for (long sequence = lo; sequence &lt;= hi; sequence++) {
-        ///        // Do work.
-        ///     }
-        ///     sequencer.publish(lo, hi);
-        /// </code>
-        /// </summary>
-        /// <param name="n">the number of sequences to claim</param>
-        /// <returns>the highest claimed sequence value</returns>
+        /**
+         * Claim the next n events in sequence for publishing. This is for batch event producing. Using batch producing requires a little care and some math.
+         * <code>
+         *   int n = 10;
+         *   long hi = sequencer.next(n);
+         *   long lo = hi - (n - 1);
+         *   for (long sequence = lo; sequence &lt;= hi; sequence++) {
+         *   // Do work.
+         *    }
+         *   sequencer.publish(lo, hi);
+         * </code>
+         * 
+         * \param n the number of sequences to claim
+         * \returns the highest claimed sequence value
+         */ 
         std::int64_t next(std::int32_t n) override
         {
             if (n < 1)
@@ -116,22 +116,22 @@ namespace Disruptor
             return nextSequence;
         }
         
-        /// <summary>
-        /// Attempt to claim the next event in sequence for publishing.  Will return the number of the slot if there is at least<code>requiredCapacity</code> slots available.
-        /// </summary>
-        /// <returns>the claimed sequence value</returns>
+        /**
+         * Attempt to claim the next event in sequence for publishing. Will return the number of the slot if there is at least requiredCapacity slots available.
+         *
+         * \returns the claimed sequence value
+         */
         std::int64_t tryNext() override
         {
             return tryNext(1);
         }
 
-        /// <summary>
-        /// Attempt to claim the next event in sequence for publishing.  Will return the
-        /// number of the slot if there is at least <param name="availableCapacity"></param> slots
-        /// available. 
-        /// </summary>
-        /// <param name="n">the number of sequences to claim</param>
-        /// <returns>the claimed sequence value</returns>
+        /**
+         * Attempt to claim the next event in sequence for publishing. Will return the number of the slot if there is at least availableCapacity slots available.
+         * 
+         * \param n the number of sequences to claim
+         * \returns the claimed sequence value
+         */ 
         std::int64_t tryNext(std::int32_t n) override
         {
             if (n < 1)
@@ -150,9 +150,9 @@ namespace Disruptor
             return nextSequence;
         }
 
-        /// <summary>
-        /// Get the remaining capacity for this sequencer. return The number of slots remaining.
-        /// </summary>
+        /**
+         * Get the remaining capacity for this sequencer. return The number of slots remaining.
+         */ 
         std::int64_t getRemainingCapacity() override
         {
             auto nextValue = m_fields.nextValue;
@@ -163,56 +163,58 @@ namespace Disruptor
             return this->bufferSize() - (produced - consumed);
         }
 
-        /// <summary>
-        /// Claim a specific sequence when only one publisher is involved.
-        /// </summary>
-        /// <param name="sequence">sequence to be claimed.</param>
+        /**
+         * Claim a specific sequence when only one publisher is involved.
+         * 
+         * \param sequence sequence to be claimed.
+         */ 
         void claim(std::int64_t sequence) override
         {
             m_fields.nextValue = sequence;
         }
 
-        /// <summary>
-        /// Publish an event and make it visible to <see cref="IEventProcessor"/>s
-        /// </summary>
-        /// <param name="sequence">sequence to be published</param>
+        /**
+         * Publish an event and make it visible to IEventProcessors
+         * 
+         * \param sequence sequence to be published
+         */ 
         void publish(std::int64_t sequence) override
         {
             this->m_cursorRef.setValue(sequence);
             this->m_waitStrategyRef.signalAllWhenBlocking();
         }
 
-        /// <summary>
-        /// Batch publish sequences.  Called when all of the events have been filled.
-        /// </summary>
-        /// <param name="lo">first sequence number to publish</param>
-        /// <param name="hi">last sequence number to publish</param>
+        /**
+         * Batch publish sequences.  Called when all of the events have been filled.
+         *
+         * \param lo first sequence number to publish
+         * \param hi last sequence number to publish
+         */ 
         void publish(std::int64_t /*lo*/, std::int64_t hi) override
         {
             publish(hi);
         }
 
-        /// <summary>
-        /// Confirms if a sequence is published and the event is available for use; non-blocking.
-        /// </summary>
-        /// <param name="sequence">sequence of the buffer to check</param>
-        /// <returns>true if the sequence is available for use, false if not</returns>
+        /**
+         * Confirms if a sequence is published and the event is available for use; non-blocking.
+         * 
+         * \param sequence sequence of the buffer to check
+         * \returns true if the sequence is available for use, false if not
+         */ 
         bool isAvailable(std::int64_t sequence) override
         {
             return sequence <= this->m_cursorRef.value();
         }
 
-        /// <summary>
-        /// Get the highest sequence number that can be safely read from the ring buffer.  Depending
-        /// on the implementation of the Sequencer this call may need to scan a number of values
-        /// in the Sequencer.  The scan will range from nextSequence to availableSequence.  If
-        /// there are no available values <code>&amp;gt;= nextSequence</code> the return value will be
-        /// <code>nextSequence - 1</code>.  To work correctly a consumer should pass a value that
-        /// it 1 higher than the last sequence that was successfully processed.
-        /// </summary>
-        /// <param name="nextSequence">The sequence to start scanning from.</param>
-        /// <param name="availableSequence">The sequence to scan to.</param>
-        /// <returns>The highest value that can be safely read, will be at least <code>nextSequence - 1</code>.</returns>
+        /**
+         * Get the highest sequence number that can be safely read from the ring buffer. Depending on the implementation of the Sequencer this call may need to scan a number of values
+         * in the Sequencer.  The scan will range from nextSequence to availableSequence. If there are no available values > nextSequence the return value will be nextSequence - 1.
+         * To work correctly a consumer should pass a value that is 1 higher than the last sequence that was successfully processed.
+         * 
+         * \param nextSequence The sequence to start scanning from.
+         * \param availableSequence The sequence to scan to.
+         * \returns The highest value that can be safely read, will be at least nextSequence - 1</code>.
+         */
         std::int64_t getHighestPublishedSequence(std::int64_t /*nextSequence*/, std::int64_t availableSequence) override
         {
             return availableSequence;

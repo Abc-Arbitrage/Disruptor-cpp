@@ -14,17 +14,17 @@ namespace Disruptor
     public:
         explicit TimeoutBlockingWaitStrategy(ClockConfig::Duration timeout);
 
-        /// <summary>
-        /// <see cref="IWaitStrategy.WaitFor"/>
-        /// </summary>
+        /**
+         * \see IWaitStrategy.waitFor
+         */ 
         std::int64_t waitFor(std::int64_t sequence,
                              const std::shared_ptr< Sequence >& cursor,
                              const std::shared_ptr< ISequence >& dependentSequence,
                              const std::shared_ptr< ISequenceBarrier >& barrier) override;
 
-        /// <summary>
-        /// <see cref="IWaitStrategy.SignalAllWhenBlocking"/>
-        /// </summary>
+        /**
+         * \see IWaitStrategy.signalAllWhenBlocking
+         */ 
         void signalAllWhenBlocking() override;
 
         void writeDescriptionTo(std::ostream& stream) const override;

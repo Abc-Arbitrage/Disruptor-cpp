@@ -3,19 +3,19 @@
 
 namespace Disruptor
 {
-    /// <summary>
-    /// Defines producer types to support creation of RingBuffer with correct sequencer and publisher.
-    /// </summary>
+    /**
+     * Defines producer types to support creation of RingBuffer with correct sequencer and publisher.
+     */ 
     enum class ProducerType
     {
-        /// <summary>
-        /// Create a RingBuffer with a single event publisher to the RingBuffer
-        /// </summary>
+        /**
+         * Create a RingBuffer with a single event publisher to the RingBuffer
+         */ 
         Single,
 
-        /// <summary>
-        /// Create a RingBuffer supporting multiple event publishers to the one RingBuffer
-        /// </summary>
+        /**
+         * Create a RingBuffer supporting multiple event publishers to the one RingBuffer
+         */ 
         Multi
     };
 

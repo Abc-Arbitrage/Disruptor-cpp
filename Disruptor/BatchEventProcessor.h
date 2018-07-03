@@ -18,25 +18,25 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// Convenience class for handling the batching semantics of consuming events from a <see cref="RingBuffer{T}"/>
-    /// and delegating the available events to an <see cref="IEventHandler{T}"/>.
-    /// 
-    /// If the <see cref="BatchEventProcessor{T}"/> also implements <see cref="ILifecycleAware"/> it will be notified just after the thread
-    /// is started and just before the thread is shutdown.
-    /// </summary>
-    /// <typeparam name="T">Event implementation storing the data for sharing during exchange or parallel coordination of an event.</typeparam>
+    /**
+     * Convenience class for handling the batching semantics of consuming events from a RingBuffer<T>
+     * and delegating the available events to an IEventHandler<T>. If the BatchEventProcessor<T>
+     * also implements ILifecycleAware it will be notified just after the thread is started and just before the thread is shutdown.
+     * 
+     * \tparam T Event implementation storing the data for sharing during exchange or parallel coordination of an event.
+     */
     template <class T>
     class BatchEventProcessor : public IEventProcessor
     {
     public:
-        /// <summary>
-        /// Construct a <see cref="BatchEventProcessor{T}"/> that will automatically track the progress by updating its sequence when
-        /// the <see cref="IEventHandler{T}.OnEvent"/> method returns.
-        /// </summary>
-        /// <param name="dataProvider">dataProvider to which events are published</param>
-        /// <param name="sequenceBarrier">SequenceBarrier on which it is waiting.</param>
-        /// <param name="eventHandler">eventHandler is the delegate to which events are dispatched.</param>
+        /**
+         * Construct a BatchEventProcessor<T>
+         * that will automatically track the progress by updating its sequence when the IEventHandler<T>.OnEvent returns.
+         *
+         * \param dataProvider dataProvider to which events are published
+         * \param sequenceBarrier SequenceBarrier on which it is waiting.
+         * \param eventHandler eventHandler is the delegate to which events are dispatched.
+         */
         BatchEventProcessor(const std::shared_ptr< IDataProvider< T > >& dataProvider,
                             const std::shared_ptr< ISequenceBarrier >& sequenceBarrier,
                             const std::shared_ptr< IEventHandler< T > >& eventHandler)
@@ -57,36 +57,39 @@ namespace Disruptor
             m_timeoutHandler = std::dynamic_pointer_cast< ITimeoutHandler >(eventHandler);
         }
 
-        /// <summary>
-        /// <see cref="IEventProcessor.Sequence"/>
-        /// </summary>
+        /**
+         * \see IEventProcessor::Sequence
+         */ 
         std::shared_ptr< ISequence > sequence() const override
         {
             return m_sequence;
         };
 
-        /// <summary>
-        /// Signal that this <see cref="IEventProcessor"/> should stop when it has finished consuming at the next clean break.
-        /// It will call <see cref="ISequenceBarrier.Alert"/> to notify the thread to check status.
-        /// </summary>
+        /**
+         * Signal that this IEventProcessor should stop when it has finished consuming at the next clean break. It will call ISequenceBarrier::Alert
+         * to notify the thread to check status.
+         * \see IEventProcessor
+         * \see ISequenceBarrier::Alert
+         */ 
         void halt() override
         {
             m_running = false;
             m_sequenceBarrier->alert();
         }
 
-        /// <summary>
-        /// <see cref="IEventProcessor.IsRunning"/>
-        /// </summary>
+        /**
+         * \see IEventProcessor::IsRunning
+         */ 
         bool isRunning() const override
         {
             return m_running;
         }
 
-        /// <summary>
-        /// Set a new <see cref="IExceptionHandler{T}"/> for handling exceptions propagated out of the <see cref="BatchEventProcessor{T}"/>
-        /// </summary>
-        /// <param name="exceptionHandler">exceptionHandler to replace the existing exceptionHandler.</param>
+        /**
+         * Set a new IExceptionHandler<T> for handling exceptions propagated out of the BatchEventProcessor<T>
+         *
+         * \param exceptionHandler exceptionHandler to replace the existing exceptionHandler.
+         */ 
         void setExceptionHandler(const std::shared_ptr< IExceptionHandler< T > >& exceptionHandler)
         {
             if (exceptionHandler == nullptr)
@@ -95,9 +98,9 @@ namespace Disruptor
             m_exceptionHandler = exceptionHandler;
         }
 
-        /// <summary>
-        /// It is ok to have another thread rerun this method after a halt().
-        /// </summary>
+        /**
+         * It is ok to have another thread rerun this method after a halt().
+         */ 
         void run() override
         {
             if (m_running.exchange(true) != false)

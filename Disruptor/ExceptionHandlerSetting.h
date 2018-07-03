@@ -9,12 +9,11 @@
 namespace Disruptor
 {
 
-    /// <summary>
-    /// A support class used as part of setting an exception handler for a specific event handler.
-    /// For example:
-    /// <code>disruptorWizard.HandleExceptionsIn(eventHandler).With(exceptionHandler);</code>
-    /// </summary>
-    /// <typeparam name="T">the type of event being handled.</typeparam>
+    /**
+     * A support class used as part of setting an exception handler for a specific event handler.
+     *
+     * \tparam T the type of event being handled.
+     */ 
     template <class T>
     class ExceptionHandlerSetting
     {
@@ -26,10 +25,11 @@ namespace Disruptor
         {
         }
         
-        /// <summary>
-        /// Specify the <see cref="IExceptionHandler{T}"/> to use with the event handler.
-        /// </summary>
-        /// <param name="exceptionHandler">exceptionHandler the exception handler to use.</param>
+        /**
+         * Specify the IExceptionHandler<T> to use with the event handler.
+         * 
+         * \param exceptionHandler exceptionHandler the exception handler to use.
+         */ 
         void with(const std::shared_ptr< IExceptionHandler< T > >& exceptionHandler)
         {
             std::dynamic_pointer_cast< BatchEventProcessor< T > >(m_consumerRepository->getEventProcessorFor(m_eventHandler))->setExceptionHandler(exceptionHandler);
