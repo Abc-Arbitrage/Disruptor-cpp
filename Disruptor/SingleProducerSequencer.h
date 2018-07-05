@@ -99,9 +99,10 @@ namespace Disruptor
 
             if (wrapPoint > cachedGatingSequence || cachedGatingSequence > nextValue)
             {
-                std::int64_t minSequence;
+                this->m_cursor->setValueVolatile(nextValue);
 
                 SpinWait spinWait;
+                std::int64_t minSequence;
                 while (wrapPoint > (minSequence = Util::getMinimumSequence(this->m_gatingSequences, nextValue)))
                 {
                     this->m_waitStrategyRef.signalAllWhenBlocking();
