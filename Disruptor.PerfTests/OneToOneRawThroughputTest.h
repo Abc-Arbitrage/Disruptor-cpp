@@ -67,7 +67,7 @@ namespace PerfTests
         std::int32_t requiredProcessorCount() const override;
 
     private:
-        void waitForEventProcessorSequence(std::int64_t expectedCount);
+        void waitForEventProcessorSequence(std::int64_t expectedCount) const;
 
         const std::int32_t m_bufferSize = 1024 * 64;
 
@@ -90,7 +90,7 @@ namespace PerfTests
 
         void reset(const std::shared_ptr< Tests::ManualResetEvent >& latch, std::int64_t expectedCount);
 
-        void run();
+        void run() const;
 
         std::shared_ptr< Sequence > sequence = std::make_shared< Sequence >(-1);
 

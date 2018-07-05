@@ -56,7 +56,7 @@ namespace PerfTests
         return 2;
     }
 
-    void OneToOneRawThroughputTest::waitForEventProcessorSequence(std::int64_t expectedCount)
+    void OneToOneRawThroughputTest::waitForEventProcessorSequence(std::int64_t expectedCount) const
     {
         while (m_myRunnable->sequence->value() != expectedCount)
         {
@@ -75,7 +75,7 @@ namespace PerfTests
         m_expectedCount = expectedCount;
     }
 
-    void OneToOneRawThroughputTest::MyRunnable::run()
+    void OneToOneRawThroughputTest::MyRunnable::run() const
     {
         auto expected = m_expectedCount;
 
@@ -85,11 +85,13 @@ namespace PerfTests
         try
         {
             std::int64_t processed;
+
             do
             {
                 processed = b.waitFor(s.value() + 1);
                 s.setValue(processed);
-            } while (processed < expected);
+            }
+            while (processed < expected);
 
             m_latch->set();
             s.setValueVolatile(processed);
