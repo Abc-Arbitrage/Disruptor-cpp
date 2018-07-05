@@ -19,7 +19,8 @@ namespace Tests
         std::thread([=] { sequencerUpdater->run(); }).detach();
         sequencerUpdater->waitForStartup();
         auto cursor = std::make_shared< Sequence >(0);
-        auto sequence = waitStrategy->waitFor(0, cursor, sequencerUpdater->sequence, std::make_shared< DummySequenceBarrier >());
+        auto barrier = std::make_shared< DummySequenceBarrier >();
+        auto sequence = waitStrategy->waitFor(0, *cursor, *sequencerUpdater->sequence, *barrier);
 
         BOOST_CHECK_EQUAL(sequence, 0L);
     }

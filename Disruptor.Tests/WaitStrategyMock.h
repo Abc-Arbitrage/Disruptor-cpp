@@ -16,10 +16,7 @@ namespace Tests
     class WaitStrategyMock : public IWaitStrategy
     {
     public:
-        MOCK_METHOD4(waitFor, std::int64_t(std::int64_t sequence,
-                                           const std::shared_ptr< Sequence >& cursor,
-                                           const std::shared_ptr< ISequence >& dependentSequence,
-                                           const std::shared_ptr< ISequenceBarrier >& barrier));
+        MOCK_METHOD4(waitFor, std::int64_t(std::int64_t sequence, Sequence& cursor, ISequence& dependentSequence, ISequenceBarrier& barrier));
 
         MOCK_METHOD0(signalAllWhenBlocking, void());
         

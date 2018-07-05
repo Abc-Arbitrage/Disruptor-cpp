@@ -31,7 +31,7 @@ namespace Disruptor
     {
         checkAlert();
 
-        auto availableSequence = m_waitStrategyRef.waitFor(sequence, m_cursorSequence, m_dependentSequence, shared_from_this());
+        auto availableSequence = m_waitStrategyRef.waitFor(sequence, *m_cursorSequence, *m_dependentSequence, *shared_from_this());
 
         if (availableSequence < sequence)
             return availableSequence;

@@ -12,16 +12,16 @@ namespace Disruptor
 {
 
     std::int64_t SpinWaitWaitStrategy::waitFor(std::int64_t sequence,
-                                               const std::shared_ptr< Sequence >& /*cursor*/,
-                                               const std::shared_ptr< ISequence >& dependentSequence,
-                                               const std::shared_ptr< ISequenceBarrier >& barrier)
+                                               Sequence& /*cursor*/,
+                                               ISequence& dependentSequence,
+                                               ISequenceBarrier& barrier)
     {
         std::int64_t availableSequence;
 
         SpinWait spinWait;
-        while ((availableSequence = dependentSequence->value()) < sequence)
+        while ((availableSequence = dependentSequence.value()) < sequence)
         {
-            barrier->checkAlert();
+            barrier.checkAlert();
             spinWait.spinOnce();
         }
 

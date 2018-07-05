@@ -23,9 +23,9 @@ namespace Disruptor
          * \returns the sequence that is available which may be greater than the requested sequence.
          */ 
         std::int64_t waitFor(std::int64_t sequence,
-                             const std::shared_ptr< Sequence >& cursor,
-                             const std::shared_ptr< ISequence >& dependentSequence,
-                             const std::shared_ptr< ISequenceBarrier >& barrier) override;
+                             Sequence& cursor,
+                             ISequence& dependentSequence,
+                             ISequenceBarrier& barrier) override;
 
         /**
          * Signal those IEventProcessor waiting that the cursor has advanced.

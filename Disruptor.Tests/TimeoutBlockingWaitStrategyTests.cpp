@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE(ShouldTimeoutWaitFor)
     auto theTimeout = std::chrono::milliseconds(500);
     auto waitStrategy = std::make_shared< TimeoutBlockingWaitStrategy >(theTimeout);
     auto cursor = std::make_shared< Sequence >(5);
-    auto dependent = cursor;
+    const auto& dependent = cursor;
 
     EXPECT_CALL(*sequenceBarrierMock, checkAlert()).Times(testing::AtLeast(1));
 
@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(ShouldTimeoutWaitFor)
 
     try
     {
-        waitStrategy->waitFor(6, cursor, dependent, sequenceBarrierMock);
+        waitStrategy->waitFor(6, *cursor, *dependent, *sequenceBarrierMock);
         throw std::runtime_error("TimeoutException should have been thrown");
     }
     catch (TimeoutException&)
