@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Disruptor.PerfTests/TestInfo.h"
+#include "Disruptor.PerfTests/TestFactory.h"
 #include "Disruptor.PerfTests/ThroughputTestSessionResult.h"
 
 
@@ -20,7 +20,7 @@ namespace PerfTests
         void run();
 
     private:
-        void checkProcessorsRequirements() const;
+        static void checkProcessorsRequirements(const std::shared_ptr<IThroughputTest>& test);
         std::int64_t getAverageThroughput();
 
 #ifdef _DEBUG

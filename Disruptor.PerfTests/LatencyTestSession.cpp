@@ -17,7 +17,9 @@ namespace PerfTests
 
     void LatencyTestSession::run()
     {
-        checkProcessorsRequirements(m_testInfo.instance);
+        auto testInstance = m_testInfo.factory();
+
+        checkProcessorsRequirements(testInstance);
 
         std::cout << "Latency Test to run => " << m_testInfo.name << ", Runs => " << m_runs << std::endl;
         std::cout << "Starting latency tests" << std::endl;;
@@ -30,7 +32,7 @@ namespace PerfTests
 
             try
             {
-                m_testInfo.instance->run(stopwatch, histogram);
+                testInstance->run(stopwatch, histogram);
             }
             catch (std::exception& ex)
             {

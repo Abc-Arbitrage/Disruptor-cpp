@@ -24,7 +24,9 @@ namespace PerfTests
 
     void ThroughputTestSession::run()
     {
-        checkProcessorsRequirements();
+        auto testInstance = m_testInfo.factory();
+
+        checkProcessorsRequirements(testInstance);
 
         std::cout << "Throughput Test to run => " << m_testInfo.name << ", Runs => " << m_runs << std::endl;
         std::cout << "Starting throughput tests" << std::endl;
@@ -39,7 +41,7 @@ namespace PerfTests
 
             try
             {
-                totalOperationsInRun = m_testInfo.instance->run(stopwatch);
+                totalOperationsInRun = testInstance->run(stopwatch);
             }
             catch (std::exception& ex)
             {
@@ -70,14 +72,14 @@ namespace PerfTests
     }
 
 
-    void Disruptor::PerfTests::ThroughputTestSession::checkProcessorsRequirements() const
+    void ThroughputTestSession::checkProcessorsRequirements(const std::shared_ptr<IThroughputTest>& test)
     {
         auto availableProcessors = static_cast< std::int32_t >(std::thread::hardware_concurrency());
-        if (m_testInfo.instance->requiredProcessorCount() <= availableProcessors)
+        if (test->requiredProcessorCount() <= availableProcessors)
             return;
 
         std::cout << "*** Warning ***: your system has insufficient processors to execute the test efficiently. " << std::endl;
-        std::cout << "Processors required = " << m_testInfo.instance->requiredProcessorCount() << ", available = " << availableProcessors << std::endl;
+        std::cout << "Processors required = " << test->requiredProcessorCount() << ", available = " << availableProcessors << std::endl;
     }
 
 } // namespace PerfTests

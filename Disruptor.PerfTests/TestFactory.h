@@ -12,15 +12,15 @@ namespace PerfTests
 {
 
     template <class TTest>
-    struct TestInfo
+    struct TestFactory
     {
         std::string name;
-        std::shared_ptr< TTest > instance;
+        std::function<std::shared_ptr< TTest >()> factory;
     };
 
 
-    using ThroughputTestInfo = TestInfo< IThroughputTest >;
-    using LatencyTestInfo = TestInfo< ILatencyTest >;
+    using ThroughputTestInfo = TestFactory< IThroughputTest >;
+    using LatencyTestInfo = TestFactory< ILatencyTest >;
 
 } // namespace PerfTests
 } // namespace Disruptor

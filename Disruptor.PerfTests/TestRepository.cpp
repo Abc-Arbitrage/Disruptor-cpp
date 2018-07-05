@@ -62,17 +62,17 @@ namespace PerfTests
         registerTest< TwoToTwoWorkProcessorThroughputTest >();
     }
 
-    void TestRepository::registerTest(const TypeInfo& typeInfo, const std::shared_ptr< IThroughputTest >& testInstance)
+    void TestRepository::registerTest(const TypeInfo& typeInfo, const std::function<std::shared_ptr< IThroughputTest >()>& testFactory)
     {
-        ThroughputTestInfo info{ typeInfo.name(), testInstance };
+        ThroughputTestInfo info{ typeInfo.name(), testFactory };
 
         m_throughputTestInfosByName.insert(std::make_pair(boost::algorithm::to_lower_copy(typeInfo.fullyQualifiedName()), info));
         m_throughputTestInfosByName.insert(std::make_pair(boost::algorithm::to_lower_copy(typeInfo.name()), info));
     }
 
-    void TestRepository::registerTest(const TypeInfo& typeInfo, const std::shared_ptr< ILatencyTest >& testInstance)
+    void TestRepository::registerTest(const TypeInfo& typeInfo, const std::function<std::shared_ptr< ILatencyTest >()>& testFactory)
     {
-        LatencyTestInfo info{ typeInfo.name(), testInstance };
+        LatencyTestInfo info{ typeInfo.name(), testFactory };
 
         m_latencyTestInfosByName.insert(std::make_pair(boost::algorithm::to_lower_copy(typeInfo.fullyQualifiedName()), info));
         m_latencyTestInfosByName.insert(std::make_pair(boost::algorithm::to_lower_copy(typeInfo.name()), info));

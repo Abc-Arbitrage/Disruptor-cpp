@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 
-#include "Disruptor.PerfTests/TestInfo.h"
+#include "Disruptor.PerfTests/TestFactory.h"
 #include "LatencyTestSessionResult.h"
 
 
