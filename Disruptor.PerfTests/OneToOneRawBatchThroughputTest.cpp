@@ -72,10 +72,11 @@ namespace PerfTests
             {
                 processed = m_barrier->waitFor(sequence->value() + 1);
                 sequence->setValue(processed);
-            } while (processed < expected);
+            }
+            while (processed < expected);
 
             m_latch->set();
-            sequence->setValueVolatile(processed);
+            sequence->setValue(processed);
         }
         catch (std::exception& ex)
         {

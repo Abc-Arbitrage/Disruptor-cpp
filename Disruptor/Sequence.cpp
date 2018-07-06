@@ -24,11 +24,6 @@ namespace Disruptor
         std::atomic_store_explicit(&m_fieldsValue, value, std::memory_order_release);
     }
 
-    void Sequence::setValueVolatile(std::int64_t value)
-    {
-        m_fieldsValue = value;
-    }
-
     bool Sequence::compareAndSet(std::int64_t expectedSequence, std::int64_t nextSequence)
     {
         return std::atomic_compare_exchange_strong(&m_fieldsValue, &expectedSequence, nextSequence);

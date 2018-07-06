@@ -25,13 +25,6 @@ namespace Disruptor
         virtual void setValue(std::int64_t value) = 0;
 
         /**
-         * Performs a volatile write of this sequence.  The intent is a Store/Store barrier between this write and any previous write and a Store/Load barrier between this write and any subsequent volatile read.
-         * 
-         * \param value 
-         */ 
-        virtual void setValueVolatile(std::int64_t value) = 0;
-
-        /**
          * Atomically set the value to the given updated value if the current value == the expected value.
          * 
          * \param expectedSequence the expected value for the sequence

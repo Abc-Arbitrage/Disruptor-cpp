@@ -97,10 +97,6 @@ namespace Disruptor
         {
         }
 
-        void setValueVolatile(std::int64_t /*value*/) override
-        {
-        }
-
         bool compareAndSet(std::int64_t /*expectedSequence*/, std::int64_t /*nextSequence*/) override
         {
             return false;

@@ -74,11 +74,6 @@ namespace Tests
         m_sequenceImplementation->setValue(value);
     }
 
-    void SequenceBarrierTestsFixture::CountDownEventSequence::setValueVolatile(std::int64_t value)
-    {
-        m_sequenceImplementation->setValueVolatile(value);
-    }
-
     bool SequenceBarrierTestsFixture::CountDownEventSequence::compareAndSet(std::int64_t expectedSequence, std::int64_t nextSequence)
     {
         return m_sequenceImplementation->compareAndSet(expectedSequence, nextSequence);

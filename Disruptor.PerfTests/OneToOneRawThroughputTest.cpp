@@ -94,7 +94,7 @@ namespace PerfTests
             while (processed < expected);
 
             m_latch->set();
-            s.setValueVolatile(processed);
+            s.setValue(processed);
         }
         catch (std::exception& ex)
         {

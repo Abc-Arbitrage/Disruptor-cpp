@@ -35,13 +35,6 @@ namespace Disruptor
         void setValue(std::int64_t value) override;
 
         /**
-         * Performs a volatile write of this sequence. The intent is a Store/Store barrier between this write and any previous write and a Store/Load barrier between this write and any subsequent volatile read.
-         * 
-         * \param value 
-         */
-        void setValueVolatile(std::int64_t value) override;
-
-        /**
          * Atomically set the value to the given updated value if the current value == the expected value.
          *
          * \param expectedSequence the expected value for the sequence
@@ -72,9 +65,9 @@ namespace Disruptor
         static const std::int64_t InitialCursorValue;
 
     private:
-        char padding0[56];
+        char m_padding0[56] = {};
         std::atomic< std::int64_t > m_fieldsValue;
-        char padding1[56];
+        char m_padding1[56] = {};
     };
 
 } // namespace Disruptor

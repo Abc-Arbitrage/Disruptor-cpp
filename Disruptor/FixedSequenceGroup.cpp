@@ -25,11 +25,6 @@ namespace Disruptor
         DISRUPTOR_THROW_NOT_SUPPORTED_EXCEPTION();
     }
 
-    void FixedSequenceGroup::setValueVolatile(std::int64_t /*value*/)
-    {
-        DISRUPTOR_THROW_NOT_SUPPORTED_EXCEPTION();
-    }
-
     bool FixedSequenceGroup::compareAndSet(std::int64_t /*expectedValue*/, std::int64_t /*newValue*/)
     {
         DISRUPTOR_THROW_NOT_SUPPORTED_EXCEPTION();
