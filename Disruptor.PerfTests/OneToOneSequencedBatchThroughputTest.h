@@ -16,34 +16,33 @@ namespace Disruptor
 namespace PerfTests
 {
 
-    /// <summary>
-    /// UniCast a series of items between 1 publisher and 1 event processor
-    /// 
-    /// <code>
-    /// +----+    +-----+
-    /// | P1 |--->| EP1 |
-    /// +----+    +-----+
-    /// 
-    /// Disruptor:
-    /// ==========
-    ///              track to prevent wrap
-    ///              +------------------+
-    ///              |                  |
-    ///              |                  v
-    /// +----+    +====+    +====+   +-----+
-    /// | P1 |---›| RB |‹---| SB |   | EP1 |
-    /// +----+    +====+    +====+   +-----+
-    ///      claim      get    ^        |
-    ///                        |        |
-    ///                        +--------+
-    ///                          waitFor
-    /// 
-    /// P1  - Publisher 1
-    /// RB  - RingBuffer
-    /// SB  - SequenceBarrier
-    /// EP1 - EventProcessor 1
-    /// </code>
-    /// </summary>
+    /**
+     * UniCast a series of items between 1 publisher and 1 event processor
+     * 
+     * +----+    +-----+
+     * | P1 |--->| EP1 |
+     * +----+    +-----+
+     * 
+     * Disruptor:
+     * ==========
+     *              track to prevent wrap
+     *              +------------------+
+     *              |                  |
+     *              |                  v
+     * +----+    +====+    +====+   +-----+
+     * | P1 |---›| RB |‹---| SB |   | EP1 |
+     * +----+    +====+    +====+   +-----+
+     *      claim      get    ^        |
+     *                        |        |
+     *                        +--------+
+     *                          waitFor
+     * 
+     * P1  - Publisher 1
+     * RB  - RingBuffer
+     * SB  - SequenceBarrier
+     * EP1 - EventProcessor 1
+     * 
+     **/
     class OneToOneSequencedBatchThroughputTest : public IThroughputTest
     {
     public:

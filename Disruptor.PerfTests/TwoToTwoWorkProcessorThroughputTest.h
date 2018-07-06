@@ -16,23 +16,25 @@ namespace Disruptor
 namespace PerfTests
 {
 
-    /// <summary>
-    /// Sequence a series of events from multiple publishers going to multiple work processors.
-    /// 
-    /// +----+                  +-----+
-    /// | P1 |---+          +-->| WP1 |
-    /// +----+   |  +-----+ |   +-----+
-    ///          +->| RB1 |-+
-    /// +----+   |  +-----+ |   +-----+
-    /// | P2 |---+          +-->| WP2 |
-    /// +----+                  +-----+
-    /// 
-    /// P1  - Publisher 1
-    /// P2  - Publisher 2
-    /// RB  - RingBuffer
-    /// WP1 - EventProcessor 1
-    /// WP2 - EventProcessor 2
-    /// </summary>
+    /**
+     *
+     * Sequence a series of events from multiple publishers going to multiple work processors.
+     * 
+     * +----+                  +-----+
+     * | P1 |---+          +-->| WP1 |
+     * +----+   |  +-----+ |   +-----+
+     *          +->| RB1 |-+
+     * +----+   |  +-----+ |   +-----+
+     * | P2 |---+          +-->| WP2 |
+     * +----+                  +-----+
+     * 
+     * P1  - Publisher 1
+     * P2  - Publisher 2
+     * RB  - RingBuffer
+     * WP1 - EventProcessor 1
+     * WP2 - EventProcessor 2
+     * 
+     */
     class TwoToTwoWorkProcessorThroughputTest : public IThroughputTest
     {
         class ValuePublisher;

@@ -15,43 +15,44 @@ namespace Disruptor
 namespace PerfTests
 {
 
-    /// <summary>
-    /// Sequence a series of events from multiple publishers going to one event processor.
-    /// +----+
-    /// | P1 |------+
-    /// +----+      |
-    ///             v
-    /// +----+    +-----+
-    /// | P1 |--->| EP1 |
-    /// +----+    +-----+
-    ///             ^
-    /// +----+      |
-    /// | P3 |------+
-    /// +----+
-    /// Disruptor:
-    /// ==========
-    ///             track to prevent wrap
-    ///             +--------------------+
-    ///             |                    |
-    ///             |                    v
-    /// +----+    +====+    +====+    +-----+
-    /// | P1 |--->| RB |/---| SB |    | EP1 |
-    /// +----+    +====+    +====+    +-----+
-    ///             ^   get    ^         |
-    /// +----+      |          |         |
-    /// | P2 |------+          +---------+
-    /// +----+      |            waitFor
-    ///             |
-    /// +----+      |
-    /// | P3 |------+
-    /// +----+
-    /// P1  - Publisher 1
-    /// P2  - Publisher 2
-    /// P3  - Publisher 3
-    /// RB  - RingBuffer
-    /// SB  - SequenceBarrier
-    /// EP1 - EventProcessor 1
-    /// </summary>
+    /**
+     * Sequence a series of events from multiple publishers going to one event processor.
+     * +----+
+     * | P1 |------+
+     * +----+      |
+     *             v
+     * +----+    +-----+
+     * | P1 |--->| EP1 |
+     * +----+    +-----+
+     *             ^
+     * +----+      |
+     * | P3 |------+
+     * +----+
+     * Disruptor:
+     * ==========
+     *             track to prevent wrap
+     *             +--------------------+
+     *             |                    |
+     *             |                    v
+     * +----+    +====+    +====+    +-----+
+     * | P1 |--->| RB |/---| SB |    | EP1 |
+     * +----+    +====+    +====+    +-----+
+     *             ^   get    ^         |
+     * +----+      |          |         |
+     * | P2 |------+          +---------+
+     * +----+      |            waitFor
+     *             |
+     * +----+      |
+     * | P3 |------+
+     * +----+
+     * P1  - Publisher 1
+     * P2  - Publisher 2
+     * P3  - Publisher 3
+     * RB  - RingBuffer
+     * SB  - SequenceBarrier
+     * EP1 - EventProcessor 1
+     * 
+     */
     class ThreeToOneSequencedBatchThroughputTest : public IThroughputTest
     {
         class ValueBatchPublisher

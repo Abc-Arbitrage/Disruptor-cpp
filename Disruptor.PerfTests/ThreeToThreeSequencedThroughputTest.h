@@ -14,32 +14,37 @@ namespace Disruptor
 namespace PerfTests
 {
 
-    /// <summary>
-    /// Sequence a series of events from multiple publishers going to one event processor.
-    /// Disruptor:
-    /// ==========
-    ///             track to prevent wrap
-    ///             +--------------------+
-    ///             |                    |
-    ///             |                    |
-    /// +----+    +====+    +====+       |
-    /// | P1 |--->| RB |--->| SB |--+    |
-    /// +----+    +====+    +====+  |    |
-    ///                             |    v
-    /// +----+    +====+    +====+  | +----+
-    /// | P2 |--->| RB |--->| SB |--+>| EP |
-    /// +----+    +====+    +====+  | +----+
-    ///                             |
-    /// +----+    +====+    +====+  |
-    /// | P3 |--->| RB |--->| SB |--+
-    /// +----+    +====+    +====+
-    /// P1 - Publisher 1
-    /// P2 - Publisher 2
-    /// P3 - Publisher 3
-    /// RB - RingBuffer
-    /// SB - SequenceBarrier
-    /// EP - EventProcessor
-    /// </summary>
+    /**
+     *
+     * Sequence a series of events from multiple publishers going to one event processor.
+     * 
+     * Disruptor:
+     * ==========
+     *             track to prevent wrap
+     *             +--------------------+
+     *             |                    |
+     *             |                    |
+     * +----+    +====+    +====+       |
+     * | P1 |--->| RB |--->| SB |--+    |
+     * +----+    +====+    +====+  |    |
+     *                             |    v
+     * +----+    +====+    +====+  | +----+
+     * | P2 |--->| RB |--->| SB |--+>| EP |
+     * +----+    +====+    +====+  | +----+
+     *                             |
+     * +----+    +====+    +====+  |
+     * | P3 |--->| RB |--->| SB |--+
+     * +----+    +====+    +====+
+     *
+     *
+     * P1 - Publisher 1
+     * P2 - Publisher 2
+     * P3 - Publisher 3
+     * RB - RingBuffer
+     * SB - SequenceBarrier
+     * EP - EventProcessor
+     *
+     */
     class ThreeToThreeSequencedThroughputTest : public IThroughputTest
     {
         using LongArrayPublisher = std::function< void(const std::shared_ptr< Tests::CountdownEvent >&,

@@ -32,12 +32,6 @@ namespace Disruptor
         void setValue(std::int64_t value) override;
 
         /**
-         * Not supported
-         * \param value 
-         */ 
-        void setValueVolatile(std::int64_t value) override;
-
-        /**
          * Not supported.
          */ 
         bool compareAndSet(std::int64_t expectedValue, std::int64_t newValue) override;

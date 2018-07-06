@@ -14,36 +14,37 @@ namespace Disruptor
 namespace PerfTests
 {
 
-    /// <summary>
-    /// Pipeline a series of stages from a publisher to ultimate event processor.
-    /// Each event processor depends on the output of the event processor.
-    /// 
-    /// +----+    +-----+    +-----+    +-----+
-    /// | P1 |--->| EP1 |--->| EP2 |--->| EP3 |
-    /// +----+    +-----+    +-----+    +-----+
-    /// 
-    /// Disruptor:
-    /// ==========
-    ///                           track to prevent wrap
-    ///              +----------------------------------------------------------------+
-    ///              |                                                                |
-    ///              |                                                                v
-    /// +----+    +====+    +=====+    +-----+    +=====+    +-----+    +=====+    +-----+
-    /// | P1 |--->| RB |    | SB1 |/---| EP1 |/---| SB2 |/---| EP2 |/---| SB3 |/---| EP3 |
-    /// +----+    +====+    +=====+    +-----+    +=====+    +-----+    +=====+    +-----+
-    ///      claim   ^  get    |   waitFor           |   waitFor           |  waitFor
-    ///              |         |                     |                     |
-    ///              +---------+---------------------+---------------------+
-    ///        
-    /// P1  - Publisher 1
-    /// RB  - RingBuffer
-    /// SB1 - SequenceBarrier 1
-    /// EP1 - EventProcessor 1
-    /// SB2 - SequenceBarrier 2
-    /// EP2 - EventProcessor 2
-    /// SB3 - SequenceBarrier 3
-    /// EP3 - EventProcessor 3
-    /// </summary>
+    /**
+     * Pipeline a series of stages from a publisher to ultimate event processor.
+     * Each event processor depends on the output of the event processor.
+     * 
+     * +----+    +-----+    +-----+    +-----+
+     * | P1 |--->| EP1 |--->| EP2 |--->| EP3 |
+     * +----+    +-----+    +-----+    +-----+
+     * 
+     * Disruptor:
+     * ==========
+     *                           track to prevent wrap
+     *              +----------------------------------------------------------------+
+     *              |                                                                |
+     *              |                                                                v
+     * +----+    +====+    +=====+    +-----+    +=====+    +-----+    +=====+    +-----+
+     * | P1 |--->| RB |    | SB1 |/---| EP1 |/---| SB2 |/---| EP2 |/---| SB3 |/---| EP3 |
+     * +----+    +====+    +=====+    +-----+    +=====+    +-----+    +=====+    +-----+
+     *      claim   ^  get    |   waitFor           |   waitFor           |  waitFor
+     *              |         |                     |                     |
+     *              +---------+---------------------+---------------------+
+     *        
+     * P1  - Publisher 1
+     * RB  - RingBuffer
+     * SB1 - SequenceBarrier 1
+     * EP1 - EventProcessor 1
+     * SB2 - SequenceBarrier 2
+     * EP2 - EventProcessor 2
+     * SB3 - SequenceBarrier 3
+     * EP3 - EventProcessor 3
+     * 
+     */
     class OneToThreePipelineSequencedThroughputTest : public IThroughputTest
     {
     public:

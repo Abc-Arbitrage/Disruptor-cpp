@@ -19,42 +19,43 @@ namespace Disruptor
 namespace PerfTests
 {
 
-    /// <summary>
-    /// UniCast a series of items between 1 publisher and 1 event processor.
-    /// +----+    +-----+
-    /// | P1 |--->| EP1 |
-    /// +----+    +-----+
-    /// 
-    /// Queue Based:
-    /// ============
-    /// 
-    ///        put take
-    /// +----+    +====+    +-----+
-    /// | P1 |---\| Q1 |/---| EP1 |
-    /// +----+    +====+    +-----+
-    /// 
-    /// P1  - Publisher 1
-    /// Q1  - Queue 1
-    /// EP1 - EventProcessor 1
-    /// 
-    /// Disruptor:
-    /// ==========
-    ///              track to prevent wrap
-    ///              +------------------+
-    ///              |                  |
-    ///              |                  v
-    /// +----+    +====+    +====+   +-----+
-    /// | P1 |--->| RB |/---| SB |   | EP1 |
-    /// +----+    +====+    +====+   +-----+
-    ///      claim get    ^        |
-    ///                        |        |
-    ///                        +--------+
-    ///                          waitFor
-    /// P1  - Publisher 1
-    /// RB  - RingBuffer
-    /// SB  - SequenceBarrier
-    /// EP1 - EventProcessor 1
-    /// </summary>
+    /**
+     *  UniCast a series of items between 1 publisher and 1 event processor.
+     *  +----+    +-----+
+     *  | P1 |--->| EP1 |
+     *  +----+    +-----+
+     *  
+     *  Queue Based:
+     *  ============
+     *  
+     *         put take
+     *  +----+    +====+    +-----+
+     *  | P1 |---\| Q1 |/---| EP1 |
+     *  +----+    +====+    +-----+
+     *  
+     *  P1  - Publisher 1
+     *  Q1  - Queue 1
+     *  EP1 - EventProcessor 1
+     *  
+     *  Disruptor:
+     *  ==========
+     *               track to prevent wrap
+     *               +------------------+
+     *               |                  |
+     *               |                  v
+     *  +----+    +====+    +====+   +-----+
+     *  | P1 |--->| RB |/---| SB |   | EP1 |
+     *  +----+    +====+    +====+   +-----+
+     *       claim get    ^        |
+     *                         |        |
+     *                         +--------+
+     *                           waitFor
+     *  P1  - Publisher 1
+     *  RB  - RingBuffer
+     *  SB  - SequenceBarrier
+     *  EP1 - EventProcessor 1
+     * 
+     */
     class OneToOneRawThroughputTest : public IThroughputTest
     {
         //C# Run: Ops:  140 078 898 - Duration: 1 428 (ms)

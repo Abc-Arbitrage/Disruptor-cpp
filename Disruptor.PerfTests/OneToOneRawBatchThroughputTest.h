@@ -53,6 +53,7 @@ namespace PerfTests
      * RB  - RingBuffer
      * SB  - SequenceBarrier
      * EP1 - EventProcessor 1
+     *
      */
     class OneToOneRawBatchThroughputTest : public IThroughputTest
     {

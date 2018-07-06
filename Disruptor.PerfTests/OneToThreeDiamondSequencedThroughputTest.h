@@ -14,46 +14,47 @@ namespace Disruptor
 namespace PerfTests
 {
 
-    /// <summary>
-    /// Produce an event replicated to two event proces
-    ///           +-----+
-    ///    +----->| EP1 |------+
-    ///    |      +-----+      |
-    ///    |                   v
-    /// +----+              +-----+
-    /// | P1 |              | EP3 |
-    /// +----+              +-----+
-    ///    |                   ^
-    ///    |      +-----+      |
-    ///    +----->| EP2 |------+
-    ///           +-----+
-    /// Disruptor:
-    /// ==========
-    ///                    track to prevent wrap
-    ///              +-------------------------------+
-    ///              |                               |
-    ///              |                               v
-    /// +----+    +====+               +=====+    +----
-    /// | P1 |---\| RB |/--------------| SB2 |/---| EP3
-    /// +----+    +====+               +=====+    +----
-    ///      claim   ^  get               |   waitFor
-    ///              |                    |
-    ///           +=====+    +-----+      |
-    ///           | SB1 |/---| EP1 |/-----+
-    ///           +=====+    +-----+      |
-    ///              ^                    |
-    ///              |       +-----+      |
-    ///              +-------| EP2 |/-----+
-    ///             waitFor  +-----+
-    /// 
-    /// P1  - Publisher 1
-    /// RB  - RingBuffer
-    /// SB1 - SequenceBarrier 1
-    /// EP1 - EventProcessor 1
-    /// EP2 - EventProcessor 2
-    /// SB2 - SequenceBarrier 2
-    /// EP3 - EventProcessor 3
-    /// </summary>
+    /**
+     * Produce an event replicated to two event proces
+     *           +-----+
+     *    +----->| EP1 |------+
+     *    |      +-----+      |
+     *    |                   v
+     * +----+              +-----+
+     * | P1 |              | EP3 |
+     * +----+              +-----+
+     *    |                   ^
+     *    |      +-----+      |
+     *    +----->| EP2 |------+
+     *           +-----+
+     * Disruptor:
+     * ==========
+     *                    track to prevent wrap
+     *              +-------------------------------+
+     *              |                               |
+     *              |                               v
+     * +----+    +====+               +=====+    +----
+     * | P1 |---\| RB |/--------------| SB2 |/---| EP3
+     * +----+    +====+               +=====+    +----
+     *      claim   ^  get               |   waitFor
+     *              |                    |
+     *           +=====+    +-----+      |
+     *           | SB1 |/---| EP1 |/-----+
+     *           +=====+    +-----+      |
+     *              ^                    |
+     *              |       +-----+      |
+     *              +-------| EP2 |/-----+
+     *             waitFor  +-----+
+     *
+     * P1  - Publisher 1
+     * RB  - RingBuffer
+     * SB1 - SequenceBarrier 1
+     * EP1 - EventProcessor 1
+     * EP2 - EventProcessor 2
+     * SB2 - SequenceBarrier 2
+     * EP3 - EventProcessor 3
+     *
+     */
     class OneToThreeDiamondSequencedThroughputTest : public IThroughputTest
     {
     public:

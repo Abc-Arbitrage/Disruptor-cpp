@@ -15,39 +15,40 @@ namespace Disruptor
 namespace PerfTests
 {
 
-    /// <summary>
-    /// MultiCast a series of items between 1 publisher and 3 event processors.
-    ///           +-----+
-    ///    +----->| EP1 |
-    ///    |      +-----+
-    ///    |
-    /// +----+    +-----+
-    /// | P1 |--->| EP2 |
-    /// +----+    +-----+
-    ///    |
-    ///    |      +-----+
-    ///    +----->| EP3 |
-    ///           +-----+
-    /// Disruptor:
-    /// ==========
-    ///                             track to prevent wrap
-    ///             +--------------------+----------+----------+
-    ///             |                    |          |          |
-    ///             |                    v          v          v
-    /// +----+    +====+    +====+    +-----+    +-----+    +-----+
-    /// | P1 |---\| RB |/---| SB |    | EP1 |    | EP2 |    | EP3 |
-    /// +----+    +====+    +====+    +-----+    +-----+    +-----+
-    ///      claim      get    ^         |          |          |
-    ///                        |         |          |          |
-    ///                        +---------+----------+----------+
-    ///                                      waitFor
-    /// P1  - Publisher 1
-    /// RB  - RingBuffer
-    /// SB  - SequenceBarrier
-    /// EP1 - EventProcessor 1
-    /// EP2 - EventProcessor 2
-    /// EP3 - EventProcessor 3
-    /// </summary>
+    /**
+     * MultiCast a series of items between 1 publisher and 3 event processors.
+     *           +-----+
+     *    +----->| EP1 |
+     *    |      +-----+
+     *    |
+     * +----+    +-----+
+     * | P1 |--->| EP2 |
+     * +----+    +-----+
+     *    |
+     *    |      +-----+
+     *    +----->| EP3 |
+     *           +-----+
+     * Disruptor:
+     * ==========
+     *                             track to prevent wrap
+     *             +--------------------+----------+----------+
+     *             |                    |          |          |
+     *             |                    v          v          v
+     * +----+    +====+    +====+    +-----+    +-----+    +-----+
+     * | P1 |---\| RB |/---| SB |    | EP1 |    | EP2 |    | EP3 |
+     * +----+    +====+    +====+    +-----+    +-----+    +-----+
+     *      claim      get    ^         |          |          |
+     *                        |         |          |          |
+     *                        +---------+----------+----------+
+     *                                      waitFor
+     * P1  - Publisher 1
+     * RB  - RingBuffer
+     * SB  - SequenceBarrier
+     * EP1 - EventProcessor 1
+     * EP2 - EventProcessor 2
+     * EP3 - EventProcessor 3
+     *
+     */
     class OneToThreeSequencedThroughputTest : public IThroughputTest
     {
     public:
