@@ -3,7 +3,7 @@
 
 #include "BuildConfig.h"
 
-#ifdef DISRUPTOR_OS_FAMILY_UNIX
+#ifdef DISRUPTOR_OS_FAMILY_LINUX
 
 #include <string>
 

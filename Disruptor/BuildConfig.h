@@ -62,6 +62,11 @@
 # define DISRUPTOR_OS_FAMILY_WINDOWS
 #else
 # define DISRUPTOR_OS_FAMILY_UNIX
+# ifdef __APPLE__
+#  define DISRUPTOR_OS_FAMILY_MACOS
+# else
+#  define DISRUPTOR_OS_FAMILY_LINUX
+# endif
 #endif
 
 #ifdef _DEBUG
