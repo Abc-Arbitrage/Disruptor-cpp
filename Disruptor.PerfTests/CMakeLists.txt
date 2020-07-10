@@ -1,16 +1,6 @@
 project(Disruptor.PerfTests)
 cmake_minimum_required(VERSION 2.6)
 
-
-find_package(Boost COMPONENTS system thread date_time)
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-    link_directories(${Boost_LIBRARY_DIRS})
-endif()
-
-include_directories("..")
-
-
 set(DisruptorPerfTests_sources
 
     main.cpp
@@ -52,9 +42,13 @@ set(DisruptorPerfTests_sources
     ValueMutationEventHandler.cpp
 )
 
-add_definitions(-DBOOST_TEST_DYN_LINK)
-
 add_executable(Disruptor.PerfTests ${DisruptorPerfTests_sources})
-target_link_libraries(Disruptor.PerfTests DisruptorStatic Disruptor.TestTools ${Boost_LIBRARIES} pthread)
+
+target_link_libraries(Disruptor.PerfTests
+  PRIVATE
+    DisruptorStatic
+    Disruptor.TestTools
+    pthread
+)
 
 add_custom_target(performance_test ${CMAKE_CURRENT_BINARY_DIR}/Disruptor.PerfTests)

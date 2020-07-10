@@ -1,0 +1,9 @@
+[requires]
+boost/1.72.0
+gtest/1.8.0@bincrafters/stable
+
+[generators]
+cmake
+
+[options]
+gtest:build_gmock=True

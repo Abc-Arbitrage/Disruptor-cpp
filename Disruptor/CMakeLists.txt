@@ -1,14 +1,12 @@
 project(Disruptor)
 cmake_minimum_required(VERSION 2.6)
 
-find_package(Boost COMPONENTS system thread chrono)
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-    link_directories(${Boost_LIBRARY_DIRS})
+if (WITH_CONAN)
+  set(Boost_Libraries CONAN_PKG::boost)
+else()
+  find_package(Boost COMPONENTS system thread chrono REQUIRED)
+  set(Boost_Libraries Boost::boost Boost::system Boost::thread Boost::chrono)
 endif()
-
-include_directories("..")
-
 
 set(Disruptor_sources
 
@@ -114,18 +112,59 @@ set(Disruptor_headers
     YieldingWaitStrategy.h
 )
 
-add_library(DisruptorShared SHARED ${Disruptor_sources})
-target_link_libraries(DisruptorShared ${Boost_LIBRARIES})
-set_target_properties(DisruptorShared PROPERTIES OUTPUT_NAME Disruptor)
-set_target_properties(DisruptorShared PROPERTIES VERSION ${DISRUPTOR_VERSION})
-set_target_properties(DisruptorShared PROPERTIES SOVERSION ${DISRUPTOR_VERSION_MAJOR})
+get_filename_component(PARENT_DIR ${CMAKE_CURRENT_SOURCE_DIR} DIRECTORY)
 
-add_library(DisruptorStatic STATIC ${Disruptor_sources})
-set_target_properties(DisruptorStatic PROPERTIES OUTPUT_NAME Disruptor)
+function(configure_disruptor_target DISRUPTOR_TARGET)
+  target_include_directories(${DISRUPTOR_TARGET}
+    PUBLIC
+      $<BUILD_INTERFACE:${PARENT_DIR}>
+      $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+    PRIVATE
+      ${CMAKE_CURRENT_SOURCE_DIR}
+  )
+  target_link_libraries(${DISRUPTOR_TARGET} PUBLIC ${Boost_Libraries})
+endfunction()
+
+
+set(DISRUPTOR_TARGETS)
+
+if (DISRUPTOR_BUILD_SHARED)
+  message(STATUS
+    "Building Disruptor as a shared library."
+  )
+  add_library(DisruptorShared SHARED ${Disruptor_sources})
+  configure_disruptor_target(DisruptorShared)
+  
+  set_target_properties(DisruptorShared PROPERTIES OUTPUT_NAME Disruptor)
+  set_target_properties(DisruptorShared PROPERTIES VERSION ${DISRUPTOR_VERSION})
+  set_target_properties(DisruptorShared PROPERTIES SOVERSION ${DISRUPTOR_VERSION_MAJOR})
+
+  list(APPEND DISRUPTOR_TARGETS DisruptorShared)
+endif()
+
+if (DISRUPTOR_BUILD_STATIC)
+  message(STATUS
+    "Building Disruptor as a static library."
+  )
+ add_library(DisruptorStatic STATIC ${Disruptor_sources})
+ configure_disruptor_target(DisruptorStatic)
+
+ set_target_properties(DisruptorStatic PROPERTIES OUTPUT_NAME Disruptor)
+
+ list(APPEND DISRUPTOR_TARGETS DisruptorStatic)
+endif()
+
+if (DISRUPTOR_BUILD_SHARED AND DISRUPTOR_BUILD_STATIC)
+  add_library(Disruptor ALIAS DisruptorStatic)
+elseif(DISRUPTOR_BUILD_SHARED)
+  add_library(Disruptor ALIAS DisruptorShared)
+else()
+  add_library(Disruptor ALIAS DisruptorStatic)
+endif()
 
 install(FILES ${Disruptor_headers} DESTINATION include/Disruptor)
 
-install(TARGETS DisruptorShared DisruptorStatic
+install(TARGETS ${DISRUPTOR_TARGETS}
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
 )
