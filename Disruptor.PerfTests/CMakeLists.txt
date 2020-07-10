@@ -46,7 +46,7 @@ add_executable(Disruptor.PerfTests ${DisruptorPerfTests_sources})
 
 target_link_libraries(Disruptor.PerfTests
   PRIVATE
-    DisruptorStatic
+    Disruptor
     Disruptor.TestTools
     pthread
 )

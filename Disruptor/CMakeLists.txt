@@ -146,12 +146,12 @@ if (DISRUPTOR_BUILD_STATIC)
   message(STATUS
     "Building Disruptor as a static library."
   )
- add_library(DisruptorStatic STATIC ${Disruptor_sources})
- configure_disruptor_target(DisruptorStatic)
-
- set_target_properties(DisruptorStatic PROPERTIES OUTPUT_NAME Disruptor)
-
- list(APPEND DISRUPTOR_TARGETS DisruptorStatic)
+  add_library(DisruptorStatic STATIC ${Disruptor_sources})
+  configure_disruptor_target(DisruptorStatic)
+ 
+  set_target_properties(DisruptorStatic PROPERTIES OUTPUT_NAME Disruptor)
+ 
+  list(APPEND DISRUPTOR_TARGETS DisruptorStatic)
 endif()
 
 if (DISRUPTOR_BUILD_SHARED AND DISRUPTOR_BUILD_STATIC)

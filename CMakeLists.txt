@@ -13,6 +13,8 @@ option(DISRUPTOR_BUILD_STATIC "Enable the build of the disruptor static library.
 option(DISRUPTOR_BUILD_SHARED "Enable the build of the disruptor static library." OFF)
 option(DISRUPTOR_CONAN "Try to use conan to fetch dependencies." ON)
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMake)
+
 if (DISRUPTOR_CONAN)
   if (EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
