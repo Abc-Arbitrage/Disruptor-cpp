@@ -86,9 +86,9 @@ namespace Disruptor
          */ 
         std::int64_t next(std::int32_t n) override
         {
-            if (n < 1)
+            if (n < 1 || n > this->m_bufferSize)
             {
-                DISRUPTOR_THROW_ARGUMENT_EXCEPTION("n must be > 0");
+                DISRUPTOR_THROW_ARGUMENT_EXCEPTION("n must be > 0 and < bufferSize");
             }
 
             auto nextValue = m_fields.nextValue;
