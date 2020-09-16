@@ -36,7 +36,8 @@ namespace Disruptor
              , m_gatingSequence(gatingSequence)
         {}
 
-        PollState poll(const std::function< bool(T&, std::int64_t, bool) >& eventHandler)
+        template <class TEventHandler>
+        PollState poll(TEventHandler&& eventHandler)
         {
             auto currentSequence = m_sequence->value();
             auto nextSequence = currentSequence + 1;
