@@ -4,6 +4,8 @@
 #include <functional>
 #include <memory>
 
+#include <boost/poly_collection/detail/is_invocable.hpp>
+
 #include "Disruptor/FixedSequenceGroup.h"
 #include "Disruptor/IDataProvider.h"
 #include "Disruptor/ISequencer.h"
@@ -39,6 +41,10 @@ namespace Disruptor
         template <class TEventHandler>
         PollState poll(TEventHandler&& eventHandler)
         {
+            using boost::poly_collection::detail::is_invocable_r;
+            static_assert(is_invocable_r<bool, TEventHandler, T&, std::int64_t, bool>::value,
+                          "eventHandler should have the following signature: bool(T&, std::int64_t, bool)");
+
             auto currentSequence = m_sequence->value();
             auto nextSequence = currentSequence + 1;
             auto availableSequence = m_sequencer->getHighestPublishedSequence(nextSequence, m_gatingSequence->value());
