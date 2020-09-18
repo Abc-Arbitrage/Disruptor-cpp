@@ -25,6 +25,7 @@ matrix:
           packages:
             - g++-5 # need at least gcc 5 because clang uses gcc stl
             - clang-3.8
+            - boost1.74
       env: COMPILER=clang++-3.8
       
 before_install:
