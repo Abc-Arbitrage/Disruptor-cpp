@@ -81,3 +81,8 @@
 # define DBG_UNREFERENCED_PARAMETER(P)      (P)
 # define DBG_UNREFERENCED_LOCAL_VARIABLE(V) (V)
 #endif
+
+// detect C++17
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703L) || __cplusplus >= 201703L)
+  # define DISRUPTOR_CPP_17
+#endif

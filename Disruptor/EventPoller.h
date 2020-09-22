@@ -1,17 +1,12 @@
 #pragma once
 
-#include <cstdint>
-#include <functional>
 #include <memory>
-
-#include <boost/poly_collection/detail/is_invocable.hpp>
 
 #include "Disruptor/FixedSequenceGroup.h"
 #include "Disruptor/IDataProvider.h"
 #include "Disruptor/ISequencer.h"
 #include "Disruptor/ISequence.h"
 #include "Disruptor/ProducerType.h"
-
 
 namespace Disruptor
 {
@@ -41,9 +36,10 @@ namespace Disruptor
         template <class TEventHandler>
         PollState poll(TEventHandler&& eventHandler)
         {
-            using boost::poly_collection::detail::is_invocable_r;
-            static_assert(is_invocable_r<bool, TEventHandler, T&, std::int64_t, bool>::value,
+#if DISRUPTOR_CPP_17
+            static_assert(std::is_invocable_r<bool, TEventHandler, T&, std::int64_t, bool>::value,
                           "eventHandler should have the following signature: bool(T&, std::int64_t, bool)");
+#endif
 
             auto currentSequence = m_sequence->value();
             auto nextSequence = currentSequence + 1;
