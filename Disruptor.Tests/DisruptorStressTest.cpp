@@ -156,7 +156,7 @@ BOOST_AUTO_TEST_CASE(ShouldHandleLotsOfThreads)
     end->wait();
     while (ringBuffer->cursor() < (iterations - 1))
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(0)); // LockSupport.parkNanos(1);
+        std::this_thread::sleep_for(std::chrono::milliseconds(0));
     }
 
     testDisruptor->shutdown();

@@ -56,7 +56,6 @@ namespace Tests
 
     void DelayedEventHandler::waitForAndSetFlag(std::int32_t newValue)
     {
-        //    while (!_stopped && Thread.CurrentThread.IsAlive && Interlocked.Exchange(ref _readyToProcessEvent, newValue) == newValue)
         while (!m_stopped && std::atomic_exchange(&m_readyToProcessEvent, newValue) == newValue)
         {
             std::this_thread::yield();

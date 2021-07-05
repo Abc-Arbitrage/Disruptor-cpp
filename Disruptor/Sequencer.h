@@ -100,11 +100,7 @@ namespace Disruptor
          */ 
         std::int64_t getMinimumSequence() override
         {
-            //auto& gatingSequences = this->m_gatingSequences;
-            //auto gatingSequences = std::atomic_load_explicit(&this->m_gatingSequences, std::memory_order_acquire);
-
             return Util::getMinimumSequence(m_gatingSequences, m_cursorRef.value());
-            //return Util::getMinimumSequence(*gatingSequences, m_cursor->value());
         }
 
         /**

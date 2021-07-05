@@ -237,8 +237,8 @@
     <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedLongArrayThroughputTest.h">
       <Filter>Sequenced</Filter>
     </ClInclude>
-    <ClInclude Include="../../Disruptor.PerfTests/TestInfo.h" />
     <ClInclude Include="../../Disruptor.PerfTests/LatencyTestSessionResult.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/TestFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="../../Disruptor.PerfTests/CMakeLists.txt" />

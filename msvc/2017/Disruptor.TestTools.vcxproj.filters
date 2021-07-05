@@ -11,8 +11,10 @@
     <ClCompile Include="../../Disruptor.TestTools/ManualResetEvent.cpp" />
     <ClCompile Include="../../Disruptor.TestTools/ResetEvent.cpp" />
     <ClCompile Include="../../Disruptor.TestTools/ScopeExitFunctor.cpp" />
-    <ClCompile Include="../../Disruptor.TestTools/stdafx.cpp" />
     <ClCompile Include="../../Disruptor.TestTools/Stopwatch.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/stdafx.cpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="../../Disruptor.TestTools/DurationHumanizer.h" />
@@ -23,9 +25,13 @@
     <ClInclude Include="../../Disruptor.TestTools/CountdownEvent.h" />
     <ClInclude Include="../../Disruptor.TestTools/ManualResetEvent.h" />
     <ClInclude Include="../../Disruptor.TestTools/ResetEvent.h" />
-    <ClInclude Include="../../Disruptor.TestTools/stdafx.h" />
     <ClInclude Include="../../Disruptor.TestTools/Stopwatch.h" />
-    <ClInclude Include="../../Disruptor.TestTools/targetver.h" />
+    <ClInclude Include="../../Disruptor.TestTools/stdafx.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.TestTools/targetver.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="../../Disruptor.TestTools/CMakeLists.txt" />

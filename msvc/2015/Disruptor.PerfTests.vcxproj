@@ -182,7 +182,6 @@
     <ClInclude Include="../../Disruptor.PerfTests/PaddedLong.h" />
     <ClInclude Include="../../Disruptor.PerfTests/PerfTestUtil.h" />
     <ClInclude Include="../../Disruptor.PerfTests/PingPongSequencedLatencyTest.h" />
-    <ClInclude Include="../../Disruptor.PerfTests/TestInfo.h" />
     <ClInclude Include="../../Disruptor.PerfTests/TestRepository.h" />
     <ClInclude Include="../../Disruptor.PerfTests/stdafx.h" />
     <ClInclude Include="../../Disruptor.PerfTests/targetver.h" />
@@ -195,6 +194,7 @@
     <ClInclude Include="../../Disruptor.PerfTests/ValueAdditionEventHandler.h" />
     <ClInclude Include="../../Disruptor.PerfTests/ValueEvent.h" />
     <ClInclude Include="../../Disruptor.PerfTests/ValueMutationEventHandler.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/TestFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="../../Disruptor.PerfTests/CMakeLists.txt" />
