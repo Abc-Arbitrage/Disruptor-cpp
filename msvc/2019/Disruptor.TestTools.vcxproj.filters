@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Precompiled Headers">
+      <UniqueIdentifier>{0221edb6-70ca-4a20-9c5b-03bb73331cfe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="../../Disruptor.TestTools/CountdownEvent.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/LatencyRecorder.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/ManualResetEvent.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/ResetEvent.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/ScopeExitFunctor.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/stdafx.cpp" />
+    <ClCompile Include="../../Disruptor.TestTools/Stopwatch.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="../../Disruptor.TestTools/DurationHumanizer.h" />
+    <ClInclude Include="../../Disruptor.TestTools/DurationUnit.h" />
+    <ClInclude Include="../../Disruptor.TestTools/LatencyRecorder.h" />
+    <ClInclude Include="../../Disruptor.TestTools/HumanNumberFacet.h" />
+    <ClInclude Include="../../Disruptor.TestTools/ScopeExitFunctor.h" />
+    <ClInclude Include="../../Disruptor.TestTools/CountdownEvent.h" />
+    <ClInclude Include="../../Disruptor.TestTools/ManualResetEvent.h" />
+    <ClInclude Include="../../Disruptor.TestTools/ResetEvent.h" />
+    <ClInclude Include="../../Disruptor.TestTools/stdafx.h" />
+    <ClInclude Include="../../Disruptor.TestTools/Stopwatch.h" />
+    <ClInclude Include="../../Disruptor.TestTools/targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="../../Disruptor.TestTools/CMakeLists.txt" />
+  </ItemGroup>
+</Project>

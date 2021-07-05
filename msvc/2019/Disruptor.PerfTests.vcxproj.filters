@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Precompiled Headers">
+      <UniqueIdentifier>{0221edb6-70ca-4a20-9c5b-03bb73331cfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Support">
+      <UniqueIdentifier>{8a04e59a-40f5-4566-aaa2-e15f9c2efda4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Raw">
+      <UniqueIdentifier>{5e0d3237-6a0c-4657-816f-bfe119d6ca29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sequenced">
+      <UniqueIdentifier>{159a3785-dc26-480c-9605-a0f356bc0945}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Translator">
+      <UniqueIdentifier>{7fd7a2d7-9ecc-4d01-986f-1f9309073eaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WorkHandler">
+      <UniqueIdentifier>{a5e40b8b-91ee-4357-b503-07f44c60cbed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="../../Disruptor.PerfTests/stdafx.cpp">
+      <Filter>Precompiled Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/main.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/TestRepository.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/TwoToTwoWorkProcessorThroughputTest.cpp">
+      <Filter>WorkHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/LatencyTestSession.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/ThroughputTestSession.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneSequencedBatchThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneRawThroughputTest.cpp">
+      <Filter>Raw</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneRawBatchThroughputTest.cpp">
+      <Filter>Raw</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneTranslatorThroughputTest.cpp">
+      <Filter>Translator</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/ThroughputTestSessionResult.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreeWorkerPoolThroughputTest.cpp">
+      <Filter>WorkHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreeReleasingWorkerPoolThroughputTest.cpp">
+      <Filter>WorkHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneSequencedPollerThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreeDiamondSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreePipelineSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToThreeSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/ThreeToOneSequencedBatchThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/ThreeToOneSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/ThreeToThreeSequencedThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/PingPongSequencedLatencyTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/EventCountingQueueProcessor.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/EventCountingWorkHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/FizzBuzzEvent.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/FizzBuzzEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/MutableLong.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/ValueAdditionEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/ValueEvent.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/FunctionEvent.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/FunctionEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/ValueMutationEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/Operation.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/LongArrayEventHandler.cpp">
+      <Filter>Support</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/OneToOneSequencedLongArrayThroughputTest.cpp">
+      <Filter>Sequenced</Filter>
+    </ClCompile>
+    <ClCompile Include="../../Disruptor.PerfTests/LatencyTestSessionResult.cpp" />
+    <ClCompile Include="../../Disruptor.PerfTests/PerfTestUtil.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="../../Disruptor.PerfTests/stdafx.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/targetver.h">
+      <Filter>Precompiled Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/IThroughputTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneRawBatchThroughputTest.h">
+      <Filter>Raw</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneRawThroughputTest.h">
+      <Filter>Raw</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedBatchThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ILatencyTest.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/LatencyTestSession.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/TestRepository.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/ThroughputTestSession.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/TwoToTwoWorkProcessorThroughputTest.h">
+      <Filter>WorkHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/PerfTestUtil.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ValueEvent.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ValueAdditionEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/PaddedLong.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/FizzBuzzStep.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/FizzBuzzEvent.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/FizzBuzzEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneTranslatorThroughputTest.h">
+      <Filter>Translator</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/MutableLong.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ThroughputTestSessionResult.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreeWorkerPoolThroughputTest.h">
+      <Filter>WorkHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/EventCountingQueueProcessor.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/EventCountingWorkHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreeReleasingWorkerPoolThroughputTest.h">
+      <Filter>WorkHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedPollerThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreeDiamondSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreePipelineSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToThreeSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ThreeToOneSequencedBatchThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ThreeToOneSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ThreeToThreeSequencedThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/PingPongSequencedLatencyTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ExecutorService.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/FunctionEvent.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/FunctionEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/FunctionStep.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/Operation.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/ValueMutationEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/LongArrayEventHandler.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/MultiBufferBatchEventProcessor.h">
+      <Filter>Support</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/OneToOneSequencedLongArrayThroughputTest.h">
+      <Filter>Sequenced</Filter>
+    </ClInclude>
+    <ClInclude Include="../../Disruptor.PerfTests/TestInfo.h" />
+    <ClInclude Include="../../Disruptor.PerfTests/LatencyTestSessionResult.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="../../Disruptor.PerfTests/CMakeLists.txt" />
+  </ItemGroup>
+</Project>

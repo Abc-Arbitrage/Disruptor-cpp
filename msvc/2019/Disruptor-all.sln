@@ -1,0 +1,75 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Disruptor", "Disruptor.vcxproj", "{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Disruptor.Tests", "Disruptor.Tests.vcxproj", "{31883900-84FA-4EA0-B33A-0FDE44979F13}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0A1FF4F2-CD19-4B2B-944A-F14B849A2588} = {0A1FF4F2-CD19-4B2B-944A-F14B849A2588}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Disruptor.PerfTests", "Disruptor.PerfTests.vcxproj", "{E580C3C4-C69D-4F84-B023-68DB76080186}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0222BD82-4B1B-4D6F-8A35-8805B1087033}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Disruptor.TestTools", "Disruptor.TestTools.vcxproj", "{636795CA-A154-4C4B-B054-658F333F27E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gtest", "gtest", "{7A7E72D1-DD84-4E74-A6D6-E1845F94911A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gmock", "..\..\googletest-release-1.8.0\googlemock\msvc\2019\gmock.vcxproj", "{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}.Debug|x64.ActiveCfg = Debug|x64
+		{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}.Debug|x64.Build.0 = Debug|x64
+		{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}.Debug|x86.ActiveCfg = Debug|x64
+		{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}.Release|x64.ActiveCfg = Release|x64
+		{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}.Release|x64.Build.0 = Release|x64
+		{0A1FF4F2-CD19-4B2B-944A-F14B849A2588}.Release|x86.ActiveCfg = Release|x64
+		{31883900-84FA-4EA0-B33A-0FDE44979F13}.Debug|x64.ActiveCfg = Debug|x64
+		{31883900-84FA-4EA0-B33A-0FDE44979F13}.Debug|x64.Build.0 = Debug|x64
+		{31883900-84FA-4EA0-B33A-0FDE44979F13}.Debug|x86.ActiveCfg = Debug|x64
+		{31883900-84FA-4EA0-B33A-0FDE44979F13}.Release|x64.ActiveCfg = Release|x64
+		{31883900-84FA-4EA0-B33A-0FDE44979F13}.Release|x64.Build.0 = Release|x64
+		{31883900-84FA-4EA0-B33A-0FDE44979F13}.Release|x86.ActiveCfg = Release|x64
+		{E580C3C4-C69D-4F84-B023-68DB76080186}.Debug|x64.ActiveCfg = Debug|x64
+		{E580C3C4-C69D-4F84-B023-68DB76080186}.Debug|x64.Build.0 = Debug|x64
+		{E580C3C4-C69D-4F84-B023-68DB76080186}.Debug|x86.ActiveCfg = Debug|x64
+		{E580C3C4-C69D-4F84-B023-68DB76080186}.Release|x64.ActiveCfg = Release|x64
+		{E580C3C4-C69D-4F84-B023-68DB76080186}.Release|x64.Build.0 = Release|x64
+		{E580C3C4-C69D-4F84-B023-68DB76080186}.Release|x86.ActiveCfg = Release|x64
+		{636795CA-A154-4C4B-B054-658F333F27E7}.Debug|x64.ActiveCfg = Debug|x64
+		{636795CA-A154-4C4B-B054-658F333F27E7}.Debug|x64.Build.0 = Debug|x64
+		{636795CA-A154-4C4B-B054-658F333F27E7}.Debug|x86.ActiveCfg = Debug|x64
+		{636795CA-A154-4C4B-B054-658F333F27E7}.Release|x64.ActiveCfg = Release|x64
+		{636795CA-A154-4C4B-B054-658F333F27E7}.Release|x64.Build.0 = Release|x64
+		{636795CA-A154-4C4B-B054-658F333F27E7}.Release|x86.ActiveCfg = Release|x64
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}.Debug|x64.ActiveCfg = Debug|x64
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}.Debug|x64.Build.0 = Debug|x64
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}.Debug|x86.ActiveCfg = Debug|Win32
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}.Debug|x86.Build.0 = Debug|Win32
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}.Release|x64.ActiveCfg = Release|x64
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}.Release|x64.Build.0 = Release|x64
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}.Release|x86.ActiveCfg = Release|Win32
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31883900-84FA-4EA0-B33A-0FDE44979F13} = {0222BD82-4B1B-4D6F-8A35-8805B1087033}
+		{E580C3C4-C69D-4F84-B023-68DB76080186} = {0222BD82-4B1B-4D6F-8A35-8805B1087033}
+		{636795CA-A154-4C4B-B054-658F333F27E7} = {0222BD82-4B1B-4D6F-8A35-8805B1087033}
+		{34681F0D-CE45-415D-B5F2-5C662DFE3BD5} = {7A7E72D1-DD84-4E74-A6D6-E1845F94911A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EB2C634-95E1-4607-92B0-C32E261F5297}
+	EndGlobalSection
+EndGlobal
