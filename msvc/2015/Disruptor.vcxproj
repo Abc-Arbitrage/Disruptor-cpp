@@ -118,6 +118,7 @@
     <ClInclude Include="../../Disruptor/IEventHandler.h" />
     <ClInclude Include="../../Disruptor/IEventProcessor.h" />
     <ClInclude Include="../../Disruptor/IEventProcessorFactory.h" />
+    <ClInclude Include="../../Disruptor/IEventProcessorSequenceAware.h" />
     <ClInclude Include="../../Disruptor/IEventReleaseAware.h" />
     <ClInclude Include="../../Disruptor/IEventReleaser.h" />
     <ClInclude Include="../../Disruptor/IEventSequencer.h" />

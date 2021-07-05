@@ -5,11 +5,11 @@
 #include "Disruptor/IDataProvider.h"
 #include "Disruptor/IEventHandler.h"
 #include "Disruptor/IEventProcessor.h"
+#include "Disruptor/IEventProcessorSequenceAware.h"
 #include "Disruptor/IExceptionHandler.h"
 #include "Disruptor/ILifecycleAware.h"
 #include "Disruptor/InvalidOperationException.h"
 #include "Disruptor/ISequenceBarrier.h"
-#include "Disruptor/ISequenceReportingEventHandler.h"
 #include "Disruptor/ITimeoutHandler.h"
 #include "Disruptor/Sequence.h"
 #include "Disruptor/TimeoutException.h"
@@ -50,9 +50,9 @@ namespace Disruptor
             , m_sequence(std::make_shared< Sequence >())
             , m_sequenceRef(*m_sequence)
         {
-            auto sequenceReportingHandler = std::dynamic_pointer_cast< ISequenceReportingEventHandler< T > >(eventHandler);
-            if (sequenceReportingHandler != nullptr)
-                sequenceReportingHandler->setSequenceCallback(m_sequence);
+            auto processorSequenceAware = std::dynamic_pointer_cast< IEventProcessorSequenceAware >(eventHandler);
+            if (processorSequenceAware != nullptr)
+                processorSequenceAware->setSequenceCallback(m_sequence);
 
             m_timeoutHandler = std::dynamic_pointer_cast< ITimeoutHandler >(eventHandler);
         }

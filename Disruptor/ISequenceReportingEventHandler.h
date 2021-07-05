@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Disruptor/IEventHandler.h"
-#include "Disruptor/ISequence.h"
+#include "Disruptor/IEventProcessorSequenceAware.h"
 
 
 namespace Disruptor
@@ -15,17 +15,10 @@ namespace Disruptor
      * \tparam T event implementation storing the data for sharing during exchange or parallel coordination of an event.
      */ 
     template <class T>
-    class ISequenceReportingEventHandler : public IEventHandler< T >
+    class ISequenceReportingEventHandler : public IEventHandler< T >, public IEventProcessorSequenceAware
     {
     public:
         virtual ~ISequenceReportingEventHandler() = default;
-
-        /**
-         * Call by the BatchEventProcessor<T> to setup the callback.
-         * 
-         * \param sequenceCallback callback on which to notify the BatchEventProcessor<T> that the sequence has progressed.
-         */ 
-        virtual void setSequenceCallback(const std::shared_ptr< ISequence >& sequenceCallback) = 0;
     };
 
 } // namespace Disruptor

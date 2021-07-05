@@ -163,6 +163,7 @@
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="../../Disruptor/ITaskScheduler.h" />
+    <ClInclude Include="../../Disruptor/IEventProcessorSequenceAware.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="../../Disruptor/stdafx.cpp">
