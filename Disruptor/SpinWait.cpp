@@ -112,7 +112,11 @@ namespace Disruptor
 
     void SpinWait::yieldProcessor()
     {
-#if defined(DISRUPTOR_VC_COMPILER)
+#if defined(DISRUPTOR_STD_YIELD)
+
+        std::this_thread::yield();
+        
+#elif defined(DISRUPTOR_VC_COMPILER)
 
         ::YieldProcessor();
 
