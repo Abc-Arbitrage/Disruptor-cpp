@@ -32,7 +32,13 @@
 
 # define DISRUPTOR_CPP_11
 
-# if __x86_64__ || __ppc64__
+# if __arm__
+#  define DISRUPTOR_CPU_ARM
+#  define DISRUPTOR_CPU_ARM_32
+# #elif __aarch64__
+#  define DISRUPTOR_CPU_ARM
+#  define DISRUPTOR_CPU_ARM_64
+# elif __x86_64__ || __ppc64__
 #  define DISRUPTOR_CPU_64
 # else
 #  define DISRUPTOR_CPU_32

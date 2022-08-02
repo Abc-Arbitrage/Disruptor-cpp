@@ -118,11 +118,18 @@ namespace Disruptor
 
 #elif defined(DISRUPTOR_GNUC_COMPILER)
 
+#if defined(DISRUPTOR_CPU_ARM)
         asm volatile
-            (
-                "rep\n"
-                "nop"
-                );
+        (
+            "yield"
+        );
+#else
+        asm volatile
+        (
+            "rep\n"
+            "nop"
+        );
+#endif
 
 #else
 
