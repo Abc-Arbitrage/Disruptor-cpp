@@ -1,13 +1,16 @@
 project(Disruptor.Tests)
 cmake_minimum_required(VERSION 2.6)
 
-find_package(Boost COMPONENTS system chrono thread unit_test_framework)
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-    link_directories(${Boost_LIBRARY_DIRS})
-endif()
+include (BoostTest)
 
-ADD_DEFINITIONS(-DBOOST_TEST_DYN_LINK) 
+if (WITH_CONAN)
+  set(GMock_LIBRARY CONAN_PKG::gtest)
+  set(Boost_Libraries CONAN_PKG::boost)
+else()
+  set(GMock_LIBRARY gtest gmock)
+  find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+  set(Boost_Libraries Boost::unit_test_framwork)
+endif()
 
 set(DisruptorTests_sources
 
@@ -57,10 +60,12 @@ set(DisruptorTests_sources
     YieldingWaitStrategyTests.cpp
 )
 
-include_directories("..")
-
 add_executable(Disruptor.Tests ${DisruptorTests_sources})
-target_link_libraries(Disruptor.Tests DisruptorStatic Disruptor.TestTools ${Boost_LIBRARIES} gmock)
+boost_test_discover_tests(Disruptor.Tests)
 
-add_test(cmake_Disruptor.Tests ${CMAKE_CURRENT_BINARY_DIR}/Disruptor.Tests --result_code=no --report_level=no)
-
+target_link_libraries(Disruptor.Tests
+  PRIVATE
+    Disruptor.TestTools
+    ${GMock_LIBRARY}
+    ${Boost_LIBRARIES}
+)
