@@ -1,5 +1,6 @@
 #pragma once
 
+#include <atomic>
 #include <memory>
 
 #include "Disruptor/InsufficientCapacityException.h"
@@ -23,7 +24,7 @@ namespace Disruptor
         MultiProducerSequencer(std::int32_t bufferSize, const std::shared_ptr< IWaitStrategy >& waitStrategy)
             : Sequencer< T >(bufferSize, waitStrategy)
         {
-            m_availableBuffer = std::unique_ptr< int[] >(new int [bufferSize]);
+            m_availableBuffer = std::unique_ptr< std::atomic< std::int32_t >[] >(new std::atomic< std::int32_t >[bufferSize]);
             m_indexMask = bufferSize - 1;
             m_indexShift = Util::log2(bufferSize);
             initializeAvailableBuffer();
@@ -203,7 +204,7 @@ namespace Disruptor
             auto index = calculateIndex(sequence);
             auto flag = calculateAvailabilityFlag(sequence);
 
-            return m_availableBuffer[index] == flag;
+            return m_availableBuffer[index].load(std::memory_order_acquire) == flag;
         }
 
         /**
@@ -250,12 +251,14 @@ namespace Disruptor
 
         void initializeAvailableBuffer()
         {
+            // Called from the constructor before any consumer can observe the
+            // sequencer, so relaxed stores are sufficient here.
             for (std::int32_t i = this->m_bufferSize - 1; i != 0; i--)
             {
-                setAvailableBufferValue(i, -1);
+                m_availableBuffer[i].store(-1, std::memory_order_relaxed);
             }
 
-            setAvailableBufferValue(0, -1);
+            m_availableBuffer[0].store(-1, std::memory_order_relaxed);
         }
 
         void setAvailable(std::int64_t sequence)
@@ -265,7 +268,10 @@ namespace Disruptor
 
         void setAvailableBufferValue(std::int32_t index, std::int32_t flag)
         {
-            m_availableBuffer[index] = flag;
+            // Release-store so the event payload writes that happened before
+            // publish() are visible to any consumer that subsequently sees
+            // the flag via the matching acquire-load in isAvailable().
+            m_availableBuffer[index].store(flag, std::memory_order_release);
         }
 
         std::int32_t calculateAvailabilityFlag(std::int64_t sequence)
@@ -283,7 +289,7 @@ namespace Disruptor
 
         // availableBuffer tracks the state of each ringbuffer slot
         // see below for more details on the approach
-        std::unique_ptr< std::int32_t[] > m_availableBuffer;
+        std::unique_ptr< std::atomic< std::int32_t >[] > m_availableBuffer;
         std::int32_t m_indexMask;
         std::int32_t m_indexShift;
     };
