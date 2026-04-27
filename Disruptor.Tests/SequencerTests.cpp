@@ -202,6 +202,11 @@ BOOST_FIXTURE_TEST_CASE_TEMPLATE(ShouldNotAllowBulkNextOfZero, TSequencer, Seque
     BOOST_CHECK_THROW(this->m_sequencer->next(0), ArgumentException);
 }
 
+BOOST_FIXTURE_TEST_CASE_TEMPLATE(ShouldNotAllowBulkNextGreaterThanBufferSize, TSequencer, Sequencers, SequencerTestFixture< TSequencer >)
+{
+    BOOST_CHECK_THROW(this->m_sequencer->next(this->m_bufferSize + 1), ArgumentException);
+}
+
 BOOST_FIXTURE_TEST_CASE_TEMPLATE(ShouldNotAllowBulkTryNextLessThanZero, TSequencer, Sequencers, SequencerTestFixture< TSequencer >)
 {
     BOOST_CHECK_THROW(this->m_sequencer->tryNext(-1), ArgumentException);
