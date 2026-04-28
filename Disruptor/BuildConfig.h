@@ -35,7 +35,7 @@
 # if __arm__
 #  define DISRUPTOR_CPU_ARM
 #  define DISRUPTOR_CPU_ARM_32
-# #elif __aarch64__
+# elif __aarch64__
 #  define DISRUPTOR_CPU_ARM
 #  define DISRUPTOR_CPU_ARM_64
 # elif __x86_64__ || __ppc64__
