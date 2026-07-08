@@ -214,6 +214,9 @@
     <ClCompile Include="../../Disruptor.Tests/TimeoutBlockingWaitStrategyTests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="../../Disruptor.Tests/LiteBlockingWaitStrategyTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
     <ClCompile Include="../../Disruptor.Tests/DelayedEventHandler.cpp">
       <Filter>Tests\Dsl\Stubs</Filter>
     </ClCompile>
