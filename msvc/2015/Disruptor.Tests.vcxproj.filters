@@ -220,6 +220,9 @@
     <ClCompile Include="../../Disruptor.Tests/LiteTimeoutBlockingWaitStrategyTests.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="../../Disruptor.Tests/PhasedBackoffWaitStrategyTests.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
     <ClCompile Include="../../Disruptor.Tests/DelayedEventHandler.cpp">
       <Filter>Tests\Dsl\Stubs</Filter>
     </ClCompile>
