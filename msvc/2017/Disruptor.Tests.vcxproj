@@ -163,6 +163,7 @@
     <ClCompile Include="../../Disruptor.Tests/BatchEventProcessorTests.cpp" />
     <ClCompile Include="../../Disruptor.Tests/IgnoreExceptionHandlerTests.cpp" />
     <ClCompile Include="../../Disruptor.Tests/LifecycleAwareTests.cpp" />
+    <ClCompile Include="../../Disruptor.Tests/LiteBlockingWaitStrategyTests.cpp" />
     <ClCompile Include="../../Disruptor.Tests/MultiProducerSequencerTests.cpp" />
     <ClCompile Include="../../Disruptor.Tests/RingBufferTests.cpp" />
     <ClCompile Include="../../Disruptor.Tests/RingBufferTestsFixture.cpp" />
