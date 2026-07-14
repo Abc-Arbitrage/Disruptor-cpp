@@ -16,6 +16,9 @@ set(Disruptor_sources
     BlockingWaitStrategy.cpp
     BusySpinWaitStrategy.cpp
     FixedSequenceGroup.cpp
+    LiteBlockingWaitStrategy.cpp
+    LiteTimeoutBlockingWaitStrategy.cpp
+    PhasedBackoffWaitStrategy.cpp
     ProcessingSequenceBarrier.cpp
     ProducerType.cpp
     RoundRobinThreadAffinedTaskScheduler.cpp
@@ -88,9 +91,12 @@ set(Disruptor_headers
     ITimeoutHandler.h
     IWaitStrategy.h
     IWorkHandler.h
+    LiteBlockingWaitStrategy.h
+    LiteTimeoutBlockingWaitStrategy.h
     MultiProducerSequencer.h
     NoOpEventProcessor.h
     NotSupportedException.h
+    PhasedBackoffWaitStrategy.h
     Pragmas.h
     ProcessingSequenceBarrier.h
     ProducerType.h

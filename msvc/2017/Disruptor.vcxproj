@@ -140,9 +140,12 @@
     <ClInclude Include="../../Disruptor/ITimeoutHandler.h" />
     <ClInclude Include="../../Disruptor/IWaitStrategy.h" />
     <ClInclude Include="../../Disruptor/IWorkHandler.h" />
+    <ClInclude Include="../../Disruptor/LiteBlockingWaitStrategy.h" />
+    <ClInclude Include="../../Disruptor/LiteTimeoutBlockingWaitStrategy.h" />
     <ClInclude Include="../../Disruptor/MultiProducerSequencer.h" />
     <ClInclude Include="../../Disruptor/NoOpEventProcessor.h" />
     <ClInclude Include="../../Disruptor/NotSupportedException.h" />
+    <ClInclude Include="../../Disruptor/PhasedBackoffWaitStrategy.h" />
     <ClInclude Include="../../Disruptor/Pragmas.h" />
     <ClInclude Include="../../Disruptor/ProcessingSequenceBarrier.h" />
     <ClInclude Include="../../Disruptor/ProducerType.h" />
@@ -173,6 +176,9 @@
     <ClCompile Include="../../Disruptor/BlockingWaitStrategy.cpp" />
     <ClCompile Include="../../Disruptor/BusySpinWaitStrategy.cpp" />
     <ClCompile Include="../../Disruptor/FixedSequenceGroup.cpp" />
+    <ClCompile Include="../../Disruptor/LiteBlockingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/LiteTimeoutBlockingWaitStrategy.cpp" />
+    <ClCompile Include="../../Disruptor/PhasedBackoffWaitStrategy.cpp" />
     <ClCompile Include="../../Disruptor/ProcessingSequenceBarrier.cpp" />
     <ClCompile Include="../../Disruptor/ProducerType.cpp" />
     <ClCompile Include="../../Disruptor/RoundRobinThreadAffinedTaskScheduler.cpp" />

@@ -33,7 +33,10 @@ set(DisruptorTests_sources
     FixedSequenceGroupTest.cpp
     IgnoreExceptionHandlerTests.cpp
     LifecycleAwareTests.cpp
+    LiteBlockingWaitStrategyTests.cpp
+    LiteTimeoutBlockingWaitStrategyTests.cpp
     MultiProducerSequencerTests.cpp
+    PhasedBackoffWaitStrategyTests.cpp
     RingBufferTests.cpp
     RingBufferTestsFixture.cpp
     RingBufferWithMocksTest.cpp
