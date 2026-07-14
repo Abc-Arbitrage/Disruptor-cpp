@@ -6,6 +6,8 @@
 
 #include <gmock/gmock.h>
 
+#include "Disruptor.TestTools/BoostTestOptions.h"
+
 #if _MSC_VER
 # pragma warning (disable: 4231) // nonstandard extension used : 'extern' before template explicit instantiation
 #endif
@@ -21,6 +23,9 @@ struct GlobalFixture
 
         testing::GTEST_FLAG(throw_on_failure) = true;
         testing::InitGoogleMock(&boost::unit_test::framework::master_test_suite().argc, boost::unit_test::framework::master_test_suite().argv);
+
+        Disruptor::Tests::addAdditionalCommandLineOptions();
+
     }
 
     ~GlobalFixture()
@@ -29,4 +34,3 @@ struct GlobalFixture
 };
 
 BOOST_GLOBAL_FIXTURE(GlobalFixture);
-

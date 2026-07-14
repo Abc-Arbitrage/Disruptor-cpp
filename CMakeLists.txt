@@ -8,6 +8,22 @@ set(DISRUPTOR_VERSION "${DISRUPTOR_VERSION_MAJOR}.${DISRUPTOR_VERSION_MINOR}.${D
 
 enable_testing()
 
+option(DISRUPTOR_BUILD_TESTS "Enable the build of tests and samples." OFF)
+option(DISRUPTOR_BUILD_STATIC "Enable the build of the disruptor static library." ON)
+option(DISRUPTOR_BUILD_SHARED "Enable the build of the disruptor static library." OFF)
+option(DISRUPTOR_CONAN "Try to use conan to fetch dependencies." ON)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CMake)
+
+if (DISRUPTOR_CONAN)
+  if (EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    conan_basic_setup(TARGETS)
+    set(WITH_CONAN "conan")
+    message(STATUS "Using conan for dependencies.")
+  endif()
+endif()
+
 # enable gcc specific stuff
 if(CMAKE_COMPILER_IS_GNUCXX)
     set(COMPILER_FLAGS "-std=c++14")
@@ -46,8 +62,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILER_FLAGS} ${WARNING_FLAGS}")
 add_subdirectory(Disruptor)
 
 if(DISRUPTOR_BUILD_TESTS)
-    add_subdirectory(googletest-release-1.8.0)
-    include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+    message(STATUS
+        "Building tests and samples."
+    )
+    if (NOT WITH_CONAN)
+        add_subdirectory(googletest-release-1.8.0)
+    endif()
 
     add_subdirectory(Disruptor.PerfTests)
     add_subdirectory(Disruptor.TestTools)
